@@ -23,7 +23,7 @@ SECTIONS
 	{
 		asm/crt0.o(.text);
         . = 0x00000118;
-        asm/main.o(.text);
+        asm/code.o(.text);
         
         /* Read Only Data */
         /* src/main.o(.rodata); */
