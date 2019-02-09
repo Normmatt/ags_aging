@@ -23,7 +23,7 @@ SECTIONS
 	{
 		asm/crt0.o(.text);
         . = 0x00000118;
-        asm/main.o(.text);              /* rodata 08018098 */
+        src/main.o(.text);              /* rodata 08018098 */
         asm/sub_8000200.o(.text);       /* rodata 0801809C */
         asm/sub_800028C.o(.text);       /* rodata 080180BC */
         asm/sub_8000370.o(.text);       /* rodata 08018140 */
