@@ -699,7 +699,7 @@ _0800BCA0: .4byte 0x04000132
 _0800BCA4: .4byte 0x04000202
 _0800BCA8:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	adds r0, r7, #0
 	adds r0, #0xf0
 	ldr r1, _0800BCEC

@@ -113,7 +113,7 @@ sub_8003ED0: @ 0x08003ED0
 	mov r7, sp
 	str r0, [r7]
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r1, [r7]
 	adds r0, r1, #4
 	ldr r1, [r0]
@@ -305,7 +305,7 @@ sub_8004038: @ 0x08004038
 	bl m4aSongNumStart
 	movs r0, #0x64
 	bl m4aSongNumStart
-	bl sub_800D9D8
+	bl ReadKey
 	ldr r0, _0800407C
 	movs r1, #0
 	str r1, [r0, #4]
@@ -317,7 +317,7 @@ _0800407C: .4byte gUnknown_03000460
 	.byte 0x54, 0xE0
 _08004082:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r0, [r7, #4]
 	cmp r0, #0
 	beq _080040C6
@@ -350,7 +350,7 @@ _08004082:
 	str r0, [r7, #4]
 _080040C6:
 	bl m4aSoundMain
-	bl sub_800D8B0
+	bl ReadKeyPlus
 	ldr r0, _080040FC
 	ldrh r1, [r0, #2]
 	movs r2, #1
@@ -426,7 +426,7 @@ sub_800413C: @ 0x0800413C
 	bl sub_800D68C
 	movs r0, #1
 	bl SetIME
-	bl sub_800D9D8
+	bl ReadKey
 	ldr r0, _08004178
 	movs r1, #0
 	str r1, [r0, #4]
@@ -438,7 +438,7 @@ _08004178: .4byte gUnknown_03000460
 	.byte 0x64, 0xE0
 _0800417E:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
 	beq _080041C0
@@ -470,7 +470,7 @@ _0800417E:
 	str r0, [r7, #0xc]
 _080041C0:
 	bl m4aSoundMain
-	bl sub_800D8B0
+	bl ReadKeyPlus
 	ldr r0, _080041FC
 	ldrh r1, [r0, #2]
 	movs r2, #1
@@ -558,7 +558,7 @@ _0800427C: .4byte sub_80044F8+1
 	.byte 0xAF, 0xE0
 _08004282:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r0, _08004298
 	ldr r1, [r0]
 	cmp r1, #0x1e
@@ -754,7 +754,7 @@ sub_80043F4: @ 0x080043F4
 	bl m4aSongNumStart
 	movs r0, #0x64
 	bl m4aSongNumStart
-	bl sub_800D9D8
+	bl ReadKey
 	ldr r0, _08004438
 	movs r1, #0
 	str r1, [r0, #4]
@@ -766,7 +766,7 @@ _08004438: .4byte gUnknown_03000460
 	.byte 0x54, 0xE0
 _0800443E:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r0, [r7, #4]
 	cmp r0, #0
 	beq _08004482
@@ -799,7 +799,7 @@ _0800443E:
 	str r0, [r7, #4]
 _08004482:
 	bl m4aSoundMain
-	bl sub_800D8B0
+	bl ReadKeyPlus
 	ldr r0, _080044B8
 	ldrh r1, [r0, #2]
 	movs r2, #1
@@ -1020,7 +1020,7 @@ _08004648: .4byte gUnknown_03001734
 _0800464C:
 	bl m4aSoundMain
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 _08004656:
 	pop {r7}
 	pop {r0}
@@ -1498,7 +1498,7 @@ _08004A2A:
 	bl m4aSoundMain
 _08004A2E:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r0, [r7, #8]
 	adds r1, r0, #1
 	str r1, [r7, #8]

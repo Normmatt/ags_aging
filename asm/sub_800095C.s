@@ -40,7 +40,7 @@ _080009A8: .4byte gUnknown_03002BB0
 	.byte 0x1A, 0xE0
 _080009AE:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	adds r0, r7, #0
 	adds r0, #0x44
 	ldr r1, _080009DC
@@ -69,7 +69,7 @@ _080009E0: .4byte gUnknown_03002BB0
 sub_80009F4: @ 0x080009F4
 	push {r7, lr}
 	mov r7, sp
-	bl sub_800DFB0
+	bl UpdateTilemaps
 	pop {r7}
 	pop {r0}
 	bx r0

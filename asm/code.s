@@ -1182,13 +1182,13 @@ sub_800D5F4: @ 0x0800D5F4
 	bx r0
 	.align 2, 0
 _0800D62C: .4byte 0x040000D4
-_0800D630: .4byte sub_800F04C
+_0800D630: .4byte intr_main
 _0800D634: .4byte gUnknown_030010A8
 _0800D638: .4byte 0x84000041
 _0800D63C: .4byte gUnknown_03007FFC
 
-	THUMB_FUNC_START sub_800D640
-sub_800D640: @ 0x0800D640
+	THUMB_FUNC_START WaitForInterrupt
+WaitForInterrupt: @ 0x0800D640
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1527,8 +1527,8 @@ _0800D894:
 	pop {r0}
 	bx r0
 
-	THUMB_FUNC_START sub_800D8B0
-sub_800D8B0: @ 0x0800D8B0
+	THUMB_FUNC_START ReadKeyPlus
+ReadKeyPlus: @ 0x0800D8B0
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -1677,8 +1677,8 @@ _0800D9D0:
 	pop {r0}
 	bx r0
 
-	THUMB_FUNC_START sub_800D9D8
-sub_800D9D8: @ 0x0800D9D8
+	THUMB_FUNC_START ReadKey
+ReadKey: @ 0x0800D9D8
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -2025,7 +2025,7 @@ _0800DCD0: .4byte 0x00001024
 _0800DCD4: .4byte sub_800E224+1
 _0800DCD8: .4byte 0x00001028
 _0800DCDC:
-	bl sub_800DFB0
+	bl UpdateTilemaps
 	movs r0, #0
 	movs r1, #0
 	bl sub_800DE38
@@ -2378,8 +2378,8 @@ _0800DFA0:
 	pop {r0}
 	bx r0
 
-	THUMB_FUNC_START sub_800DFB0
-sub_800DFB0: @ 0x0800DFB0
+	THUMB_FUNC_START UpdateTilemaps
+UpdateTilemaps: @ 0x0800DFB0
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -3818,10 +3818,10 @@ _0800EB30: .4byte gUnknown_030011D8
 _0800EB34: .4byte 0x04000204
 _0800EB38:
 	movs r0, #4
-	bl sub_8012174
+	bl IdentifyEeprom
 	ldr r1, _0800EB48
 	movs r0, #0
-	bl sub_80121DC
+	bl SetEepromTimerIntr
 	b _0800EB68
 	.align 2, 0
 _0800EB48: .4byte gUnknown_03000428
@@ -3862,13 +3862,13 @@ sub_800EB70: @ 0x0800EB70
 	bl sub_800D790
 	ldr r1, _0800EBE4
 	movs r0, #0
-	bl sub_80121DC
+	bl SetEepromTimerIntr
 	adds r0, r7, #0
 	ldrh r1, [r0]
 	ldr r2, [r7, #4]
 	adds r0, r1, #0
 	adds r1, r2, #0
-	bl sub_8012410
+	bl ProgramEepromDword
 	lsls r1, r0, #0x10
 	lsrs r0, r1, #0x10
 	cmp r0, #0
@@ -3883,7 +3883,7 @@ _0800EBB4:
 	ldr r2, [r7, #4]
 	adds r0, r1, #0
 	adds r1, r2, #0
-	bl sub_80124EC
+	bl VerifyEepromDword
 	lsls r1, r0, #0x10
 	lsrs r0, r1, #0x10
 	cmp r0, #0
@@ -3926,13 +3926,13 @@ sub_800EBF0: @ 0x0800EBF0
 	bl sub_800D790
 	ldr r1, _0800EC44
 	movs r0, #0
-	bl sub_80121DC
+	bl SetEepromTimerIntr
 	adds r0, r7, #0
 	ldrh r1, [r0]
 	ldr r2, [r7, #4]
 	adds r0, r1, #0
 	adds r1, r2, #0
-	bl sub_8012360
+	bl ReadEepromDword
 	lsls r1, r0, #0x10
 	lsrs r0, r1, #0x10
 	cmp r0, #0
@@ -3957,8 +3957,8 @@ _0800EC48:
 	pop {r1}
 	bx r1
 
-	THUMB_FUNC_START sub_800EC50
-sub_800EC50: @ 0x0800EC50
+	THUMB_FUNC_START CheckSaveForEepromMagic
+CheckSaveForEepromMagic: @ 0x0800EC50
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -4265,8 +4265,8 @@ _0800EE92:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_800EE9C
-sub_800EE9C: @ 0x0800EE9C
+	THUMB_FUNC_START ResetConfiguration
+ResetConfiguration: @ 0x0800EE9C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -4331,7 +4331,7 @@ _0800EF00:
 	ldr r0, _0800EF30
 	movs r1, #0xb4
 	str r1, [r0, #8]
-	bl sub_800EFFC
+	bl CalculateConfigurationChecksum
 	adds r1, r0, #0
 	ldr r0, _0800EF30
 	ldrh r2, [r0, #0x16]
@@ -4348,8 +4348,8 @@ _0800EF00:
 	.align 2, 0
 _0800EF30: .4byte gUnknown_03002BB0
 
-	THUMB_FUNC_START sub_800EF34
-sub_800EF34: @ 0x0800EF34
+	THUMB_FUNC_START LoadConfiguration
+LoadConfiguration: @ 0x0800EF34
 	push {r4, r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -4383,15 +4383,15 @@ _0800EF4A:
 _0800EF6C: .4byte gUnknown_03002BB0
 _0800EF70:
 	ldr r4, _0800EF94
-	bl sub_800EFFC
+	bl CalculateConfigurationChecksum
 	adds r1, r0, #0
 	ldrh r0, [r4, #0x16]
 	lsls r2, r1, #0x10
 	lsrs r1, r2, #0x10
 	cmp r0, r1
 	beq _0800EF8E
-	bl sub_800EE9C
-	bl sub_800EFA0
+	bl ResetConfiguration
+	bl UpdateChecksum
 	movs r0, #1
 	str r0, [r7]
 _0800EF8E:
@@ -4406,12 +4406,12 @@ _0800EF98:
 	pop {r1}
 	bx r1
 
-	THUMB_FUNC_START sub_800EFA0
-sub_800EFA0: @ 0x0800EFA0
+	THUMB_FUNC_START UpdateChecksum
+UpdateChecksum: @ 0x0800EFA0
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
-	bl sub_800EFFC
+	bl CalculateConfigurationChecksum
 	adds r1, r0, #0
 	ldr r0, _0800EFC8
 	ldrh r2, [r0, #0x16]
@@ -4455,8 +4455,8 @@ _0800EFF4:
 	pop {r0}
 	bx r0
 
-	THUMB_FUNC_START sub_800EFFC
-sub_800EFFC: @ 0x0800EFFC
+	THUMB_FUNC_START CalculateConfigurationChecksum
+CalculateConfigurationChecksum: @ 0x0800EFFC
 	push {r4, r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -4501,8 +4501,8 @@ _0800F044:
 	pop {r1}
 	bx r1
 
-	ARM_FUNC_START sub_800F04C
-sub_800F04C: @ sub_800F04C
+	ARM_FUNC_START intr_main
+intr_main: @ intr_main
 	ldr r3, _0800F140
 	ldr r2, [r3]
 	and r1, r2, r2, lsr #16
@@ -10979,8 +10979,8 @@ SoundBiasSet: @ 0x0801216C
 	bx lr
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_8012174
-sub_8012174: @ 0x08012174
+	THUMB_FUNC_START IdentifyEeprom
+IdentifyEeprom: @ 0x08012174
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r2, #0
@@ -11015,8 +11015,8 @@ _080121AC:
 _080121B0: .4byte gUnknown_03003E20
 _080121B4: .4byte gUnknown_08141E08
 
-	THUMB_FUNC_START sub_80121B8
-sub_80121B8: @ 0x080121B8
+	THUMB_FUNC_START EepromTimerIntr
+EepromTimerIntr: @ 0x080121B8
 	ldr r1, _080121D4
 	ldrh r0, [r1]
 	cmp r0, #0
@@ -11036,8 +11036,8 @@ _080121D2:
 _080121D4: .4byte gUnknown_0300164A
 _080121D8: .4byte gUnknown_0300164C
 
-	THUMB_FUNC_START sub_80121DC
-sub_80121DC: @ 0x080121DC
+	THUMB_FUNC_START SetEepromTimerIntr
+SetEepromTimerIntr: @ 0x080121DC
 	adds r2, r1, #0
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
@@ -11059,14 +11059,14 @@ sub_80121DC: @ 0x080121DC
 _08012200: .4byte gUnknown_03001648
 _08012204: .4byte gUnknown_03001650
 _08012208: .4byte 0x04000100
-_0801220C: .4byte sub_80121B8+1
+_0801220C: .4byte EepromTimerIntr+1
 _08012210:
 	movs r0, #1
 _08012212:
 	bx lr
 
-	THUMB_FUNC_START sub_8012214
-sub_8012214: @ 0x08012214
+	THUMB_FUNC_START StartEepromTimer
+StartEepromTimer: @ 0x08012214
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -11129,8 +11129,8 @@ _08012290: .4byte gUnknown_03001648
 _08012294: .4byte gUnknown_0300164C
 _08012298: .4byte gUnknown_0300164A
 
-	THUMB_FUNC_START sub_801229C
-sub_801229C: @ 0x0801229C
+	THUMB_FUNC_START StopEepromTimer
+StopEepromTimer: @ 0x0801229C
 	ldr r3, _080122CC
 	movs r1, #0
 	strh r1, [r3]
@@ -11161,8 +11161,8 @@ _080122D4: .4byte 0x04000200
 _080122D8: .4byte gUnknown_03001648
 _080122DC: .4byte gUnknown_03001654
 
-	THUMB_FUNC_START sub_80122E0
-sub_80122E0: @ 0x080122E0
+	THUMB_FUNC_START Dma3Transmit
+Dma3Transmit: @ 0x080122E0
 	push {r4, r5, r6, lr}
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -11222,8 +11222,8 @@ _08012354: .4byte 0x040000D8
 _08012358: .4byte 0x040000DC
 _0801235C: .4byte 0x040000DE
 
-	THUMB_FUNC_START sub_8012360
-sub_8012360: @ 0x08012360
+	THUMB_FUNC_START ReadEepromDword
+ReadEepromDword: @ 0x08012360
 	push {r4, r5, r6, lr}
 	sub sp, #0x88
 	adds r5, r1, #0
@@ -11275,11 +11275,11 @@ _080123AA:
 	adds r2, #3
 	mov r0, sp
 	adds r1, r4, #0
-	bl sub_80122E0
+	bl Dma3Transmit
 	adds r0, r4, #0
 	mov r1, sp
 	movs r2, #0x44
-	bl sub_80122E0
+	bl Dma3Transmit
 	add r2, sp, #8
 	adds r5, #6
 	movs r4, #0
@@ -11315,8 +11315,8 @@ _08012402:
 	.align 2, 0
 _0801240C: .4byte gUnknown_03003E20
 
-	THUMB_FUNC_START sub_8012410
-sub_8012410: @ 0x08012410
+	THUMB_FUNC_START ProgramEepromDword
+ProgramEepromDword: @ 0x08012410
 	push {r4, r5, lr}
 	sub sp, #0xa4
 	adds r5, r1, #0
@@ -11393,9 +11393,9 @@ _08012482:
 	ldrb r2, [r0, #8]
 	adds r2, #0x43
 	mov r0, sp
-	bl sub_80122E0
+	bl Dma3Transmit
 	ldr r0, _080124E0
-	bl sub_8012214
+	bl StartEepromTimer
 	movs r4, #0
 	movs r1, #0xd0
 	lsls r1, r1, #0x14
@@ -11416,7 +11416,7 @@ _080124B4:
 	bne _080124CE
 	ldr r4, _080124E8
 _080124CE:
-	bl sub_801229C
+	bl StopEepromTimer
 	adds r0, r4, #0
 _080124D4:
 	add sp, #0xa4
@@ -11429,8 +11429,8 @@ _080124E0: .4byte gUnknown_08141E20
 _080124E4: .4byte gUnknown_0300164C
 _080124E8: .4byte 0x0000C001
 
-	THUMB_FUNC_START sub_80124EC
-sub_80124EC: @ 0x080124EC
+	THUMB_FUNC_START VerifyEepromDword
+VerifyEepromDword: @ 0x080124EC
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r1, #0
@@ -11450,7 +11450,7 @@ _0801250C: .4byte 0x000080FF
 _08012510:
 	adds r0, r1, #0
 	mov r1, sp
-	bl sub_8012360
+	bl ReadEepromDword
 	mov r2, sp
 	movs r3, #0
 	b _08012528
@@ -11495,14 +11495,14 @@ _08012556:
 	bhi _0801257A
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8012410
+	bl ProgramEepromDword
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	cmp r2, #0
 	bne _08012550
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_80124EC
+	bl VerifyEepromDword
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	cmp r2, #0

@@ -128,8 +128,8 @@ _08000DE0:
 	ldm r1!, {r2, r3}
 	stm r0!, {r2, r3}
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
 	add sp, #0xac
 	pop {r4, r5, r7}
 	pop {r0}

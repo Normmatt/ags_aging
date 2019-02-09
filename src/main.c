@@ -8,7 +8,7 @@ void AgbMain()
 
     sub_800D5F4();
     REG_WAITCNT = 0x5B7;
-    sub_800EE9C();
+    ResetConfiguration();
     v0 = sub_8000200();
     if ( v0 )
     {
@@ -32,13 +32,13 @@ void AgbMain()
     else
     {
         sub_800EB08(0);
-        if ( sub_800EC50() == 1 )
+        if ( CheckSaveForEepromMagic() == 1 )
         {
             gUnknown_03002BB0.field_0 = 4;
             gUnknown_03002BB0.isAGS = 0;
             gUnknown_03002BB0.field_8 = 0;
         }
-        else if ( sub_800EF34() )
+        else if ( LoadConfiguration() )
         {
             sub_800028C();
         }

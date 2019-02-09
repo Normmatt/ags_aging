@@ -37,7 +37,7 @@ sub_80014B0: @ 0x080014B0
 	stm r0!, {r2, r3, r4}
 	ldm r1!, {r2, r3, r4}
 	stm r0!, {r2, r3, r4}
-	bl sub_800D9D8
+	bl ReadKey
 _080014FA:
 	b _0800151E
 	.align 2, 0
@@ -58,9 +58,9 @@ _0800151E:
 	adds r0, r2, #0
 	bl sub_8001888
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
-	bl sub_800D8B0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
+	bl ReadKeyPlus
 	ldr r0, _08001560
 	ldrh r1, [r0, #2]
 	movs r2, #1
@@ -396,10 +396,10 @@ _080017BC: .4byte 0x000010A8
 _080017C0:
 	movs r0, #0
 	bl sub_800EB08
-	bl sub_800EC50
+	bl CheckSaveForEepromMagic
 	cmp r0, #1
 	bne _08001852
-	bl sub_800D9D8
+	bl ReadKey
 	ldr r2, _080017E8
 	movs r0, #0
 	movs r1, #0
@@ -415,9 +415,9 @@ _080017E8: .4byte gUnknown_08018800
 _080017EC: .4byte gUnknown_03000460
 _080017F0:
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
-	bl sub_800D8B0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
+	bl ReadKeyPlus
 	ldr r0, _08001824
 	ldr r1, [r0]
 	movs r2, #0x20
@@ -459,7 +459,7 @@ _0800184C: .4byte gUnknown_08018820
 _08001850:
 	b _08001856
 _08001852:
-	bl sub_800EFA0
+	bl UpdateChecksum
 _08001856:
 	movs r0, #1
 	bl sub_800EB08

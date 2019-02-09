@@ -15,10 +15,10 @@ _0800061A:
 	.byte 0x2A, 0xE0
 _0800061E:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	bl SoundVSync_rev01
 	bl m4aSoundMain
-	bl sub_800DFB0
+	bl UpdateTilemaps
 	ldr r0, _08000658
 	movs r1, #7
 	str r1, [r0]

@@ -96,10 +96,10 @@ _080008DC: .4byte gUnknown_080183AC
 	.byte 0x34, 0xE0
 _080008E2:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	bl SoundVSync_rev01
 	bl m4aSoundMain
-	bl sub_800DFB0
+	bl UpdateTilemaps
 	ldr r0, _08000918
 	ldr r1, [r0]
 	movs r2, #0x20

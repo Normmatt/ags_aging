@@ -148,7 +148,7 @@ _0800C4D8:
 sub_800C4E0: @ 0x0800C4E0
 	push {r7, lr}
 	mov r7, sp
-	bl sub_800DFB0
+	bl UpdateTilemaps
 	pop {r7}
 	pop {r0}
 	bx r0

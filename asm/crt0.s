@@ -27,7 +27,7 @@ _080000E4:
 	.align 2, 0
 _080000FC: .4byte gUnknown_03007D00
 _08000100: .4byte gUnknown_03007FFC
-_08000104: .4byte sub_800F04C
+_08000104: .4byte intr_main
 _08000108: .4byte gUnknown_03000000
 _0800010C: .4byte gUnknown_081421A0
 _08000110: .4byte 0x00000C78

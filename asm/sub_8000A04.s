@@ -72,7 +72,7 @@ DrawHeading: @ 0x08000A04
 	stm r0!, {r2, r3, r4}
 	ldm r1!, {r2, r4}
 	stm r0!, {r2, r4}
-	bl sub_800DFB0
+	bl UpdateTilemaps
 	movs r0, #0x80
 	lsls r0, r0, #0x13
 	movs r1, #0x80

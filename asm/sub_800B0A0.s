@@ -68,7 +68,7 @@ sub_800B0A0: @ 0x0800B0A0
 	movs r0, #0
 	movs r1, #4
 	bl DrawString
-	bl sub_800D9D8
+	bl ReadKey
 _0800B132:
 	ldr r0, _0800B174
 	ldrh r1, [r0, #2]
@@ -96,9 +96,9 @@ _0800B170: .4byte gUnknown_0807A9CC
 _0800B174: .4byte gUnknown_03000460
 _0800B178:
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
-	bl sub_800D8B0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
+	bl ReadKeyPlus
 	ldr r0, _0800B1AC
 	movs r1, #2
 	str r1, [r0]
@@ -169,8 +169,8 @@ sub_800B1F0: @ 0x0800B1F0
 	movs r1, #4
 	bl DrawString
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
 	ldr r0, _0800B280
 	str r0, [r7, #0x50]
 	ldr r0, [r7, #0x50]
@@ -233,7 +233,7 @@ _0800B28C:
 	b _0800B2E4
 _0800B29C:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	adds r1, r7, #0
 	adds r0, r1, #0
 	bl sub_80115C0

@@ -19,7 +19,7 @@ sub_800028C: @ 0x0800028C
 	ldr r1, _080002C0
 	adds r0, r1, #0
 	bl DrawHeading
-	bl sub_800D9D8
+	bl ReadKey
 _080002B0:
 	ldr r0, _080002C4
 	ldrh r1, [r0, #2]
@@ -32,9 +32,9 @@ _080002C0: .4byte gUnknown_080180BC
 _080002C4: .4byte gUnknown_03000460
 _080002C8:
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
-	bl sub_800D8B0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
+	bl ReadKeyPlus
 	ldr r0, _08000314
 	ldr r1, [r0]
 	movs r2, #0x20

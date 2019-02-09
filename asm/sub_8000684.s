@@ -9,12 +9,12 @@ sub_8000684: @ 0x08000684
 	mov r7, sp
 	bl m4aSoundInit
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	bl SoundVSync_rev01
 	bl m4aSoundMain
 	movs r0, #7
 	bl m4aSongNumStart
-	bl sub_800D9D8
+	bl ReadKey
 _080006A4:
 	ldr r0, _080006BC
 	ldrh r1, [r0, #2]
@@ -31,11 +31,11 @@ _080006A4:
 _080006BC: .4byte gUnknown_03000460
 _080006C0:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	bl SoundVSync_rev01
 	bl m4aSoundMain
-	bl sub_800DFB0
-	bl sub_800D8B0
+	bl UpdateTilemaps
+	bl ReadKeyPlus
 	ldr r0, _080006FC
 	movs r1, #5
 	str r1, [r0]

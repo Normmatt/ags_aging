@@ -35,7 +35,7 @@ sub_8000FF0: @ 0x08000FF0
 	adds r1, #0x4c
 	adds r0, r1, #0
 	bl sub_80011C4
-	bl sub_800D9D8
+	bl ReadKey
 _08001034:
 	b _0800103E
 	.align 2, 0
@@ -47,9 +47,9 @@ _0800103E:
 	adds r0, r1, #0
 	bl sub_80012A4
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
-	bl sub_800D8B0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
+	bl ReadKeyPlus
 	ldr r0, _0800106C
 	ldrh r1, [r0, #2]
 	movs r2, #2

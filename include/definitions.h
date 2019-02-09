@@ -22,6 +22,14 @@ typedef struct sSettings
   u16 field_1E;
 } sSettings;
 
+typedef struct sInterruptSetup
+{
+  u16 ime;
+  u16 ie;
+  void_pointer handler[16];
+} sInterruptSetup;
+
+
 //Functions
 extern u32 sub_8000200();
 extern void sub_800028C();
@@ -29,14 +37,15 @@ extern void testprogramMain();
 extern void testmain(u32 option);
 extern void sub_800D5F4();
 extern void sub_800EB08(u32 a1);
-extern s32 sub_800EC50();
-extern void sub_800EE9C();
-extern s32 sub_800EF34();
+extern s32 CheckSaveForEepromMagic();
+extern void ResetConfiguration();
+extern s32 LoadConfiguration();
 
 //EWRAM
 //extern u32 gUnknown_0200043C;
 
 //IWRAM
+extern u16 gUnknown_03000462;
 extern sSettings gUnknown_03002BB0;
 
 //Data

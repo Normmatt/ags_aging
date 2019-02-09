@@ -187,8 +187,8 @@ _08001C64:
 	bl DrawString
 _08001C8C:
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
 	b _08001D64
 	.align 2, 0
 _08001C98: .4byte gUnknown_08018FE4
@@ -229,8 +229,8 @@ _08001CA8:
 	adds r0, r1, #0
 	bl sub_8001FA8
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
 	b _08001D64
 	.align 2, 0
 _08001D00: .4byte gUnknown_03000350
@@ -270,8 +270,8 @@ _08001D1C:
 	movs r1, #1
 	bl DrawString
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
 _08001D64:
 	adds r0, r7, #0
 	ldr r2, _08001DC4
@@ -413,8 +413,8 @@ _08001E70:
 	adds r0, r2, #0
 	bl sub_80020A0
 	movs r0, #1
-	bl sub_800D640
-	bl sub_800DFB0
+	bl WaitForInterrupt
+	bl UpdateTilemaps
 _08001EA6:
 	adds r0, r7, #0
 	ldr r2, _08001EE0

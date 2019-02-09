@@ -463,7 +463,7 @@ _0800597E:
 	bl m4aSoundMain
 _08005982:
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]

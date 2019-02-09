@@ -494,7 +494,7 @@ _080096A8:
 	b _08009694
 _080096AA:
 	movs r0, #2
-	bl sub_800D640
+	bl WaitForInterrupt
 	adds r1, r7, #0
 	ldrh r0, [r1]
 	adds r2, r0, #0
@@ -558,7 +558,7 @@ _08009724: .4byte 0x040000B4
 _08009728: .4byte 0x040000B8
 _0800972C:
 	movs r0, #2
-	bl sub_800D640
+	bl WaitForInterrupt
 	adds r0, r7, #0
 	movs r3, #0x91
 	lsls r3, r3, #2
@@ -2271,7 +2271,7 @@ _0800A3C2:
 	ldr r0, [r7, #0x54]
 	str r0, [r1]
 	movs r0, #1
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r0, [r7, #0x58]
 	adds r2, r0, #0
 	lsls r1, r2, #1
@@ -2451,7 +2451,7 @@ _0800A554: .4byte 0x040000B4
 _0800A558: .4byte 0x040000B8
 _0800A55C:
 	movs r0, #2
-	bl sub_800D640
+	bl WaitForInterrupt
 	ldr r0, [r7, #0x5c]
 	adds r1, r0, #1
 	str r1, [r7, #0x5c]
