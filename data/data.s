@@ -1,17 +1,5 @@
 	.section .data
 
-    .global gUnknown_08018098
-gUnknown_08018098:
-    .incbin "baserom.gba", 0x00018098, 0x4
-
-    .global gUnknown_0801809C
-gUnknown_0801809C:
-    .incbin "baserom.gba", 0x0001809C, 0xC
-
-    .global gUnknown_080180A8
-gUnknown_080180A8:
-    .incbin "baserom.gba", 0x000180A8, 0x14
-
     .global gUnknown_080180BC
 gUnknown_080180BC:
     .incbin "baserom.gba", 0x000180BC, 0x14
