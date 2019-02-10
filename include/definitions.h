@@ -43,13 +43,47 @@ typedef struct struct_3001B40
   int field_4;
 } struct_3001B40;
 
+typedef struct menuOption
+{
+  u32 level;
+  const char *name;
+  void_pointer handler;
+} menuOption;
+
+typedef struct struct_v5_1
+{
+  u32 dword0;
+  u32 dword4;
+  u32 dword8;
+  u32 dwordC;
+  u32 dword10;
+  u32 dword14;
+  u32 dword18;
+} struct_v5_1;
+
+typedef struct struct_v5
+{
+  u32 dword0;
+  struct_v5_1 field4;
+} struct_v5;
+
+
+
 
 //Functions
 extern u32 sub_8000200();
 extern void sub_800028C();
 extern void testprogramMain();
+extern void sub_80003E8();
+extern void sub_8000430();
+extern void agingMain();
+extern void selftestMain();
+extern void sub_800095C();
 extern void DrawHeading(const char *a1);
+extern void sub_8000FF0(const menuOption *a1, int a2);
 extern void testmain(u32 option);
+extern void sub_80014B0();
+extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
 extern void sub_800D5F4();
 extern void WaitForInterrupt(u16 irq);
 extern u16 SetIME(u16 a1);
