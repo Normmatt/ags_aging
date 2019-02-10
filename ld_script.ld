@@ -23,57 +23,110 @@ SECTIONS
 	{
 		asm/crt0.o(.text);
         . = 0x00000118;
-        src/main.o(.text);              /* rodata 08018098 */
-        src/sub_8000200.o(.text);       /* rodata 0801809C */
-        src/sub_800028C.o(.text);       /* rodata 080180BC */
-        asm/sub_8000370.o(.text);       /* rodata 08018140 */
-        asm/sub_8000478.o(.text);       /* rodata 0801829C */
-        asm/sub_800060C.o(.text);       /* rodata 080182D8 */
-        asm/sub_8000684.o(.text);       /* rodata 08018308 */
-        asm/sub_8000798.o(.text);       /* rodata 08018348 */
-        asm/sub_800081C.o(.text);       /* rodata 08018384 */
-        asm/sub_800095C.o(.text);       /* rodata 080183EC */
-        asm/sub_8000A04.o(.text);       /* rodata 08018408 */
-        asm/sub_8000AD4.o(.text);       /* rodata 08018448 */
-        asm/sub_8000CF4.o(.text);       /* rodata 08018718 */
-        asm/sub_8000E14.o(.text);       /* rodata 0801875C */
-        asm/sub_8000FF0.o(.text);       /* rodata 080187B0 */
-        asm/sub_80014B0.o(.text);       /* rodata 080187F0 */
-        asm/sub_8001888.o(.text);       /* rodata 0801885C */
-        asm/sub_8001AFC.o(.text);       /* rodata 08018988 */
-        asm/sub_8001F80.o(.text);       /* rodata 08019054 */
-        asm/sub_8001FA8.o(.text);       /* rodata 08019064 */
-        asm/sub_8002024.o(.text);       /* rodata 0801908C */
-        asm/sub_80020A0.o(.text);       /* rodata 080190B0 */
-        asm/sub_80020E8.o(.text);       /* rodata 080190D8 */
-        asm/sub_800319C.o(.text);       /* rodata 0801915C */
-        asm/sub_8003C88.arm.o(.text);   /* rodata 08019198 */
-        asm/sub_8003DF4.o(.text);       /* rodata 080194D8 */
-        asm/sub_80055D4.o(.text);       /* rodata 080195A0 */
-        asm/sub_8006750.o(.text);       /* rodata 0801967C */
-        asm/sub_8006FB0.o(.text);       /* rodata 08019738 */
-        asm/sub_8007704.o(.text);       /* rodata 08019790 */
-        asm/sub_8007C34.o(.text);       /* rodata 08019804 */
-        asm/sub_8007F0C.o(.text);       /* rodata 08019838 */
-        asm/sub_8008118.o(.text);       /* rodata 08019864 */
-        asm/sub_8008ADC.o(.text);       /* rodata 08077898 */
-        asm/sub_8008FB4.o(.text);       /* rodata 080778B0 */
-        asm/sub_8009240.o(.text);       /* rodata none */
-        asm/sub_8009308.o(.text);       /* rodata 080778DC */
-        asm/sub_800A9D4.o(.text);       /* rodata 0807A8E0 */
-        asm/sub_800B0A0.o(.text);       /* rodata 0807A8EC */
-        asm/sub_800B724.o(.text);       /* rodata 0807AA4C */
-        asm/sub_800C04C.o(.text);       /* rodata 08083088 */
-        asm/sub_800C2C8.o(.text);       /* rodata 0808317C */
-        asm/sub_800C3C8.o(.text);       /* rodata 0808322C */
-        /* rodata 08083340 */
-        /* rodata 08100C1C */
-        /* rodata 08100C7C */
-        /* rodata 08101884 */
-        /* rodata 08101A60 */
-        /* rodata 08101C2C */
-        /* rodata 08101C48 */
-        asm/code.o(.text);
+        src/main.o(.text);                      /* rodata 08018098 */
+        src/sub_8000200.o(.text);               /* rodata 0801809C */
+        src/sub_800028C.o(.text);               /* rodata 080180BC */
+        asm/sub_8000370.o(.text);               /* rodata 08018140 */
+        asm/sub_8000478.o(.text);               /* rodata 0801829C */
+        asm/sub_800060C.o(.text);               /* rodata 080182D8 */
+        asm/sub_8000684.o(.text);               /* rodata 08018308 */
+        asm/sub_8000798.o(.text);               /* rodata 08018348 */
+        asm/sub_800081C.o(.text);               /* rodata 08018384 */
+        asm/sub_800095C.o(.text);               /* rodata 080183EC */
+        asm/sub_8000A04.o(.text);               /* rodata 08018408 */
+        asm/sub_8000AD4.o(.text);               /* rodata 08018448 */
+        asm/sub_8000CF4.o(.text);               /* rodata 08018718 */
+        asm/sub_8000E14.o(.text);               /* rodata 0801875C */
+        asm/sub_8000FF0.o(.text);               /* rodata 080187B0 */
+        asm/sub_80014B0.o(.text);               /* rodata 080187F0 */
+        asm/sub_8001888.o(.text);               /* rodata 0801885C */
+        asm/sub_8001AFC.o(.text);               /* rodata 08018988 */
+        asm/sub_8001F80.o(.text);               /* rodata 08019054 */
+        asm/sub_8001FA8.o(.text);               /* rodata 08019064 */
+        asm/sub_8002024.o(.text);               /* rodata 0801908C */
+        asm/sub_80020A0.o(.text);               /* rodata 080190B0 */
+        asm/sub_80020E8.o(.text);               /* rodata 080190D8 */
+        asm/sub_800319C.o(.text);               /* rodata 0801915C */
+        asm/sub_8003C88.arm.o(.text);           /* rodata 08019198 */
+        asm/sub_8003DF4.o(.text);               /* rodata 080194D8 */
+        asm/sub_80055D4.o(.text);               /* rodata 080195A0 */
+        asm/sub_8006750.o(.text);               /* rodata 0801967C */
+        asm/sub_8006FB0.o(.text);               /* rodata 08019738 */
+        asm/sub_8007704.o(.text);               /* rodata 08019790 */
+        asm/sub_8007C34.o(.text);               /* rodata 08019804 */
+        asm/sub_8007F0C.o(.text);               /* rodata 08019838 */
+        asm/sub_8008118.o(.text);               /* rodata 08019864 */
+        asm/sub_8008ADC.o(.text);               /* rodata 08077898 */
+        asm/sub_8008FB4.o(.text);               /* rodata 080778B0 */
+        asm/sub_8009240.o(.text);               /* rodata none */
+        asm/sub_8009308.o(.text);               /* rodata 080778DC */
+        asm/sub_800A9D4.o(.text);               /* rodata 0807A8E0 */
+        asm/sub_800B0A0.o(.text);               /* rodata 0807A8EC */
+        asm/sub_800B724.o(.text);               /* rodata 0807AA4C */
+        asm/sub_800C04C.o(.text);               /* rodata 08083088 */
+        asm/sub_800C2C8.o(.text);               /* rodata 0808317C */
+        asm/sub_800C3C8.o(.text);               /* rodata 0808322C */
+        asm/sub_800CD3C.o(.text);               /* rodata 08083340 */
+        asm/sub_800DA4C.o(.text);               /* rodata 08100C1C */
+        asm/sub_800E6E8.o(.text);               /* rodata 08100C7C */
+        asm/sub_800E710.o(.text);               /* rodata 08101884 */
+        asm/sub_800E9C0.o(.text);               /* rodata 08101A60 */
+        asm/sub_800EC50.o(.text);               /* rodata 08101C2C */
+        asm/interrupt_handler.arm.o(.text);     /* rodata none */
+        asm/sub_800F150.o(.text);               /* rodata none? */
+        asm/unknown_lib.o(.text);               /* rodata none? */
+        asm/m4a.o(.text);                       /* rodata none? */
+        asm/unknown_lib_2.o(.text);             /* rodata none? */
+        asm/svc.o(.text);                       /* rodata none? */
+        asm/AgbEeprom.o(.text);                 /* rodata 08141DFC */
+        
+        tools/agbcc/lib/libgcc.a:_call_via_rX.o(.text);
+        tools/agbcc/lib/libgcc.a:_divsi3.o(.text);
+        tools/agbcc/lib/libgcc.a:_dvmd_tls.o(.text);
+        tools/agbcc/lib/libgcc.a:_modsi3.o(.text);
+        tools/agbcc/lib/libgcc.a:_umodsi3.o(.text);
+
+        tools/agbcc/lib/libc.a:memcpy.o(.text);
+        tools/agbcc/lib/libc.a:memset.o(.text);
+        tools/agbcc/lib/libc.a:sprintf.o(.text);
+        tools/agbcc/lib/libc.a:strcmp.o(.text);
+        tools/agbcc/lib/libc.a:strlen.o(.text);
+        tools/agbcc/lib/libc.a:vfprintf.o(.text);
+        tools/agbcc/lib/libc.a:wsetup.o(.text);
+        tools/agbcc/lib/libc.a:dtoa.o(.text);
+        tools/agbcc/lib/libc.a:fflush.o(.text);
+        tools/agbcc/lib/libc.a:findfp.o(.text);
+        tools/agbcc/lib/libc.a:freer.o(.text);
+        tools/agbcc/lib/libc.a:fvwrite.o(.text);
+        tools/agbcc/lib/libc.a:fwalk.o(.text);
+        tools/agbcc/lib/libc.a:locale.o(.text);
+        tools/agbcc/lib/libc.a:makebuf.o(.text);
+        tools/agbcc/lib/libc.a:mallocr.o(.text);
+        tools/agbcc/lib/libc.a:mbtowc_r.o(.text);
+        tools/agbcc/lib/libc.a:memchr.o(.text);
+        tools/agbcc/lib/libc.a:memmove.o(.text);
+        tools/agbcc/lib/libc.a:mlock.o(.text);
+        tools/agbcc/lib/libc.a:mprec.o(.text);
+        tools/agbcc/lib/libc.a:s_isinf.o(.text);
+        tools/agbcc/lib/libc.a:s_isnan.o(.text);
+        tools/agbcc/lib/libc.a:sbrkr.o(.text);
+        tools/agbcc/lib/libc.a:stdio.o(.text);
+        tools/agbcc/lib/libc.a:syscalls.o(.text);
+        tools/agbcc/lib/libc.a:writer.o(.text);
+        tools/agbcc/lib/libc.a:callocr.o(.text);
+        tools/agbcc/lib/libc.a:closer.o(.text);
+        tools/agbcc/lib/libc.a:errno.o(.text);
+        tools/agbcc/lib/libc.a:fstatr.o(.text);
+        tools/agbcc/lib/libc.a:libcfunc.o(.text);
+        tools/agbcc/lib/libc.a:lseekr.o(.text);
+        tools/agbcc/lib/libc.a:readr.o(.text);
+
+        tools/agbcc/lib/libgcc.a:_udivsi3.o(.text);
+        tools/agbcc/lib/libgcc.a:dp-bit.o(.text);
+        tools/agbcc/lib/libgcc.a:fp-bit.o(.text);
+        tools/agbcc/lib/libgcc.a:_lshrdi3.o(.text);
+        tools/agbcc/lib/libgcc.a:_muldi3.o(.text);
+        tools/agbcc/lib/libgcc.a:_negdi2.o(.text);
         
         /* Read Only Data */
         /* src/main.o(.rodata); */
@@ -87,14 +140,62 @@ SECTIONS
         src/main.o(.rodata);              /* rodata 08018098 */
         src/sub_8000200.o(.rodata);       /* rodata 0801809C */
         src/sub_800028C.o(.rodata);       /* rodata 080180BC */
+        
     } = 0
     
     DATA :
 	ALIGN(4)
     {
-        
         /* Data */
         data/data.o(.data);
+    } = 0
+    
+    RODATA2 :
+	ALIGN(4)
+    {
+        /* Read Only Data */
+        tools/agbcc/lib/libc.a:memcpy.o(.rodata);
+        tools/agbcc/lib/libc.a:memset.o(.rodata);
+        tools/agbcc/lib/libc.a:sprintf.o(.rodata);
+        tools/agbcc/lib/libc.a:strcmp.o(.rodata);
+        tools/agbcc/lib/libc.a:strlen.o(.rodata);
+        tools/agbcc/lib/libc.a:vfprintf.o(.rodata);
+        tools/agbcc/lib/libc.a:wsetup.o(.rodata);
+        tools/agbcc/lib/libc.a:dtoa.o(.rodata);
+        tools/agbcc/lib/libc.a:impure.o(.rodata);
+        tools/agbcc/lib/libc.a:fflush.o(.rodata);
+        tools/agbcc/lib/libc.a:findfp.o(.rodata);
+        tools/agbcc/lib/libc.a:freer.o(.rodata);
+        tools/agbcc/lib/libc.a:fvwrite.o(.rodata);
+        tools/agbcc/lib/libc.a:fwalk.o(.rodata);
+        tools/agbcc/lib/libc.a:locale.o(.rodata);
+        tools/agbcc/lib/libc.a:makebuf.o(.rodata);
+        tools/agbcc/lib/libc.a:mallocr.o(.rodata);
+        tools/agbcc/lib/libc.a:mbtowc_r.o(.rodata);
+        tools/agbcc/lib/libc.a:memchr.o(.rodata);
+        tools/agbcc/lib/libc.a:memmove.o(.rodata);
+        tools/agbcc/lib/libc.a:mlock.o(.rodata);
+        tools/agbcc/lib/libc.a:mprec.o(.rodata);
+        tools/agbcc/lib/libc.a:s_isinf.o(.rodata);
+        tools/agbcc/lib/libc.a:isnan.o(.rodata);
+        tools/agbcc/lib/libc.a:sbrk.o(.rodata);
+        tools/agbcc/lib/libc.a:stdio.o(.rodata);
+        tools/agbcc/lib/libc.a:syscalls.o(.rodata);
+        tools/agbcc/lib/libc.a:writer.o(.rodata);
+        tools/agbcc/lib/libc.a:callocr.o(.rodata);
+        tools/agbcc/lib/libc.a:closer.o(.rodata);
+        tools/agbcc/lib/libc.a:errno.o(.rodata);
+        tools/agbcc/lib/libc.a:fstatr.o(.rodata);
+        tools/agbcc/lib/libc.a:libcfunc.o(.rodata);
+        tools/agbcc/lib/libc.a:lseekr.o(.rodata);
+        tools/agbcc/lib/libc.a:readr.o(.rodata);
+    } = 0
+    
+    DATA2 :
+	ALIGN(4)
+    {
+        /* Data */
+        data/data2.o(.data);
     } = 0
     
     /* DWARF debug sections.
