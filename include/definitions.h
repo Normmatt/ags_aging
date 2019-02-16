@@ -68,6 +68,23 @@ typedef struct struct_v5
 } struct_v5;
 
 
+typedef struct sTestInstance
+{
+  int number;
+  int executed;
+  int result;
+  void_pointer funcPtr;
+  char *name;
+} sTestInstance;
+
+typedef struct sTestClass
+{
+  sTestInstance *testsPtr;
+  int numTests;
+  char *name;
+} sTestClass;
+
+
 
 
 //Functions
@@ -77,15 +94,29 @@ extern void testprogramMain();
 extern void sub_80003E8();
 extern void sub_8000430();
 extern void agingMain();
+extern void sub_800060C();
+extern void sub_8000684();
+extern void sub_8000728();
 extern void selftestMain();
+extern void DrawFinalTestResult(u32 a1);
 extern void sub_800095C();
 extern void DrawHeading(const char *a1);
+extern u32 RunAllTestClasses();
+extern void LetAllTestsRunOnce();
+extern void SkipSpecificTestInClass(u32 a1, u32 a2);
+extern void SkipAllTestsInThisClass(u32 a1);
+extern void ClearAllTestClassesResults();
+extern void DrawTestResults();
+extern void DrawPassFailResult(sTestInstance *instance, int numTests);
+extern s32 StartTest(u32 classId, u32 instanceId);
 extern void sub_8000FF0(const menuOption *a1, int a2);
 extern void testmain(u32 option);
 extern void sub_80014B0();
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
+extern void sub_8008118();
 extern void sub_800D5F4();
 extern void WaitForInterrupt(u16 irq);
+extern void_pointer SetInterruptHandler(u16 a1, void_pointer a2);
 extern u16 SetIME(u16 a1);
 extern u16 SetIE(u16 a1);
 extern void sub_800D790(sInterruptSetup *a1, u16 ime, u16 ie);
@@ -103,6 +134,7 @@ extern s32 LoadConfiguration();
 //extern u32 gUnknown_0200043C;
 
 //IWRAM
+extern u32 gUnknown_03000000;
 extern u32 gUnknown_0300045C;
 extern keyStatus gUnknown_03000460;
 extern struct_3001B40 gUnknown_03001B40;

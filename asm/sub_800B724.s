@@ -617,7 +617,7 @@ sub_800BBAC: @ 0x0800BBAC
 	strh r2, [r0]
 	ldr r1, _0800BC48
 	movs r0, #1
-	bl sub_800D68C
+	bl SetInterruptHandler
 	ldr r0, _0800BC40
 	movs r1, #8
 	strh r1, [r0]

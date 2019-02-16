@@ -15,7 +15,7 @@ sub_800095C: @ 0x0800095C
 	bl sub_800D790
 	ldr r1, _0800099C
 	movs r0, #1
-	bl sub_800D68C
+	bl SetInterruptHandler
 	ldr r0, _080009A0
 	movs r1, #8
 	strh r1, [r0]

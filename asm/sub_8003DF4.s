@@ -298,7 +298,7 @@ sub_8004038: @ 0x08004038
 	bl SetIME
 	ldr r1, _08004078
 	movs r0, #1
-	bl sub_800D68C
+	bl SetInterruptHandler
 	movs r0, #1
 	bl SetIME
 	movs r0, #0xe
@@ -423,7 +423,7 @@ sub_800413C: @ 0x0800413C
 	bl SetIME
 	ldr r1, _08004174
 	movs r0, #1
-	bl sub_800D68C
+	bl SetInterruptHandler
 	movs r0, #1
 	bl SetIME
 	bl ReadKey
@@ -548,7 +548,7 @@ sub_8004258: @ 0x08004258
 	bl SetIME
 	ldr r1, _0800427C
 	movs r0, #1
-	bl sub_800D68C
+	bl SetInterruptHandler
 	movs r0, #1
 	bl SetIME
 _0800427A:
@@ -747,7 +747,7 @@ sub_80043F4: @ 0x080043F4
 	bl SetIME
 	ldr r1, _08004434
 	movs r0, #1
-	bl sub_800D68C
+	bl SetInterruptHandler
 	movs r0, #1
 	bl SetIME
 	movs r0, #0xe

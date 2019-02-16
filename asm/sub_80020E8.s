@@ -171,7 +171,7 @@ sub_800220C: @ 0x0800220C
 	bl sub_800D790
 	ldr r1, _08002260
 	movs r0, #1
-	bl sub_800D68C
+	bl SetInterruptHandler
 	ldr r0, _08002264
 	movs r1, #0
 	strh r1, [r0]

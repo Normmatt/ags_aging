@@ -1232,8 +1232,8 @@ _0800D682:
 	bx r0
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_800D68C
-sub_800D68C: @ 0x0800D68C
+	THUMB_FUNC_START SetInterruptHandler
+SetInterruptHandler: @ 0x0800D68C
 	push {r7, lr}
 	sub sp, #0x10
 	mov r7, sp
