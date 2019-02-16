@@ -632,7 +632,7 @@ sub_800BBAC: @ 0x0800BBAC
 	ldr r2, _0800BC50
 	bl memcpy
 	ldr r0, [r7]
-	bl sub_800C0D4
+	bl DrawInputButtons
 	adds r0, r7, #0
 	adds r1, r7, #0
 	adds r1, #0xf4

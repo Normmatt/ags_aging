@@ -66,8 +66,8 @@ _0800F1E4:
 	add sp, #0x10
 	bx r1
 
-	THUMB_FUNC_START sub_800F1F4
-sub_800F1F4: @ 0x0800F1F4
+	THUMB_FUNC_START VerifyMemory
+VerifyMemory: @ 0x0800F1F4
 	push {r0, r1, r2, r3}
 	push {r4, r5, r7, lr}
 	add r7, sp, #0x10
@@ -132,8 +132,8 @@ _0800F24E:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_800F260
-sub_800F260: @ 0x0800F260
+	THUMB_FUNC_START VerifyWord_ASM
+VerifyWord_ASM: @ 0x0800F260
 	push {r0, r1, r2, r3}
 	push {r4, r5, r6, r7, lr}
 	add r7, sp, #0x14
@@ -218,8 +218,8 @@ _0800F2E6:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_800F2F0
-sub_800F2F0: @ 0x0800F2F0
+	THUMB_FUNC_START WriteMemory
+WriteMemory: @ 0x0800F2F0
 	push {r0, r1, r2, r3}
 	push {r4, r5, r7, lr}
 	add r7, sp, #0x10
@@ -264,8 +264,8 @@ _0800F330:
 	add sp, #0x10
 	bx r1
 
-	THUMB_FUNC_START sub_800F338
-sub_800F338: @ 0x0800F338
+	THUMB_FUNC_START WriteWordZero_ASM
+WriteWordZero_ASM: @ 0x0800F338
 	push {r0, r1, r2, r3}
 	push {r4, r5, r7, lr}
 	add r7, sp, #0x10

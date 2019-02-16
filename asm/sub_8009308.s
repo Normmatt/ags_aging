@@ -176,7 +176,7 @@ _08009444:
 	lsls r1, r1, #1
 	movs r2, #0
 	movs r3, #2
-	bl sub_800F2F0
+	bl WriteMemory
 	adds r0, r7, #0
 	movs r0, #0x93
 	lsls r0, r0, #2
@@ -2385,7 +2385,7 @@ _0800A4D4:
 	lsls r1, r1, #1
 	movs r2, #0
 	movs r3, #2
-	bl sub_800F2F0
+	bl WriteMemory
 _0800A4E4:
 	ldr r0, _0800A4F4
 	ldrh r1, [r0]
@@ -2591,7 +2591,7 @@ sub_800A630: @ 0x0800A630
 	lsls r1, r1, #1
 	movs r2, #0
 	movs r3, #2
-	bl sub_800F2F0
+	bl WriteMemory
 _0800A664:
 	ldr r0, _0800A674
 	ldrh r1, [r0]

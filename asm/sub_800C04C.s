@@ -83,8 +83,8 @@ _0800C0CC:
 	pop {r1}
 	bx r1
 
-	THUMB_FUNC_START sub_800C0D4
-sub_800C0D4: @ 0x0800C0D4
+	THUMB_FUNC_START DrawInputButtons
+DrawInputButtons: @ 0x0800C0D4
 	push {r4, r5, r7, lr}
 	sub sp, #0x78
 	mov r7, sp

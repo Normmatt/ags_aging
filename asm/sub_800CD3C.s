@@ -152,8 +152,8 @@ _0800CE64:
 	pop {r1}
 	bx r1
 
-	THUMB_FUNC_START sub_800CE6C
-sub_800CE6C: @ 0x0800CE6C
+	THUMB_FUNC_START WriteAndVerifyMemory_U8
+WriteAndVerifyMemory_U8: @ 0x0800CE6C
 	push {r7, lr}
 	sub sp, #0x20
 	add r7, sp, #8
@@ -177,7 +177,7 @@ sub_800CE6C: @ 0x0800CE6C
 	ldrb r2, [r0]
 	ldr r0, [r7]
 	movs r3, #0
-	bl sub_800F2F0
+	bl WriteMemory
 	ldr r0, [r7, #4]
 	ldr r2, [r7]
 	subs r1, r0, r2
@@ -190,7 +190,7 @@ sub_800CE6C: @ 0x0800CE6C
 	str r0, [sp, #4]
 	ldr r0, [r7]
 	movs r3, #0
-	bl sub_800F1F4
+	bl VerifyMemory
 	str r0, [r7, #0x10]
 	adds r0, r7, #0
 	adds r0, #0x14
@@ -206,8 +206,8 @@ _0800CED0:
 	pop {r1}
 	bx r1
 
-	THUMB_FUNC_START sub_800CED8
-sub_800CED8: @ 0x0800CED8
+	THUMB_FUNC_START WriteAndVerifyWord_ASM
+WriteAndVerifyWord_ASM: @ 0x0800CED8
 	push {r7, lr}
 	sub sp, #0x18
 	mov r7, sp
@@ -224,14 +224,14 @@ sub_800CED8: @ 0x0800CED8
 	ldr r2, [r7]
 	subs r1, r0, r2
 	ldr r0, [r7]
-	bl sub_800F338
+	bl WriteWordZero_ASM
 	ldr r0, [r7, #4]
 	ldr r2, [r7]
 	subs r1, r0, r2
 	ldr r2, [r7, #8]
 	ldr r3, [r7, #0xc]
 	ldr r0, [r7]
-	bl sub_800F260
+	bl VerifyWord_ASM
 	str r0, [r7, #0x10]
 	adds r0, r7, #0
 	adds r0, #0x14
@@ -248,8 +248,8 @@ _0800CF22:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_800CF2C
-sub_800CF2C: @ 0x0800CF2C
+	THUMB_FUNC_START WriteAndVerifyMemory_U32
+WriteAndVerifyMemory_U32: @ 0x0800CF2C
 	push {r7, lr}
 	sub sp, #0x20
 	add r7, sp, #8
@@ -268,7 +268,7 @@ sub_800CF2C: @ 0x0800CF2C
 	ldr r2, [r7, #8]
 	ldr r0, [r7]
 	movs r3, #2
-	bl sub_800F2F0
+	bl WriteMemory
 	ldr r0, [r7, #4]
 	ldr r2, [r7]
 	subs r1, r0, r2
@@ -279,7 +279,7 @@ sub_800CF2C: @ 0x0800CF2C
 	str r0, [sp, #4]
 	ldr r0, [r7]
 	movs r3, #2
-	bl sub_800F1F4
+	bl VerifyMemory
 	str r0, [r7, #0x10]
 	adds r0, r7, #0
 	adds r0, #0x14
@@ -296,8 +296,8 @@ _0800CF82:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_800CF8C
-sub_800CF8C: @ 0x0800CF8C
+	THUMB_FUNC_START TimeDmaToAndFromMemory_U16
+TimeDmaToAndFromMemory_U16: @ 0x0800CF8C
 	push {r7, lr}
 	sub sp, #0x11c
 	mov r7, sp
@@ -497,8 +497,8 @@ _0800D10E:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_800D118
-sub_800D118: @ 0x0800D118
+	THUMB_FUNC_START TimeDmaToAndFromMemory_U32
+TimeDmaToAndFromMemory_U32: @ 0x0800D118
 	push {r4, r5, r7, lr}
 	sub sp, #0x124
 	mov r7, sp
@@ -760,7 +760,7 @@ _0800D30C:
 	ldr r1, [r7]
 	adds r0, r0, r1
 	ldr r1, [r7, #8]
-	bl sub_800CF8C
+	bl TimeDmaToAndFromMemory_U16
 	ldr r1, [r7, #0xc]
 	orrs r0, r1
 	str r0, [r7, #0xc]
@@ -810,7 +810,7 @@ _0800D362:
 	adds r0, r0, r1
 	ldr r1, [r7, #8]
 	ldr r2, [r7, #0xc]
-	bl sub_800D118
+	bl TimeDmaToAndFromMemory_U32
 	ldr r1, [r7, #0x10]
 	orrs r0, r1
 	str r0, [r7, #0x10]

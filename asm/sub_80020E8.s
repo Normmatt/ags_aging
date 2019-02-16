@@ -20,7 +20,7 @@ sub_80020E8: @ 0x080020E8
 	str r3, [sp]
 	movs r2, #0x55
 	ldr r3, [r7]
-	bl sub_800CE6C
+	bl WriteAndVerifyMemory_U8
 	cmp r0, #0
 	beq _08002116
 	ldr r0, [r7, #4]
@@ -38,7 +38,7 @@ _08002116:
 	ldr r4, [r7]
 	adds r3, r4, #0
 	adds r3, #0xc
-	bl sub_800CED8
+	bl WriteAndVerifyWord_ASM
 	cmp r0, #0
 	beq _0800213A
 	ldr r0, [r7, #4]
@@ -58,7 +58,7 @@ _0800213A:
 	adds r5, r4, #0
 	adds r5, #0x14
 	str r5, [sp]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _08002162
 	ldr r0, [r7, #4]
@@ -70,7 +70,7 @@ _08002162:
 	lsls r1, r1, #0x12
 	adds r0, r1, #0
 	movs r1, #2
-	bl sub_800CF8C
+	bl TimeDmaToAndFromMemory_U16
 	cmp r0, #0
 	beq _0800217A
 	ldr r0, [r7, #4]
@@ -83,7 +83,7 @@ _0800217A:
 	adds r0, r1, #0
 	movs r1, #2
 	movs r2, #0x10
-	bl sub_800D118
+	bl TimeDmaToAndFromMemory_U32
 	cmp r0, #0
 	beq _08002194
 	ldr r0, [r7, #4]
@@ -342,7 +342,7 @@ _0800235A:
 	adds r4, r2, #4
 	str r4, [sp]
 	movs r2, #0x55
-	bl sub_800CE6C
+	bl WriteAndVerifyMemory_U8
 	cmp r0, #0
 	beq _0800237A
 	ldr r0, [r7]
@@ -359,7 +359,7 @@ _0800237A:
 	adds r4, r7, #4
 	adds r3, r4, #0
 	adds r3, #0xc
-	bl sub_800CED8
+	bl WriteAndVerifyWord_ASM
 	cmp r0, #0
 	beq _0800239C
 	ldr r0, [r7]
@@ -378,7 +378,7 @@ _0800239C:
 	adds r5, r4, #0
 	adds r5, #0x14
 	str r5, [sp]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _080023C2
 	ldr r0, [r7]
@@ -390,7 +390,7 @@ _080023C2:
 	lsls r1, r1, #0x12
 	adds r0, r1, #0
 	movs r1, #0
-	bl sub_800CF8C
+	bl TimeDmaToAndFromMemory_U16
 	cmp r0, #0
 	beq _080023DA
 	ldr r0, [r7]
@@ -403,7 +403,7 @@ _080023DA:
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0x20
-	bl sub_800D118
+	bl TimeDmaToAndFromMemory_U32
 	cmp r0, #0
 	beq _080023F4
 	ldr r0, [r7]
@@ -549,7 +549,7 @@ _080024FA:
 	adds r4, r3, #4
 	str r4, [sp]
 	ldr r3, [r7]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _0800251A
 	ldr r0, [r7, #4]
@@ -566,7 +566,7 @@ _0800251A:
 	ldr r4, [r7]
 	adds r3, r4, #0
 	adds r3, #0xc
-	bl sub_800CED8
+	bl WriteAndVerifyWord_ASM
 	cmp r0, #0
 	beq _0800253C
 	ldr r0, [r7, #4]
@@ -585,7 +585,7 @@ _0800253C:
 	adds r5, r4, #0
 	adds r5, #0x14
 	str r5, [sp]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _08002562
 	ldr r0, [r7, #4]
@@ -597,7 +597,7 @@ _08002562:
 	lsls r1, r1, #0x13
 	adds r0, r1, #0
 	movs r1, #0
-	bl sub_800CF8C
+	bl TimeDmaToAndFromMemory_U16
 	cmp r0, #0
 	beq _0800257A
 	ldr r0, [r7, #4]
@@ -610,7 +610,7 @@ _0800257A:
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0x10
-	bl sub_800D118
+	bl TimeDmaToAndFromMemory_U32
 	cmp r0, #0
 	beq _08002594
 	ldr r0, [r7, #4]
@@ -776,7 +776,7 @@ _080026BA:
 	adds r4, r3, #4
 	str r4, [sp]
 	ldr r3, [r7]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _080026DA
 	ldr r0, [r7, #4]
@@ -793,7 +793,7 @@ _080026DA:
 	ldr r4, [r7]
 	adds r3, r4, #0
 	adds r3, #0xc
-	bl sub_800CED8
+	bl WriteAndVerifyWord_ASM
 	cmp r0, #0
 	beq _080026FC
 	ldr r0, [r7, #4]
@@ -812,7 +812,7 @@ _080026FC:
 	adds r5, r4, #0
 	adds r5, #0x14
 	str r5, [sp]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _08002722
 	ldr r0, [r7, #4]
@@ -824,7 +824,7 @@ _08002722:
 	lsls r1, r1, #0x13
 	adds r0, r1, #0
 	movs r1, #0
-	bl sub_800CF8C
+	bl TimeDmaToAndFromMemory_U16
 	cmp r0, #0
 	beq _0800273A
 	ldr r0, [r7, #4]
@@ -837,7 +837,7 @@ _0800273A:
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0x10
-	bl sub_800D118
+	bl TimeDmaToAndFromMemory_U32
 	cmp r0, #0
 	beq _08002754
 	ldr r0, [r7, #4]
@@ -1042,7 +1042,7 @@ _080028E6:
 	adds r4, r3, #4
 	str r4, [sp]
 	ldr r3, [r7]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _08002906
 	ldr r0, [r7, #4]
@@ -1059,7 +1059,7 @@ _08002906:
 	ldr r4, [r7]
 	adds r3, r4, #0
 	adds r3, #0xc
-	bl sub_800CED8
+	bl WriteAndVerifyWord_ASM
 	cmp r0, #0
 	beq _08002928
 	ldr r0, [r7, #4]
@@ -1078,7 +1078,7 @@ _08002928:
 	adds r5, r4, #0
 	adds r5, #0x14
 	str r5, [sp]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _0800294E
 	ldr r0, [r7, #4]
@@ -1097,7 +1097,7 @@ _0800294E:
 	adds r4, #0x1c
 	str r4, [sp]
 	movs r2, #0
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _08002974
 	ldr r0, [r7, #4]
@@ -1117,7 +1117,7 @@ _08002974:
 	adds r5, r4, #0
 	adds r5, #0x1c
 	str r5, [sp]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _0800299C
 	ldr r0, [r7, #4]
@@ -1354,7 +1354,7 @@ _08002B5E:
 	adds r4, r3, #4
 	str r4, [sp]
 	ldr r3, [r7]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _08002B7E
 	ldr r0, [r7, #4]
@@ -1371,7 +1371,7 @@ _08002B7E:
 	ldr r4, [r7]
 	adds r3, r4, #0
 	adds r3, #0xc
-	bl sub_800CED8
+	bl WriteAndVerifyWord_ASM
 	cmp r0, #0
 	beq _08002BA0
 	ldr r0, [r7, #4]
@@ -1390,7 +1390,7 @@ _08002BA0:
 	adds r5, r4, #0
 	adds r5, #0x14
 	str r5, [sp]
-	bl sub_800CF2C
+	bl WriteAndVerifyMemory_U32
 	cmp r0, #0
 	beq _08002BC6
 	ldr r0, [r7, #4]
@@ -1402,7 +1402,7 @@ _08002BC6:
 	lsls r1, r1, #0x13
 	adds r0, r1, #0
 	movs r1, #0
-	bl sub_800CF8C
+	bl TimeDmaToAndFromMemory_U16
 	cmp r0, #0
 	beq _08002BDE
 	ldr r0, [r7, #4]
@@ -1415,7 +1415,7 @@ _08002BDE:
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0x20
-	bl sub_800D118
+	bl TimeDmaToAndFromMemory_U32
 	cmp r0, #0
 	beq _08002BF8
 	ldr r0, [r7, #4]

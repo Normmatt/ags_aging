@@ -29,7 +29,7 @@ sub_800095C: @ 0x0800095C
 	ldr r0, _080009A8
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
-	bl sub_800C0D4
+	bl DrawInputButtons
 _0800099A:
 	b _080009AE
 	.align 2, 0
