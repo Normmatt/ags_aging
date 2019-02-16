@@ -747,13 +747,13 @@ _0800E078:
 	beq _0800E096
 	b _0800E0B4
 _0800E07E:
-	bl sub_800E4E8
+	bl DrawString_NewLine
 	ldr r0, [r7, #0xc]
 	adds r1, r0, #1
 	str r1, [r7, #0xc]
 	b _0800E0BA
 _0800E08A:
-	bl sub_800E508
+	bl DrawString_ClearText
 	ldr r0, [r7, #0xc]
 	adds r1, r0, #1
 	str r1, [r7, #0xc]
@@ -789,7 +789,7 @@ _0800E0BC:
 	bge _0800E0CC
 	b _0800E214
 _0800E0CC:
-	bl sub_800E258
+	bl DrawString_CheckAndWrap
 	ldr r0, _0800E110
 	ldr r1, [r7]
 	adds r2, r1, #0
@@ -987,8 +987,8 @@ _0800E24E:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_800E258
-sub_800E258: @ 0x0800E258
+	THUMB_FUNC_START DrawString_CheckAndWrap
+DrawString_CheckAndWrap: @ 0x0800E258
 	push {r7, lr}
 	sub sp, #0xc
 	mov r7, sp
@@ -1001,7 +1001,7 @@ sub_800E258: @ 0x0800E258
 	ldr r1, [r2]
 	cmp r0, r1
 	blt _0800E274
-	bl sub_800E4E8
+	bl DrawString_NewLine
 _0800E274:
 	ldr r0, _0800E2C0
 	ldr r2, _0800E2C0
@@ -1306,8 +1306,8 @@ _0800E4DC: .4byte gUnknown_03001B08
 _0800E4E0: .4byte 0x00001014
 _0800E4E4: .4byte gUnknown_03002308
 
-	THUMB_FUNC_START sub_800E4E8
-sub_800E4E8: @ 0x0800E4E8
+	THUMB_FUNC_START DrawString_NewLine
+DrawString_NewLine: @ 0x0800E4E8
 	push {r7, lr}
 	mov r7, sp
 	ldr r0, _0800E504
@@ -1325,8 +1325,8 @@ sub_800E4E8: @ 0x0800E4E8
 	.align 2, 0
 _0800E504: .4byte gUnknown_03001B40
 
-	THUMB_FUNC_START sub_800E508
-sub_800E508: @ 0x0800E508
+	THUMB_FUNC_START DrawString_ClearText
+DrawString_ClearText: @ 0x0800E508
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp

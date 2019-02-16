@@ -78,8 +78,8 @@ _08000B52:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START LetAllTestsRunOnce
-LetAllTestsRunOnce: @ 0x08000B5C
+	THUMB_FUNC_START EnableAllTests
+EnableAllTests: @ 0x08000B5C
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -143,8 +143,8 @@ _08000BC4:
 	pop {r0}
 	bx r0
 
-	THUMB_FUNC_START SkipSpecificTestInClass
-SkipSpecificTestInClass: @ 0x08000BCC
+	THUMB_FUNC_START DisableSpecificTestInClass
+DisableSpecificTestInClass: @ 0x08000BCC
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -173,8 +173,8 @@ SkipSpecificTestInClass: @ 0x08000BCC
 	.align 2, 0
 _08000C00: .4byte gUnknown_030002FC
 
-	THUMB_FUNC_START SkipAllTestsInThisClass
-SkipAllTestsInThisClass: @ 0x08000C04
+	THUMB_FUNC_START DisableAllTestsInThisClass
+DisableAllTestsInThisClass: @ 0x08000C04
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp

@@ -14,9 +14,9 @@ void agingMain()
         DrawHeading("AGB AGING CARTRIDGE");
     else
         DrawHeading("AGS AGING CARTRIDGE");
-    LetAllTestsRunOnce();
-    SkipSpecificTestInClass(5u, 0);             // Skip INPUT test 0
-    SkipAllTestsInThisClass(4u);                // Skip all COM tests
+    EnableAllTests();
+    DisableSpecificTestInClass(5u, 0);             // Skip INPUT test 0
+    DisableAllTestsInThisClass(4u);                // Skip all COM tests
     if ( RunAllTestClasses() )
         sub_800060C();
     sub_8000684();
@@ -29,11 +29,11 @@ void agingMain()
     REG_TM3CNT = 0x840000;
     REG_TM2CNT = 0x84FFC4;
     REG_TM1CNT = 0x83BFFE;
-    LetAllTestsRunOnce();
-    SkipAllTestsInThisClass(2u);                // Skip all TIMER tests
-    SkipAllTestsInThisClass(4u);                // Skip all COM tests
-    SkipAllTestsInThisClass(5u);                // Skip all INPUT tests
-    SkipSpecificTestInClass(6u, 3u);            // Skip INTERRUPT test 3
+    EnableAllTests();
+    DisableAllTestsInThisClass(2u);                // Skip all TIMER tests
+    DisableAllTestsInThisClass(4u);                // Skip all COM tests
+    DisableAllTestsInThisClass(5u);                // Skip all INPUT tests
+    DisableSpecificTestInClass(6u, 3u);            // Skip INTERRUPT test 3
     while ( 1 )
     {
         v2.dword0 = 2;

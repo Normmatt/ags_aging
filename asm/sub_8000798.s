@@ -42,10 +42,10 @@ _080007E4:
 	adds r0, r1, #0
 	bl DrawHeading
 _080007EC:
-	bl LetAllTestsRunOnce
+	bl EnableAllTests
 	movs r0, #5
 	movs r1, #1
-	bl SkipSpecificTestInClass
+	bl DisableSpecificTestInClass
 	bl RunAllTestClasses
 	str r0, [r7, #0x44]
 	ldr r1, [r7, #0x44]

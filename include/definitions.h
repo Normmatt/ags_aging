@@ -37,22 +37,30 @@ typedef struct keyStatusTag
   u32 intervalMax;
 } keyStatus;
 
+typedef struct struct_3001B40_sub
+{
+  void *callback;
+  u16 tile_number;
+  u16 unk;
+} struct_3001B40_sub;
+
+
 typedef struct struct_3001B40
 {
   s32 x;
   s32 y;
   u16 BG0_Tilemap[1024];
   u16 BG1_Tilemap[1024];
-  u16 something;
+  u16 bg1_tile_number;
   u16 unused;
-  u32 field_100C;
-  u32 field_1010;
-  u32 field_1014;
-  u32 field_1018;
-  u32 field_101C;
-  u16 field_1020;
+  u32 x_offset;
+  u32 y_offset;
+  u32 max_width;
+  u32 max_height;
+  u32 wrap_text;
+  u16 number_of_tiles;
   u16 unused2;
-  u32 field_1024[16];
+  struct_3001B40_sub special_handlers[8];
 } struct_3001B40;
 
 typedef struct menuOption
@@ -114,9 +122,9 @@ extern void DrawFinalTestResult(u32 a1);
 extern void sub_800095C();
 extern void DrawHeading(const char *a1);
 extern u32 RunAllTestClasses();
-extern void LetAllTestsRunOnce();
-extern void SkipSpecificTestInClass(u32 a1, u32 a2);
-extern void SkipAllTestsInThisClass(u32 a1);
+extern void EnableAllTests();
+extern void DisableSpecificTestInClass(u32 a1, u32 a2);
+extern void DisableAllTestsInThisClass(u32 a1);
 extern void ClearAllTestClassesResults();
 extern void DrawTestResults();
 extern void DrawPassFailResult(sTestInstance *instance, int numTests);
