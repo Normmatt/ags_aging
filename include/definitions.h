@@ -39,8 +39,20 @@ typedef struct keyStatusTag
 
 typedef struct struct_3001B40
 {
-  int field_0;
-  int field_4;
+  s32 x;
+  s32 y;
+  u16 BG0_Tilemap[1024];
+  u16 BG1_Tilemap[1024];
+  u16 something;
+  u16 unused;
+  u32 field_100C;
+  u32 field_1010;
+  u32 field_1014;
+  u32 field_1018;
+  u32 field_101C;
+  u16 field_1020;
+  u16 unused2;
+  u32 field_1024[16];
 } struct_3001B40;
 
 typedef struct menuOption
@@ -70,7 +82,7 @@ typedef struct struct_v5
 
 typedef struct sTestInstance
 {
-  int number;
+  int enabled;
   int executed;
   int result;
   void_pointer funcPtr;

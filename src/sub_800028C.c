@@ -16,20 +16,20 @@ void sub_800028C()
         ReadKeyPlus();
         if ( gUnknown_0300045C & 0x20 )
         {
-            gUnknown_03001B40.field_0 = 7;
-            gUnknown_03001B40.field_4 = 8;
+            gUnknown_03001B40.x = 7;
+            gUnknown_03001B40.y = 8;
             DrawString(0, 1, "CHECK SUM ERROR!");
-            gUnknown_03001B40.field_0 = 7;
-            gUnknown_03001B40.field_4 = 10;
+            gUnknown_03001B40.x = 7;
+            gUnknown_03001B40.y = 10;
             DrawString(0, 1, "DEFAULT IS SAVED.");
         }
         else
         {
-            gUnknown_03001B40.field_0 = 7;
-            gUnknown_03001B40.field_4 = 8;
+            gUnknown_03001B40.x = 7;
+            gUnknown_03001B40.y = 8;
             DrawString(0, 1, "                ");
-            gUnknown_03001B40.field_0 = 7;
-            gUnknown_03001B40.field_4 = 10;
+            gUnknown_03001B40.x = 7;
+            gUnknown_03001B40.y = 10;
             DrawString(0, 1, "                 ");
         }
     }
