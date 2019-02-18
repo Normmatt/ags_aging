@@ -123,10 +123,11 @@ extern void sub_8000430();
 extern void agingMain();
 //sub_800060C.c
 extern void sub_800060C();
-
 extern void sub_8000684();
 extern void sub_8000728();
+//selftest_main.c
 extern void selftestMain();
+
 extern void DrawFinalTestResult(u32 a1);
 extern void sub_800095C();
 extern void DrawHeading(const char *a1);
