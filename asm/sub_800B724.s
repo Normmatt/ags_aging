@@ -602,7 +602,7 @@ sub_800BBAC: @ 0x0800BBAC
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	movs r1, #0x83
 	lsls r1, r1, #1
 	adds r0, r7, r1
@@ -1133,7 +1133,7 @@ _0800BFD0:
 	strh r2, [r0]
 	adds r1, r7, #4
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	adds r0, r7, #0
 	adds r1, r7, #0
 	adds r1, #0xfc

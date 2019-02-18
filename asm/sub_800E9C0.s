@@ -228,7 +228,7 @@ sub_800EB70: @ 0x0800EB70
 	adds r0, r1, #0
 	movs r1, #1
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r1, _0800EBE4
 	movs r0, #0
 	bl SetEepromTimerIntr
@@ -265,7 +265,7 @@ _0800EBD2:
 	adds r1, r7, #0
 	adds r1, #8
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x50]
 	adds r0, r1, #0
 	b _0800EBE8
@@ -292,7 +292,7 @@ sub_800EBF0: @ 0x0800EBF0
 	adds r0, r1, #0
 	movs r1, #1
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r1, _0800EC44
 	movs r0, #0
 	bl SetEepromTimerIntr
@@ -314,7 +314,7 @@ _0800EC34:
 	adds r1, r7, #0
 	adds r1, #8
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x50]
 	adds r0, r1, #0
 	b _0800EC48

@@ -165,7 +165,7 @@ sub_800C4F0: @ 0x0800C4F0
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	adds r0, r7, #0
 	adds r0, #0x48
 	ldr r1, _0800C5AC
@@ -237,7 +237,7 @@ _0800C592:
 	strh r2, [r0]
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x44]
 	adds r0, r1, #0
 	b _0800C5B8
@@ -279,7 +279,7 @@ sub_800C5DC: @ 0x0800C5DC
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	adds r0, r7, #0
 	adds r0, #0x48
 	ldr r1, _0800C698
@@ -351,7 +351,7 @@ _0800C67E:
 	strh r2, [r0]
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x44]
 	adds r0, r1, #0
 	b _0800C6A4
@@ -393,7 +393,7 @@ sub_800C6C8: @ 0x0800C6C8
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	adds r0, r7, #0
 	adds r0, #0x48
 	ldr r1, _0800C784
@@ -465,7 +465,7 @@ _0800C76A:
 	strh r2, [r0]
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x44]
 	adds r0, r1, #0
 	b _0800C790
@@ -507,7 +507,7 @@ sub_800C7B4: @ 0x0800C7B4
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	movs r0, #0
 	str r0, [r7, #0x48]
 _0800C7CE:
@@ -606,7 +606,7 @@ _0800C890: .4byte 0x04000202
 _0800C894:
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x44]
 	adds r0, r1, #0
 	b _0800C8A2
@@ -688,7 +688,7 @@ sub_800C924: @ 0x0800C924
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r0, _0800C9C4
 	movs r1, #0
 	strh r1, [r0]
@@ -747,7 +747,7 @@ _0800C978:
 _0800C9B6:
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x44]
 	adds r0, r1, #0
 	b _0800C9CC
@@ -834,7 +834,7 @@ sub_800CA48: @ 0x0800CA48
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	movs r0, #0
 	str r0, [r7, #0x48]
 _0800CA62:
@@ -942,7 +942,7 @@ _0800CB34: .4byte 0x04000202
 _0800CB38:
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x44]
 	adds r0, r1, #0
 	b _0800CB46
@@ -1049,7 +1049,7 @@ sub_800CBF0: @ 0x0800CBF0
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r0, _0800CCA8
 	movs r1, #0
 	strh r1, [r0]
@@ -1119,7 +1119,7 @@ _0800CC54:
 _0800CC98:
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x44]
 	adds r0, r1, #0
 	b _0800CCB0

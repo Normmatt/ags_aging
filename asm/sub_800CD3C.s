@@ -17,7 +17,7 @@ sub_800CD3C: @ 0x0800CD3C
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r0, _0800CDF4
 	movs r1, #0
 	strh r1, [r0]
@@ -85,7 +85,7 @@ _0800CDE4:
 	adds r1, r7, #0
 	adds r1, #8
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r1, [r7, #0x4c]
 	adds r0, r1, #0
 	b _0800CDFC
@@ -110,14 +110,14 @@ sub_800CE04: @ 0x0800CE04
 	movs r2, #0x80
 	lsls r2, r2, #6
 	movs r1, #1
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	bl SoundBiasReset
 	svc #3
 	bl SoundBiasSet
 	adds r1, r7, #0
 	adds r1, #8
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	movs r0, #0
 	b _0800CE34
 _0800CE34:
@@ -138,12 +138,12 @@ sub_800CE3C: @ 0x0800CE3C
 	movs r2, #0x80
 	lsls r2, r2, #6
 	movs r1, #1
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	svc #2
 	adds r1, r7, #0
 	adds r1, #8
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	movs r0, #0
 	b _0800CE64
 _0800CE64:
@@ -1382,8 +1382,8 @@ _0800D788:
 	pop {r1}
 	bx r1
 
-	THUMB_FUNC_START sub_800D790
-sub_800D790: @ 0x0800D790
+	THUMB_FUNC_START SaveAndDisableInterruptHandlers
+SaveAndDisableInterruptHandlers: @ 0x0800D790
 	push {r7, lr}
 	sub sp, #0x10
 	mov r7, sp
@@ -1480,8 +1480,8 @@ _0800D830:
 _0800D84C: .4byte 0x04000202
 _0800D850: .4byte 0x00003FFF
 
-	THUMB_FUNC_START sub_800D854
-sub_800D854: @ 0x0800D854
+	THUMB_FUNC_START RestoreInterruptHandlers
+RestoreInterruptHandlers: @ 0x0800D854
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp

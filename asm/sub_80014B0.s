@@ -18,7 +18,7 @@ sub_80014B0: @ 0x080014B0
 	adds r0, r1, #0
 	movs r1, #1
 	movs r2, #1
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r0, _08001504
 	movs r1, #8
 	strh r1, [r0]
@@ -471,7 +471,7 @@ _0800185C:
 	bl memcpy
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	ldr r3, _08001884
 	add sp, r3
 	pop {r4, r7}

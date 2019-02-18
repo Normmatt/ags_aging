@@ -600,7 +600,7 @@ sub_800AE30: @ 0x0800AE30
 	adds r0, r1, #0
 	movs r1, #1
 	movs r2, #1
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r1, _0800AECC
 	adds r0, r7, r1
 	ldr r1, _0800AED0
@@ -645,7 +645,7 @@ sub_800AE30: @ 0x0800AE30
 	strh r2, [r0]
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	adds r0, r7, #0
 	ldr r0, _0800AEC8
 	adds r1, r7, r0

@@ -23,7 +23,7 @@ sub_8001AFC: @ 0x08001AFC
 	adds r0, r1, #0
 	movs r1, #1
 	movs r2, #1
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r0, _08001B48
 	movs r1, #8
 	strh r1, [r0]

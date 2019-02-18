@@ -3,6 +3,8 @@
 
 #include "gba/types.h"
 
+#define SystemCall(No)   asm ("SWI    "#No"")
+
 // define a function pointer type
 typedef void (*void_pointer)(void);
 
@@ -146,8 +148,8 @@ extern void WaitForInterrupt(u16 irq);
 extern void_pointer SetInterruptHandler(u16 a1, void_pointer a2);
 extern u16 SetIME(u16 a1);
 extern u16 SetIE(u16 a1);
-extern void sub_800D790(sInterruptSetup *a1, u16 ime, u16 ie);
-extern void sub_800D854(sInterruptSetup *a1);
+extern void SaveAndDisableInterruptHandlers(sInterruptSetup *a1, u16 ime, u16 ie);
+extern void RestoreInterruptHandlers(sInterruptSetup *a1);
 extern void ReadKeyPlus();
 extern void ReadKey();
 extern void UpdateTilemaps();
@@ -158,6 +160,7 @@ extern void ResetConfiguration();
 extern s32 LoadConfiguration();
 
 //sound.c
+extern void m4aSoundInit();
 extern void m4aSoundMain();
 extern void m4aSongNumStart(int a1);
 extern void m4aMPlayAllStop();

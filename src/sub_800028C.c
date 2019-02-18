@@ -5,7 +5,7 @@ void sub_800028C()
 {
     struct sInterruptSetup v0;      // [sp+0h]
 
-    sub_800D790(&v0, 1u, 1u);
+    SaveAndDisableInterruptHandlers(&v0, 1u, 1u);
     REG_DISPSTAT = 8;
     DrawHeading("LOAD CONFIGURATION");
     ReadKey();
@@ -33,5 +33,5 @@ void sub_800028C()
             DrawString(0, 1, "                 ");
         }
     }
-    sub_800D854(&v0);
+    RestoreInterruptHandlers(&v0);
 }

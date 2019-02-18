@@ -168,7 +168,7 @@ sub_800220C: @ 0x0800220C
 	adds r0, r1, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r1, _08002260
 	movs r0, #1
 	bl SetInterruptHandler
@@ -213,7 +213,7 @@ _0800226E:
 	strh r2, [r0]
 	adds r1, r7, #4
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	movs r0, #0
 	str r0, [r7, #0x4c]
 _08002284:

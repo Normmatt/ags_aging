@@ -5,6 +5,7 @@ void sub_800060C()
 {
     m4aSoundInit();
     m4aSongNumStart(11);
+    
     while ( 1 )
     {
         WaitForInterrupt(1u);

@@ -15,7 +15,7 @@ sub_8003DF4: @ sub_8003DF4
 	adds r0, r1, #0
 	movs r1, #1
 	movs r2, #1
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	adds r0, r7, #0
 	adds r0, #8
 	ldr r1, _08003E44
@@ -95,7 +95,7 @@ _08003EAA:
 	adds r1, r7, #0
 	adds r1, #0xc
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	movs r0, #0
 	b _08003EC8
 	.align 2, 0

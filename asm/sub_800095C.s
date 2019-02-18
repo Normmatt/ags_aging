@@ -12,7 +12,7 @@ sub_800095C: @ 0x0800095C
 	adds r0, r1, #0
 	movs r1, #1
 	movs r2, #1
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r1, _0800099C
 	movs r0, #1
 	bl SetInterruptHandler

@@ -12,7 +12,7 @@ selftestMain: @ 0x08000798
 	adds r0, r1, #0
 	movs r1, #1
 	movs r2, #1
-	bl sub_800D790
+	bl SaveAndDisableInterruptHandlers
 	ldr r0, _080007D8
 	movs r1, #8
 	strh r1, [r0]
@@ -53,7 +53,7 @@ _080007EC:
 	bl DrawFinalTestResult
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_800D854
+	bl RestoreInterruptHandlers
 	add sp, #0x88
 	pop {r7}
 	pop {r0}

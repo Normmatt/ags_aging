@@ -8,7 +8,7 @@ void agingMain()
     struct_v5 v2;                   // [sp+48h] [bp-48h]
     u32 v3[8];                      // [sp+68h] [bp-28h]
 
-    sub_800D790(&v0, 1u, 1u);
+    SaveAndDisableInterruptHandlers(&v0, 1u, 1u);
     REG_DISPSTAT = 8;
     if ( !gUnknown_03002BB0.isAGS )
         DrawHeading("AGB AGING CARTRIDGE");
@@ -52,5 +52,5 @@ void agingMain()
     }
     REG_TM1CNT = 0;
     sub_800060C();
-    sub_800D854(&v0);
+    RestoreInterruptHandlers(&v0);
 }
