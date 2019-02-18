@@ -9,7 +9,7 @@ typedef void (*void_pointer)(void);
 //Structs
 typedef struct sSettings
 {
-  u32 field_0;
+  u32 default_option;
   u32 isAGS;
   u32 field_8;
   u32 field_C;
@@ -108,13 +108,20 @@ typedef struct sTestClass
 
 
 //Functions
+//main.c
+extern void AgbMain();
+//sub_8000200.c
 extern u32 sub_8000200();
 extern void sub_800028C();
+//sub_8000370.c
 extern void testprogramMain();
 extern void sub_80003E8();
 extern void sub_8000430();
+//aging_main.c
 extern void agingMain();
+//sub_800060C.c
 extern void sub_800060C();
+
 extern void sub_8000684();
 extern void sub_8000728();
 extern void selftestMain();
@@ -149,6 +156,13 @@ extern void sub_800EB08(u32 a1);
 extern s32 CheckSaveForEepromMagic();
 extern void ResetConfiguration();
 extern s32 LoadConfiguration();
+
+//sound.c
+extern void m4aSoundMain();
+extern void m4aSongNumStart(int a1);
+extern void m4aMPlayAllStop();
+extern void SoundVSync_rev01();
+extern void SoundVSyncOff_rev01();
 
 //EWRAM
 //extern u32 gUnknown_0200043C;

@@ -8,5 +8,6 @@
 #include "gba/syscall.h"
 #include "gba/macro.h"
 #include "gba/isagbprint.h"
+#include "gba/m4a_internal.h"
 
 #endif // GUARD_GBA_GBA_H

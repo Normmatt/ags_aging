@@ -16,13 +16,13 @@ void AgbMain()
         {
             case 1:
             {
-                gUnknown_03002BB0.field_0 = 0;
+                gUnknown_03002BB0.default_option = 0;
                 gUnknown_03002BB0.isAGS = 0;
                 break;
             }
             case 2:
             {
-                gUnknown_03002BB0.field_0 = 0;
+                gUnknown_03002BB0.default_option = 0;
                 gUnknown_03002BB0.isAGS = 1;
                 break;
             }
@@ -34,7 +34,7 @@ void AgbMain()
         sub_800EB08(0);
         if ( CheckSaveForEepromMagic() == 1 )
         {
-            gUnknown_03002BB0.field_0 = 4;
+            gUnknown_03002BB0.default_option = 4;
             gUnknown_03002BB0.isAGS = 0;
             gUnknown_03002BB0.field_8 = 0;
         }
@@ -51,6 +51,6 @@ void AgbMain()
         while ( 1 );
     }
     
-    testmain(gUnknown_03002BB0.field_0);
+    testmain(gUnknown_03002BB0.default_option);
     while ( 1 );
 }

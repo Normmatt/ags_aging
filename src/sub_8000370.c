@@ -27,7 +27,7 @@ void testprogramMain()
     else
         DrawHeading("AGS TEST PROGRAM");
     sub_8000FF0(menuOptions, 0);
-    testmain(gUnknown_03002BB0.field_0);
+    testmain(gUnknown_03002BB0.default_option);
     sub_800D854(&v0);
     while ( 1 );
 }
