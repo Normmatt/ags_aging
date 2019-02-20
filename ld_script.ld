@@ -31,7 +31,7 @@ SECTIONS
         src/sub_800060C.o(.text);               /* rodata 080182D8 */
         src/sub_8000684.o(.text);               /* rodata 08018308 */
         src/selftest_main.o(.text);             /* rodata 08018348 */
-        asm/sub_800081C.o(.text);               /* rodata 08018384 */
+        src/sub_800081C.o(.text);               /* rodata 08018384 */
         asm/sub_800095C.o(.text);               /* rodata 080183EC */
         asm/sub_8000A04.o(.text);               /* rodata 08018408 */
         asm/sub_8000AD4.o(.text);               /* rodata 08018448 */
@@ -145,6 +145,7 @@ SECTIONS
         src/sub_800060C.o(.rodata);               /* rodata 080182D8 */
         src/sub_8000684.o(.rodata);               /* rodata 08018308 */
         src/selftest_main.o(.rodata);             /* rodata 08018348 */
+        src/sub_800081C.o(.rodata);               /* rodata 08018384 */
     } = 0
     
     DATA :
