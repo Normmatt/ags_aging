@@ -7,6 +7,7 @@
 
 // define a function pointer type
 typedef void (*void_pointer)(void);
+typedef s32 (*result_pointer)(void);
 
 //Structs
 typedef struct sSettings
@@ -99,7 +100,7 @@ typedef struct sTestInstance
   int enabled;
   int executed;
   int result;
-  void_pointer funcPtr;
+  result_pointer funcPtr;
   char *name;
 } sTestInstance;
 

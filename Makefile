@@ -92,7 +92,7 @@ tidy:
 
 #### Recipes ####
    
-$(OBJ_DIR)/ld_script.ld: $(LDSCRIPT) $(OBJ_DIR)/sym_ewram.txt $(OBJ_DIR)/sym_iwram.txt
+$(OBJ_DIR)/ld_script.ld: $(LDSCRIPT) $(OBJ_DIR)/sym_ewram.txt $(OBJ_DIR)/sym_iwram.txt $(OBJ_DIR)/sym_data.txt
 	cd $(OBJ_DIR) && sed "s#tools/#../../tools/#g" ../../$(LDSCRIPT) > $(LDSCRIPT)
     
 $(OBJ_DIR)/sym_ewram.txt: sym_ewram.txt
@@ -100,6 +100,9 @@ $(OBJ_DIR)/sym_ewram.txt: sym_ewram.txt
     
 $(OBJ_DIR)/sym_iwram.txt: sym_iwram.txt
 	sed "s#tools/#../../tools/#g" sym_iwram.txt > $@
+
+$(OBJ_DIR)/sym_data.txt: sym_data.txt
+	sed "s#tools/#../../tools/#g" sym_data.txt > $@
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c
 	$(CPP) $(CPPFLAGS) $< | $(CC1) $(CC1FLAGS) -o $(C_BUILDDIR)/$*.s

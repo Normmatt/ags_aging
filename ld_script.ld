@@ -15,9 +15,14 @@ SECTIONS
     IWRAM (NOLOAD) :
     ALIGN(4)
     {
+        __data_start__ = ABSOLUTE(.);
+        INCLUDE "sym_data.txt"
+        __data_end__  = ABSOLUTE(.);
         INCLUDE "sym_iwram.txt"
     }
-    
+
+    __data_size__ = __data_end__ - __data_start__;
+
 	. = 0x08000000;
     ROM : SUBALIGN(0)
 	{
@@ -34,6 +39,7 @@ SECTIONS
         src/sub_800081C.o(.text);               /* rodata 08018384 */
         src/sub_800095C.o(.text);               /* rodata 080183EC */
         src/sub_8000A04.o(.text);               /* rodata 08018408 */
+        src/sub_8000AD4.o(.text);               /* rodata 08018448 */
         asm/sub_8000AD4.o(.text);               /* rodata 08018448 */
         asm/sub_8000CF4.o(.text);               /* rodata 08018718 */
         asm/sub_8000E14.o(.text);               /* rodata 0801875C */
@@ -148,14 +154,15 @@ SECTIONS
         src/sub_800081C.o(.rodata);               /* rodata 08018384 */
         src/sub_800095C.o(.rodata);               /* rodata 080183EC */
         src/sub_8000A04.o(.rodata);               /* rodata 08018408 */
+        src/sub_8000AD4.o(.rodata);               /* rodata 08018448 */
     } = 0
     
     . = 0x08018448;
-    DATA :
+    RODATA1 :
 	ALIGN(4)
     {
-        /* Data */
-        data/data.o(.data);
+        /* Read Only Data */
+        data/data.o(.rodata);
     } = 0
     
     RODATA2 :
@@ -198,7 +205,18 @@ SECTIONS
         tools/agbcc/lib/libc.a:lseekr.o(.rodata);
         tools/agbcc/lib/libc.a:readr.o(.rodata);
     } = 0
+
+    . = 0x081421A0;
+    __data_rom__ = .;
+    DATA :
+	ALIGN(4)
+    {
+        /* Data */
+        src/aging_main.o(.data);                /* rodata 0801829C */
+        src/sub_8000AD4.o(.data);               /* rodata 08018448 */
+    } = 0
     
+    . = 0x081421A0;
     DATA2 :
 	ALIGN(4)
     {

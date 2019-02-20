@@ -28,8 +28,8 @@ _080000E4:
 _080000FC: .4byte gUnknown_03007D00
 _08000100: .4byte gUnknown_03007FFC
 _08000104: .4byte intr_main
-_08000108: .4byte gUnknown_03000000
-_0800010C: .4byte gUnknown_081421A0
-_08000110: .4byte 0x00000C78
+_08000108: .4byte __data_start__
+_0800010C: .4byte __data_rom__
+_08000110: .4byte __data_size__
 .extern AgbMain
 _08000114: .4byte AgbMain+1

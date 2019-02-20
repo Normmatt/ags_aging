@@ -1,6 +1,8 @@
 #include "gba/gba.h"
 #include "definitions.h"
 
+u32 gUnknown_03000000 = 1;
+
 void agingMain()
 {
     sInterruptSetup v0;             // [sp+0h] [bp-90h]
