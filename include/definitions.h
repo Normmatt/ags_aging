@@ -46,6 +46,14 @@ typedef struct struct_3001B40_sub
   u16 unk;
 } struct_3001B40_sub;
 
+typedef struct struct_3001B40_windowinfo
+{
+  u32 x_offset;
+  u32 y_offset;
+  u32 max_width;
+  u32 max_height;
+  u32 wrap_text;
+} struct_3001B40_windowinfo;
 
 typedef struct struct_3001B40
 {
@@ -55,11 +63,7 @@ typedef struct struct_3001B40
   u16 BG1_Tilemap[1024];
   u16 bg1_tile_number;
   u16 unused;
-  u32 x_offset;
-  u32 y_offset;
-  u32 max_width;
-  u32 max_height;
-  u32 wrap_text;
+  struct_3001B40_windowinfo windowinfo;
   u16 number_of_tiles;
   u16 unused2;
   struct_3001B40_sub special_handlers[8];
@@ -133,7 +137,7 @@ extern void DrawFinalTestResult(u32 a1);
 extern void sub_800095C();
 extern void j_UpdateTilemaps();
 
-extern void DrawHeading(const char *a1);
+extern void DrawHeading(char *a1);
 extern u32 RunAllTestClasses();
 extern void EnableAllTests();
 extern void DisableSpecificTestInClass(u32 a1, u32 a2);
@@ -158,8 +162,12 @@ extern void SaveAndDisableInterruptHandlers(sInterruptSetup *a1, u16 ime, u16 ie
 extern void RestoreInterruptHandlers(sInterruptSetup *a1);
 extern void ReadKeyPlus();
 extern void ReadKey();
+extern void sub_800DA4C();
 extern void UpdateTilemaps();
 extern void DrawString(s32 x, s32 y, char *str);
+extern void sub_800E710(u32 a1);
+extern void sub_800E9C0(u32 a1);
+extern void sub_800EA20();
 extern void sub_800EB08(u32 a1);
 extern s32 CheckSaveForEepromMagic();
 extern void ResetConfiguration();
