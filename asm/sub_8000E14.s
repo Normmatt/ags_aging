@@ -181,7 +181,7 @@ StartTest: @ 0x08000F44
 	movs r0, #0
 	b _08000FE8
 	.align 2, 0
-_08000F74: .4byte gUnknown_030002FC
+_08000F74: .4byte testClasses
 _08000F78:
 	ldr r0, _08000FE4
 	ldr r1, [r7]
@@ -236,7 +236,7 @@ _08000F78:
 	adds r0, r1, #0
 	b _08000FE8
 	.align 2, 0
-_08000FE4: .4byte gUnknown_030002FC
+_08000FE4: .4byte testClasses
 _08000FE8:
 	add sp, #0xc
 	pop {r4, r7}

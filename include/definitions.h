@@ -137,13 +137,16 @@ extern void DrawFinalTestResult(u32 a1);
 //sub_800095C.c
 extern void sub_800095C();
 extern void j_UpdateTilemaps();
-
+//sub_8000A04.c
 extern void DrawHeading(char *a1);
+//sub_8000AD4.c
 extern u32 RunAllTestClasses();
 extern void EnableAllTests();
 extern void DisableSpecificTestInClass(u32 a1, u32 a2);
 extern void DisableAllTestsInThisClass(u32 a1);
 extern void ClearAllTestClassesResults();
+
+
 extern void DrawTestResults();
 extern void DrawPassFailResult(sTestInstance *instance, int numTests);
 extern s32 StartTest(u32 classId, u32 instanceId);

@@ -1,9 +1,5 @@
 	.section .rodata
 
-    .global gUnknown_08018448
-gUnknown_08018448:
-    .incbin "baserom.gba", 0x00018448, 0x2D0
-
     .global gUnknown_08018718
 gUnknown_08018718:
     .incbin "baserom.gba", 0x00018718, 0x14

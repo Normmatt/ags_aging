@@ -113,7 +113,7 @@ _08000D64:
 _08000DD0: .4byte gUnknown_08018730
 _08000DD4: .4byte gUnknown_03001B40
 _08000DD8: .4byte gUnknown_08018740
-_08000DDC: .4byte gUnknown_030002FC
+_08000DDC: .4byte testClasses
 _08000DE0:
 	ldr r1, _08000E0C
 	adds r0, r1, #0

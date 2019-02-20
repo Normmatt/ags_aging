@@ -342,3 +342,67 @@ sTestClass testClasses[] = {
     {   keyTests,       sizeof(keyTests) / sizeof(sTestInstance),          "KEY INPUT"     },
     {   interruptTests, sizeof(interruptTests) / sizeof(sTestInstance),    "INTERRUPT"     },
 };
+
+u32 RunAllTestClasses()
+{
+    u32 i;                  // [sp+0h]
+    s32 j;                  // [sp+4h]
+    u32 class_result;       // [sp+8h]
+    u32 overall_result;     // [sp+Ch]
+
+    overall_result = 0;
+    ClearAllTestClassesResults();
+    DrawTestResults();
+    for ( i = 0; i <= 6; ++i )
+    {
+        class_result = 0;
+        for ( j = 0; j < testClasses[i].numTests; ++j )
+        {
+            class_result |= StartTest(i, j);
+            DrawTestResults();
+        }
+        if ( class_result )
+            overall_result |= 1 << i;
+    }
+    return overall_result;
+}
+
+void EnableAllTests()
+{
+    u32 i;      // [sp+0h]
+    s32 j;      // [sp+4h]
+
+    for ( i = 0; i <= 6; ++i )
+    {
+        for ( j = 0; j < testClasses[i].numTests; ++j )
+            testClasses[i].testsPtr[j].enabled = 1;
+    }
+}
+
+void DisableSpecificTestInClass(u32 a1, u32 a2)
+{
+    testClasses[a1].testsPtr[a2].enabled = 0;
+}
+
+void DisableAllTestsInThisClass(u32 a1)
+{
+    s32 i;      // [sp+4h]
+
+    for ( i = 0; i < testClasses[a1].numTests; ++i )
+        testClasses[a1].testsPtr[i].enabled = 0;
+}
+
+void ClearAllTestClassesResults()
+{
+    u32 i;      // [sp+0h]
+    s32 j;      // [sp+4h]
+
+    for ( i = 0; i <= 6; ++i )
+    {
+        for ( j = 0; j < testClasses[i].numTests; ++j )
+        {
+            testClasses[i].testsPtr[j].executed = 0;
+            testClasses[i].testsPtr[j].result = 0;
+        }
+    }
+}
