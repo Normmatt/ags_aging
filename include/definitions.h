@@ -127,9 +127,12 @@ extern void sub_8000684();
 extern void sub_8000728();
 //selftest_main.c
 extern void selftestMain();
-
+//sub_800081C.c
 extern void DrawFinalTestResult(u32 a1);
+//sub_800095C.c
 extern void sub_800095C();
+extern void j_UpdateTilemaps();
+
 extern void DrawHeading(const char *a1);
 extern u32 RunAllTestClasses();
 extern void EnableAllTests();
@@ -143,7 +146,9 @@ extern void sub_8000FF0(const menuOption *a1, int a2);
 extern void testmain(u32 option);
 extern void sub_80014B0();
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
-extern void sub_8008118();
+extern void sub_8008118();\
+extern void DrawInputButtons(int isAGS);
+extern void sub_800C2C8(u32 a1, u16 a2);
 extern void sub_800D5F4();
 extern void WaitForInterrupt(u16 irq);
 extern void_pointer SetInterruptHandler(u16 a1, void_pointer a2);
