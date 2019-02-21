@@ -353,7 +353,7 @@ u32 RunAllTestClasses()
     overall_result = 0;
     ClearAllTestClassesResults();
     DrawTestResults();
-    for ( i = 0; i <= 6; ++i )
+    for ( i = 0; i < (sizeof(testClasses) / sizeof(sTestClass)); ++i )
     {
         class_result = 0;
         for ( j = 0; j < testClasses[i].numTests; ++j )
@@ -372,7 +372,7 @@ void EnableAllTests()
     u32 i;      // [sp+0h]
     s32 j;      // [sp+4h]
 
-    for ( i = 0; i <= 6; ++i )
+    for ( i = 0; i < (sizeof(testClasses) / sizeof(sTestClass)); ++i )
     {
         for ( j = 0; j < testClasses[i].numTests; ++j )
             testClasses[i].testsPtr[j].enabled = 1;
@@ -397,7 +397,7 @@ void ClearAllTestClassesResults()
     u32 i;      // [sp+0h]
     s32 j;      // [sp+4h]
 
-    for ( i = 0; i <= 6; ++i )
+    for ( i = 0; i < (sizeof(testClasses) / sizeof(sTestClass)); ++i )
     {
         for ( j = 0; j < testClasses[i].numTests; ++j )
         {
