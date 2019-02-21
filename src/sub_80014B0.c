@@ -2,8 +2,8 @@
 #include "gba/gba.h"
 #include "definitions.h"
 
-ALIGNED(4) RODATA_DATA char config_string[] = {"CONFIGURATION"};
-ALIGNED(4) RODATA_DATA char gUnknown_08018800[] = {"\x0C"}; //Why is this reused in other files?
+ALIGNED(4) const char config_string[] = {"CONFIGURATION"};
+ALIGNED(4) const char gUnknown_08018800[] = {"\x0C"}; //Why is this reused in other files?
 
 void sub_80014B0()
 {
