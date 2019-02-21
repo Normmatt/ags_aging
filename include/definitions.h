@@ -14,7 +14,7 @@ typedef struct sSettings
 {
   u32 default_option;
   u32 isAGS;
-  u32 aging_time;
+  s32 aging_time;
   u32 field_C;
   u32 field_10;
   u16 field_14;
@@ -142,7 +142,7 @@ extern void DrawFinalTestResult(u32 a1);
 extern void sub_800095C();
 extern void j_UpdateTilemaps();
 //sub_8000A04.c
-extern void DrawHeading(char *a1);
+extern void DrawHeading(const char *a1);
 //sub_8000AD4.c
 extern u32 RunAllTestClasses();
 extern void EnableAllTests();
@@ -164,8 +164,10 @@ extern void sub_80012A4(struct_80011C4 *a1);
 extern void testmain(u32 option);
 //sub_80014B0.c
 extern void sub_80014B0();
+extern const char gUnknown_08018800[];
+//sub_8001888.c
+extern void sub_8001888(vu32 a1);
 
-extern void sub_8001888(u32 a1);
 extern void sub_8001AFC();
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
 extern void sub_8008118();\

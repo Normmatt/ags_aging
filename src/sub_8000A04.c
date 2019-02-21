@@ -9,7 +9,7 @@ static const struct_3001B40_windowinfo windowinfo = {
     .wrap_text = 0,
 };
 
-void DrawHeading(char *a1)
+void DrawHeading(const char *a1)
 {
     REG_DISPCNT |= 0x80u;
     sub_800DA4C();
