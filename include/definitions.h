@@ -161,8 +161,9 @@ extern void DrawTestResults();
 extern void DrawPassFailResult(sTestInstance *instance, int numTests);
 extern s32 StartTest(u32 classId, u32 instanceId);
 extern void sub_8000FF0(const menuOption *a1, int a2);
-
 extern void sub_80011C4(struct_80011C4 *a1);
+extern s32 sub_8001240(struct_80011C4 *a1, s32 idx);
+
 extern void sub_80012A4(struct_80011C4 *a1);
 extern void testmain(u32 option);
 extern void sub_80014B0();

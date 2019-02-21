@@ -123,3 +123,34 @@ void sub_8000FF0(const menuOption *menuOptions, int idx)
     }
     RestoreInterruptHandlers(&v6);
 }
+
+void sub_80011C4(struct_80011C4 *a1)
+{
+    s32 idx;        // [sp+4h]
+
+    a1->num_entries = 0;
+    idx = a1->initial_idx + 1;
+    while ( a1->menu_option[idx].level != 2 )
+    {
+        a1->submenu_indexes[a1->num_entries++] = idx;
+        if ( !a1->menu_option[idx].level )
+            idx = sub_8001240(a1, idx);
+        else
+            ++idx;
+        
+    }
+}
+
+s32 sub_8001240(struct_80011C4 *a1, s32 idx)
+{
+    idx++;
+    while ( a1->menu_option[idx].level != 2 )
+    {
+        if ( !a1->menu_option[idx].level )
+            idx = sub_8001240(a1, idx);
+        else
+            ++idx;
+    }
+    return idx + 1;
+}
+
