@@ -163,10 +163,12 @@ extern s32 StartTest(u32 classId, u32 instanceId);
 extern void sub_8000FF0(const menuOption *a1, int a2);
 extern void sub_80011C4(struct_80011C4 *a1);
 extern s32 sub_8001240(struct_80011C4 *a1, s32 idx);
-
+//sub_80012A4.c
 extern void sub_80012A4(struct_80011C4 *a1);
 extern void testmain(u32 option);
+
 extern void sub_80014B0();
+extern void sub_8001AFC();
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
 extern void sub_8008118();\
 extern void DrawInputButtons(int isAGS);
@@ -182,7 +184,7 @@ extern void ReadKeyPlus();
 extern void ReadKey();
 extern void sub_800DA4C();
 extern void UpdateTilemaps();
-extern void DrawString(s32 x, s32 y, char *str);
+extern void DrawString(s32 x, s32 y, const char *str);
 extern void sub_800E710(u32 a1);
 extern void sub_800E9C0(u32 a1);
 extern void sub_800EA20();
