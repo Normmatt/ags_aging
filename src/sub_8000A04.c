@@ -1,7 +1,7 @@
 #include "gba/gba.h"
 #include "definitions.h"
 
-const struct_3001B40_windowinfo windowinfo = {
+static const struct_3001B40_windowinfo windowinfo = {
     .x_offset = 0,
     .y_offset = 1,
     .max_width = 30,

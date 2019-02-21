@@ -3,8 +3,8 @@
 .syntax unified
 
 
-	THUMB_FUNC_START sub_8000E14
-sub_8000E14: @ 0x08000E14
+	THUMB_FUNC_START DrawPassFailResult
+DrawPassFailResult: @ 0x08000E14
 	push {r7, lr}
 	sub sp, #0x1c
 	mov r7, sp

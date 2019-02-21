@@ -145,7 +145,8 @@ extern void EnableAllTests();
 extern void DisableSpecificTestInClass(u32 a1, u32 a2);
 extern void DisableAllTestsInThisClass(u32 a1);
 extern void ClearAllTestClassesResults();
-
+#define NUM_TEST_CLASSES 7
+extern sTestClass testClasses[NUM_TEST_CLASSES];
 
 extern void DrawTestResults();
 extern void DrawPassFailResult(sTestInstance *instance, int numTests);

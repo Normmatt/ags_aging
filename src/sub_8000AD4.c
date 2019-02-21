@@ -333,7 +333,7 @@ sTestInstance interruptTests[] = {
     },
 };
 
-sTestClass testClasses[] = {
+sTestClass testClasses[NUM_TEST_CLASSES] = {
     {   memTests,       sizeof(memTests) / sizeof(sTestInstance),          "MEMORY"        },
     {   lcdTests,       sizeof(lcdTests) / sizeof(sTestInstance),          "LCD"           },
     {   timerTests,     sizeof(timerTests) / sizeof(sTestInstance),        "TIMER"         },
