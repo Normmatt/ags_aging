@@ -1,4 +1,4 @@
-#include <string.h>
+#include <stdio.h>
 #include "gba/gba.h"
 #include "definitions.h"
 

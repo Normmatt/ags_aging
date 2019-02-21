@@ -111,6 +111,14 @@ typedef struct sTestClass
   char *name;
 } sTestClass;
 
+typedef struct struct_80011C4
+{
+  const menuOption *menu_option;
+  u32 initial_idx;
+  u32 selected_idx;
+  s32 num_entries;
+  u32 submenu_indexes[8];
+} struct_80011C4;
 
 
 
@@ -147,11 +155,15 @@ extern void DisableAllTestsInThisClass(u32 a1);
 extern void ClearAllTestClassesResults();
 #define NUM_TEST_CLASSES 7
 extern sTestClass testClasses[NUM_TEST_CLASSES];
-
+//sub_8000CF4.c
 extern void DrawTestResults();
+//sub_8000E14.c
 extern void DrawPassFailResult(sTestInstance *instance, int numTests);
 extern s32 StartTest(u32 classId, u32 instanceId);
 extern void sub_8000FF0(const menuOption *a1, int a2);
+
+extern void sub_80011C4(struct_80011C4 *a1);
+extern void sub_80012A4(struct_80011C4 *a1);
 extern void testmain(u32 option);
 extern void sub_80014B0();
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
