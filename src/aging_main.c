@@ -49,7 +49,7 @@ void agingMain()
             break;
         for ( i = 0; i <= 119; ++i )
             WaitForInterrupt(1u);
-        if ( gUnknown_03002BB0.field_8 && gUnknown_03000000 && REG_TM3CNT_L >= (s32)gUnknown_03002BB0.field_8 )
+        if ( gUnknown_03002BB0.aging_time && gUnknown_03000000 && REG_TM3CNT_L >= (s32)gUnknown_03002BB0.aging_time )
             sub_8000728();
     }
     REG_TM1CNT = 0;

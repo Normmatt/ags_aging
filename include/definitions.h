@@ -14,15 +14,11 @@ typedef struct sSettings
 {
   u32 default_option;
   u32 isAGS;
-  u32 field_8;
+  u32 aging_time;
   u32 field_C;
   u32 field_10;
   u16 field_14;
-  u16 field_16;
-  u16 field_18;
-  u16 field_1A;
-  u16 field_1C;
-  u16 field_1E;
+  u16 checksum;
 } sSettings;
 
 typedef struct sInterruptSetup
@@ -166,8 +162,10 @@ extern s32 sub_8001240(struct_80011C4 *a1, s32 idx);
 //sub_80012A4.c
 extern void sub_80012A4(struct_80011C4 *a1);
 extern void testmain(u32 option);
-
+//sub_80014B0.c
 extern void sub_80014B0();
+
+extern void sub_8001888(u32 a1);
 extern void sub_8001AFC();
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
 extern void sub_8008118();\
@@ -192,6 +190,8 @@ extern void sub_800EB08(u32 a1);
 extern s32 CheckSaveForEepromMagic();
 extern void ResetConfiguration();
 extern s32 LoadConfiguration();
+extern void UpdateChecksum();
+extern u16 CalculateConfigurationChecksum();
 
 //sound.c
 extern void m4aSoundInit();

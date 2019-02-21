@@ -36,7 +36,7 @@ void AgbMain()
         {
             gUnknown_03002BB0.default_option = 4;
             gUnknown_03002BB0.isAGS = 0;
-            gUnknown_03002BB0.field_8 = 0;
+            gUnknown_03002BB0.aging_time = 0;
         }
         else if ( LoadConfiguration() )
         {
