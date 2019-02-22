@@ -160,6 +160,8 @@ const sTestCollection stru_8018F5C[] = {
     { stru_8018F1C,                 sizeof(stru_8018F1C) / sizeof(sTest)        },
 };
 
+u32 gUnknown_03000350 = 0;
+
 void sub_8001AFC()
 {
     sInterruptSetup v3;                             // [sp+0h]

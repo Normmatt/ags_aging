@@ -219,6 +219,7 @@ SECTIONS
         /* Data */
         src/aging_main.o(.data);                /* rodata 0801829C */
         src/sub_8000AD4.o(.data);               /* rodata 08018448 */
+        src/sub_8001AFC.o(.text);               /* rodata 08018988 */
     } = 0
     
     . = 0x081421A0;

@@ -1,6 +1,6 @@
 . = ALIGN(4); src/aging_main.o(.data);
 . = ALIGN(4); src/sub_8000AD4.o(.data);
-. = 0x00000350; gUnknown_03000350 = .;
+. = ALIGN(4); src/sub_8001AFC.o(.data);
 . = 0x00000354; gUnknown_03000354 = .;
 . = 0x00000368; gUnknown_03000368 = .;
 . = 0x0000037C; gUnknown_0300037C = .;
