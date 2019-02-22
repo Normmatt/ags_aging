@@ -8,6 +8,7 @@
 // define a function pointer type
 typedef void (*void_pointer)(void);
 typedef s32 (*result_pointer)(void);
+typedef s32 (*test3_pointer)(void *a1, void *a2);
 
 //Structs
 typedef struct sSettings
@@ -90,6 +91,17 @@ typedef struct struct_v5
   struct_v5_1 field4;
 } struct_v5;
 
+typedef struct sTest
+{
+  test3_pointer funcPtr;
+  char *name;
+} sTest;
+
+typedef struct sTestCollection
+{
+  const sTest *testsPtr;
+  int numTests;
+} sTestCollection;
 
 typedef struct sTestInstance
 {
@@ -169,6 +181,12 @@ extern const char gUnknown_08018800[];
 extern void sub_8001888(vu32 a1);
 
 extern void sub_8001AFC();
+extern const sTest* sub_8001EFC(u32 a1);
+
+extern void sub_8001F80(u32 a1);
+extern void sub_8001FA8(u32 *a1);
+extern void sub_8002024(u32 *a1);
+extern void sub_80020A0(u32 a1);
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
 extern void sub_8008118();\
 extern void DrawInputButtons(int isAGS);
@@ -189,6 +207,9 @@ extern void sub_800E710(u32 a1);
 extern void sub_800E9C0(u32 a1);
 extern void sub_800EA20();
 extern void sub_800EB08(u32 a1);
+extern void sub_800ECB4();
+extern u32 sub_800ECD4(u32 *cmd_out, u32 *expected_response);
+extern void sub_800ED48(u32 a1, u32 a2, u32 *a3);
 extern s32 CheckSaveForEepromMagic();
 extern void ResetConfiguration();
 extern s32 LoadConfiguration();
@@ -208,6 +229,7 @@ extern void SoundVSyncOff_rev01();
 
 //IWRAM
 extern u32 gUnknown_03000000;
+extern u32 gUnknown_03000350;
 extern u32 gUnknown_0300045C;
 extern keyStatus gUnknown_03000460;
 extern struct_3001B40 gUnknown_03001B40;
