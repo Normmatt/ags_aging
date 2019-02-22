@@ -2,67 +2,6 @@
 #include "gba/gba.h"
 #include "definitions.h"
 
-extern s32 sub_80020C8(void *a1, void *a2);
-extern s32 sub_80021EC(void *a1, void *a2);
-extern s32 sub_80022E4(void *a1, void *a2);
-extern s32 sub_8002628(void *a1, void *a2);
-extern s32 sub_8002AB4(void *a1, void *a2);
-extern s32 sub_8002C8C(void *a1, void *a2);
-extern s32 sub_8002CAC(void *a1, void *a2);
-extern s32 sub_8002F60(void *a1, void *a2);
-extern s32 sub_8002FF4(void *a1, void *a2);
-extern s32 sub_800308C(void *a1, void *a2);
-extern s32 sub_80030A8(void *a1, void *a2);
-extern s32 sub_800319C(void *a1, void *a2);
-extern s32 sub_8003250(void *a1, void *a2);
-
-extern s32 sub_8003558(void *a1, void *a2);
-extern s32 sub_8003610(void *a1, void *a2);
-extern s32 sub_8003744(void *a1, void *a2);
-extern s32 sub_8003858(void *a1, void *a2);
-extern s32 sub_8003A00(void *a1, void *a2);
-extern s32 sub_8003BA0(void *a1, void *a2);
-extern s32 sub_8003C6C(void *a1, void *a2);
-
-extern s32 sub_8008ADC(void *a1, void *a2);
-
-extern s32 sub_8009074(void *a1, void *a2);
-extern s32 sub_80090EC(void *a1, void *a2);
-extern s32 sub_8009240(void *a1, void *a2);
-
-extern s32 sub_800A2E4(void *a1, void *a2);
-extern s32 sub_800A46C(void *a1, void *a2);
-extern s32 sub_800A614(void *a1, void *a2);
-extern s32 sub_800A788(void *a1, void *a2);
-extern s32 sub_800A7A4(void *a1, void *a2);
-extern s32 sub_800A9D4(void *a1, void *a2);
-extern s32 sub_800AC88(void *a1, void *a2);
-
-extern s32 sub_800ACA4(void *a1, void *a2);
-extern s32 sub_800AEF0(void *a1, void *a2);
-extern s32 sub_800B2EC(void *a1, void *a2);
-extern s32 sub_800B50C(void *a1, void *a2);
-extern s32 sub_800B724(void *a1, void *a2);
-extern s32 sub_800B7DC(void *a1, void *a2);
-extern s32 sub_800B8D0(void *a1, void *a2);
-extern s32 sub_800B91C(void *a1, void *a2);
-extern s32 sub_800BA64(void *a1, void *a2);
-
-extern s32 sub_800C04C(void *a1, void *a2);
-extern s32 sub_800C0B8(void *a1, void *a2);
-
-extern s32 sub_800C5C0(void *a1, void *a2);
-extern s32 sub_800C6AC(void *a1, void *a2);
-extern s32 sub_800C798(void *a1, void *a2);
-extern s32 sub_800C8AC(void *a1, void *a2);
-extern s32 sub_800C9D4(void *a1, void *a2);
-extern s32 sub_800CB50(void *a1, void *a2);
-extern s32 sub_800CCB8(void *a1, void *a2);
-extern s32 sub_800CD3C(void *a1, void *a2);
-
-extern s32 sub_800CE04(void *a1, void *a2);
-extern s32 sub_800CE3C(void *a1, void *a2);
-
 const sTest stru_8018988[] = {
     { sub_80020C8,                  "GET SYSTEM ROM CHECK SUM"                  },
     { sub_80021EC,                  "CPU EXTERNAL WORK RAM TEST"                },

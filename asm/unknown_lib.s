@@ -306,8 +306,8 @@ _0800F368:
 	add sp, #0x10
 	bx r1
 
-	THUMB_FUNC_START sub_800F37C
-sub_800F37C: @ 0x0800F37C
+	THUMB_FUNC_START GetSystemRomChecksum
+GetSystemRomChecksum: @ 0x0800F37C
 	svc #0xd
 	bx lr
     

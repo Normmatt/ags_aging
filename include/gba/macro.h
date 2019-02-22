@@ -38,6 +38,12 @@
     dmaRegs[2];                                   \
 }
 
+#define DmaWait(dmaNum)                                     \
+{                                                           \
+    vu32 *dmaRegs = (vu32 *)REG_ADDR_DMA##dmaNum;           \
+    while (dmaRegs[2] & 0x80000000) ;                       \
+}
+
 #define DMA_FILL(dmaNum, value, dest, size, bit)                                              \
 {                                                                                             \
     vu##bit tmp = (vu##bit)(value);                                                           \

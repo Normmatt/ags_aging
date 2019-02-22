@@ -191,10 +191,82 @@ extern const char gUnknown_08019080[];
 extern void sub_8002024(u32 *a1);
 
 extern void sub_80020A0(u32 a1); //Tests after this?
+
+extern s32 sub_80020C8(void *a1, void *a2);
+extern s32 sub_80020E8(u32 *a1);
+extern s32 sub_80021EC(void *a1, void *a2);
+extern s32 sub_80022E4(void *a1, void *a2);
+extern void sub_8002304();
+extern s32 sub_8002628(void *a1, void *a2);
+extern s32 sub_8002AB4(void *a1, void *a2);
+extern s32 sub_8002C8C(void *a1, void *a2);
+extern s32 sub_8002CAC(void *a1, void *a2);
+extern s32 sub_8002F60(void *a1, void *a2);
+extern s32 sub_8002FF4(void *a1, void *a2);
+extern s32 sub_800308C(void *a1, void *a2);
+extern s32 sub_80030A8(void *a1, void *a2);
+extern s32 sub_800319C(void *a1, void *a2);
+extern s32 sub_8003250(void *a1, void *a2);
+
+extern s32 sub_8003558(void *a1, void *a2);
+extern s32 sub_8003610(void *a1, void *a2);
+extern s32 sub_8003744(void *a1, void *a2);
+extern s32 sub_8003858(void *a1, void *a2);
+extern s32 sub_8003A00(void *a1, void *a2);
+extern s32 sub_8003BA0(void *a1, void *a2);
+extern s32 sub_8003C6C(void *a1, void *a2);
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
-extern void sub_8008118();\
+
+extern void sub_8008118();
+
+extern s32 sub_8008ADC(void *a1, void *a2);
+
+extern s32 sub_8009074(void *a1, void *a2);
+extern s32 sub_80090EC(void *a1, void *a2);
+extern s32 sub_8009240(void *a1, void *a2);
+
+extern s32 sub_800A2E4(void *a1, void *a2);
+extern s32 sub_800A46C(void *a1, void *a2);
+extern s32 sub_800A614(void *a1, void *a2);
+extern s32 sub_800A788(void *a1, void *a2);
+extern s32 sub_800A7A4(void *a1, void *a2);
+extern s32 sub_800A9D4(void *a1, void *a2);
+extern s32 sub_800AC88(void *a1, void *a2);
+
+extern s32 sub_800ACA4(void *a1, void *a2);
+extern s32 sub_800AEF0(void *a1, void *a2);
+extern s32 sub_800B2EC(void *a1, void *a2);
+extern s32 sub_800B50C(void *a1, void *a2);
+extern s32 sub_800B724(void *a1, void *a2);
+extern s32 sub_800B7DC(void *a1, void *a2);
+extern s32 sub_800B8D0(void *a1, void *a2);
+extern s32 sub_800B91C(void *a1, void *a2);
+extern s32 sub_800BA64(void *a1, void *a2);
+
+extern s32 sub_800C04C(void *a1, void *a2);
+extern s32 sub_800C0B8(void *a1, void *a2);
+
+extern s32 sub_800C5C0(void *a1, void *a2);
+extern s32 sub_800C6AC(void *a1, void *a2);
+extern s32 sub_800C798(void *a1, void *a2);
+extern s32 sub_800C8AC(void *a1, void *a2);
+extern s32 sub_800C9D4(void *a1, void *a2);
+extern s32 sub_800CB50(void *a1, void *a2);
+extern s32 sub_800CCB8(void *a1, void *a2);
+extern s32 sub_800CD3C(void *a1, void *a2);
+
+extern s32 sub_800CE04(void *a1, void *a2);
+extern s32 sub_800CE3C(void *a1, void *a2);
+
 extern void DrawInputButtons(int isAGS);
 extern void sub_800C2C8(u32 a1, u16 a2);
+
+u32 WriteAndVerifyMemory_U8(u32 start_address, u32 end_address, u8 val, u32 *diff_address_out, u32 *diff_val_out);
+s32 WriteAndVerifyWord_ASM(u32 start_address, u32 end_address, u32 *diff_address_out, u32 *diff_val_out);
+u32 WriteAndVerifyMemory_U32(u32 start_address, u32 end_address, u32 val, u32 *diff_address_out, u32 *diff_val_out);
+s32 TimeDmaToAndFromMemory_U16(u32 start_address, u16 unit_size);
+s32 TimeDmaToAndFromMemory_U32(u32 start_address, u16 unit_size, u32 bit_width);
+
 extern void sub_800D5F4();
 extern void WaitForInterrupt(u16 irq);
 extern void_pointer SetInterruptHandler(u16 a1, void_pointer a2);
@@ -219,6 +291,7 @@ extern void ResetConfiguration();
 extern s32 LoadConfiguration();
 extern void UpdateChecksum();
 extern u16 CalculateConfigurationChecksum();
+extern u32 GetSystemRomChecksum();
 
 //sound.c
 extern void m4aSoundInit();
@@ -229,15 +302,19 @@ extern void SoundVSync_rev01();
 extern void SoundVSyncOff_rev01();
 
 //EWRAM
-//extern u32 gUnknown_0200043C;
+extern u16 gUnknown_02000000;
 
 //IWRAM
 extern u32 gUnknown_03000000;
 extern u32 gUnknown_03000350;
 extern u32 gUnknown_0300045C;
 extern keyStatus gUnknown_03000460;
+extern vu32 gUnknown_03001080;
+extern u32 gUnknown_03001088[6];
 extern struct_3001B40 gUnknown_03001B40;
 extern sSettings gUnknown_03002BB0;
+//extern u16 gUnknown_03007FF8;
+#define gUnknown_03007FF8 *(u16*)0x03007FF8
 
 //Data
 //extern u16 gUnknown_080ECF78[8];
