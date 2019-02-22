@@ -179,14 +179,18 @@ extern void sub_80014B0();
 extern const char gUnknown_08018800[];
 //sub_8001888.c
 extern void sub_8001888(vu32 a1);
-
+//sub_8001AFC.c
 extern void sub_8001AFC();
 extern const sTest* sub_8001EFC(u32 a1);
-
+//sub_8001F80.c
 extern void sub_8001F80(u32 a1);
+//sub_8001FA8.c
 extern void sub_8001FA8(u32 *a1);
+extern const char gUnknown_08019080[];
+
 extern void sub_8002024(u32 *a1);
-extern void sub_80020A0(u32 a1);
+
+extern void sub_80020A0(u32 a1); //Tests after this?
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
 extern void sub_8008118();\
 extern void DrawInputButtons(int isAGS);
