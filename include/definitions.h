@@ -266,6 +266,7 @@ s32 WriteAndVerifyWord_ASM(u32 start_address, u32 end_address, u32 *diff_address
 u32 WriteAndVerifyMemory_U32(u32 start_address, u32 end_address, u32 val, u32 *diff_address_out, u32 *diff_val_out);
 s32 TimeDmaToAndFromMemory_U16(u32 start_address, u16 unit_size);
 s32 TimeDmaToAndFromMemory_U32(u32 start_address, u16 unit_size, u32 bit_width);
+extern u32 sub_800D52C(u32 start_address, u32 end_address, u32 val, u32 *diff_address_out, u32 *diff_val_out);
 
 extern void sub_800D5F4();
 extern void WaitForInterrupt(u16 irq);
