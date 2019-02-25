@@ -2,24 +2,6 @@
 
 .syntax unified
 
-
-	THUMB_FUNC_START sub_800319C
-sub_800319C: @ 0x0800319C
-	push {r7, lr}
-	sub sp, #8
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	bl sub_80030E8
-	adds r1, r0, #0
-	adds r0, r1, #0
-	b _080031B0
-_080031B0:
-	add sp, #8
-	pop {r7}
-	pop {r1}
-	bx r1
-
 	THUMB_FUNC_START sub_80031B8
 sub_80031B8: @ 0x080031B8
 	push {r4, r7, lr}

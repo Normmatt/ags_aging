@@ -51,9 +51,9 @@ SECTIONS
         src/sub_8002024.o(.text);               /* rodata 0801908C */
         src/sub_80020A0.o(.text);               /* rodata 080190B0 */
         src/sub_8002488.o(.text);               /* rodata 080190D8 */
-        src/sub_8002CAC.o(.text);               /* rodata 0801915C */
-        asm/sub_8002CAC.o(.text);               /* rodata 0801915C */
-        asm/sub_800319C.o(.text);               /* rodata 0801915C */
+        src/sub_8002CAC.o(.text);               /* rodata 080190F0 */
+        asm/sub_8002CAC.o(.text);               /* rodata 080190F0 */
+        asm/sub_80031B8.o(.text);               /* rodata 0801915C */
         asm/sub_8003C88.arm.o(.text);           /* rodata 08019198 */
         asm/sub_8003DF4.o(.text);               /* rodata 080194D8 */
         asm/sub_80055D4.o(.text);               /* rodata 080195A0 */
