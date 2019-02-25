@@ -207,6 +207,7 @@ extern s32 sub_800308C(void *a1, void *a2);
 extern s32 sub_80030A8(void *a1, void *a2);
 extern s32 sub_800319C(void *a1, void *a2);
 extern s32 sub_8003250(void *a1, void *a2);
+extern u32 sub_800326C();
 
 extern s32 sub_8003558(void *a1, void *a2);
 extern s32 sub_8003610(void *a1, void *a2);
@@ -284,6 +285,7 @@ extern void sub_800E710(u32 a1);
 extern void sub_800E9C0(u32 a1);
 extern void sub_800EA20();
 extern void sub_800EB08(u32 a1);
+extern void sub_800EC94();
 extern void sub_800ECB4();
 extern u32 sub_800ECD4(u32 *cmd_out, u32 *expected_response);
 extern void sub_800ED48(u32 a1, u32 a2, u32 *a3);
