@@ -135,3 +135,38 @@ s32 sub_80030A8(void *a1, void *a2)
 
     return 0;
 }
+
+s32 sub_80030E8()
+{
+    u32 i;              // [sp+0h]
+    u32 j;              // [sp+4h]
+    u32 v2;             // [sp+8h]
+    u32 v3;             // [sp+Ch]
+    s32 v4 = 0;         // [sp+10h]
+    u16 v5;             // [sp+14h]
+    u32 v6[3][8] = {      // [sp+18h]
+        { 0x28,0x24,0x20,0x38,0x24,0x20,0x1C,0x34, },
+        { 0x30,0x2C,0x28,0x40,0x24,0x20,0x1C,0x34, },
+        { 0x40,0x3C,0x38,0x50,0x24,0x20,0x1C,0x34, }
+    };
+
+    v5 = SetIME(0);
+    v3 = 0;
+    for ( i = 0; i <= 2; ++i )
+    {
+        for ( j = 0; j <= 7; ++j )
+        {
+            v2 = Test_CallFromStack_ASM((u32)&sub_800329C, (u32)&sub_8003310, i, j);
+            if ( v2 != v6[i][j] )
+                v4 |= 1 << v3;
+            v3 = v3 + 1;
+        }
+    }
+    SetIME(v5);
+    return v4;
+}
+
+s32 sub_800319C(void *a1, void *a2)
+{
+    return sub_80030E8();
+}

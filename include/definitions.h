@@ -208,6 +208,8 @@ extern s32 sub_80030A8(void *a1, void *a2);
 extern s32 sub_800319C(void *a1, void *a2);
 extern s32 sub_8003250(void *a1, void *a2);
 extern u32 sub_800326C();
+extern s32 sub_800329C(u32 a1, u16 a2);
+extern s32 sub_8003310(u16 a1);
 
 extern s32 sub_8003558(void *a1, void *a2);
 extern s32 sub_8003610(void *a1, void *a2);
@@ -216,6 +218,7 @@ extern s32 sub_8003858(void *a1, void *a2);
 extern s32 sub_8003A00(void *a1, void *a2);
 extern s32 sub_8003BA0(void *a1, void *a2);
 extern s32 sub_8003C6C(void *a1, void *a2);
+extern s32 sub_8003C88(u16 *a1, u32 a2);
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
 
 extern void sub_8008118();
@@ -295,6 +298,8 @@ extern s32 LoadConfiguration();
 extern void UpdateChecksum();
 extern u16 CalculateConfigurationChecksum();
 extern u32 GetSystemRomChecksum();
+
+extern s32 Test_CallFromStack_ASM(u32 a1, u32 a2, u32 a3, u32 a4);
 
 //sound.c
 extern void m4aSoundInit();

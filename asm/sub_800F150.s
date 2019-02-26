@@ -3,8 +3,8 @@
 .syntax unified
 
 
-	THUMB_FUNC_START sub_800F150
-sub_800F150: @ 0x0800F150
+	THUMB_FUNC_START Test_CallFromStack_ASM
+Test_CallFromStack_ASM: @ 0x0800F150
 	push {r4, r7, lr}
 	sub sp, #8
 	mov r7, sp

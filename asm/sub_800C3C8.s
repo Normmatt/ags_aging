@@ -658,7 +658,7 @@ sub_800C8C8: @ 0x0800C8C8
 	ldr r1, _0800C91C
 	ldr r2, _0800C920
 	movs r3, #0
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	ldr r0, [r7]
 	adds r1, r0, #0
 	lsls r0, r1, #2
@@ -1186,7 +1186,7 @@ _0800CD10:
 	ldr r1, _0800CD38
 	movs r2, #1
 	movs r3, #0
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	ldr r0, _0800CD2C
 	adds r1, r7, #0
 	ldrh r2, [r1]

@@ -54,7 +54,7 @@ _08008FF8:
 	movs r4, #0x80
 	lsls r4, r4, #0x10
 	orrs r3, r4
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	str r0, [r7, #8]
 	adds r0, r7, #0
 	adds r0, #0x18
@@ -138,7 +138,7 @@ sub_8009090: @ 0x08009090
 	ldr r1, _080090DC
 	ldr r2, _080090E0
 	movs r3, #0
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	str r0, [r7]
 	ldr r0, [r7]
 	movs r1, #0x80
@@ -229,7 +229,7 @@ _0800912A:
 	ldr r1, _08009218
 	ldr r2, _0800921C
 	movs r3, #0
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	ldr r0, [r7, #4]
 	adds r1, r0, #0
 	lsls r0, r1, #2
@@ -282,7 +282,7 @@ _08009194:
 	ldr r1, _08009218
 	ldr r2, _0800921C
 	movs r3, #0
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	ldr r0, [r7, #4]
 	adds r1, r0, #0
 	lsls r0, r1, #2

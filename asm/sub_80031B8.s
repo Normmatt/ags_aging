@@ -37,7 +37,7 @@ _080031F0:
 	ldr r1, _08003230
 	ldr r2, [r7]
 	movs r3, #0
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	str r0, [r7, #4]
 	adds r0, r7, #0
 	adds r0, #0x14
@@ -208,7 +208,7 @@ sub_8003374: @ sub_8003374
 	adds r2, r7, #0
 	movs r3, #0xe4
 	lsls r3, r3, #1
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	ldr r1, _080033E0
 	adds r0, r7, r1
 	adds r1, r7, #0
@@ -976,7 +976,7 @@ _08003936:
 	ldr r1, _08003968
 	adds r2, r7, #0
 	movs r3, #4
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	movs r0, #0
 	str r0, [r7, #0x18]
 _08003954:
@@ -1108,7 +1108,7 @@ sub_8003A1C: @ 0x08003A1C
 	adds r2, r7, #0
 	movs r3, #0xe4
 	lsls r3, r3, #1
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	adds r0, r7, #0
 	movs r0, #0xe5
 	lsls r0, r0, #3
@@ -1314,7 +1314,7 @@ sub_8003BBC: @ 0x08003BBC
 	ldr r1, _08003BF0
 	adds r2, r7, #0
 	movs r3, #4
-	bl sub_800F150
+	bl Test_CallFromStack_ASM
 	movs r0, #0
 	str r0, [r7, #0x18]
 _08003BE2:
