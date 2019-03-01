@@ -5,6 +5,11 @@
 
 #define SystemCall(No)   asm ("SWI    "#No"")
 
+// to help in decompiling
+#define asm_comment(x) asm volatile("@ -- " x " -- ")
+#define asm_unified(x) asm(".syntax unified\n" x "\n.syntax divided")
+#define NAKED __attribute__((naked))
+
 // define a function pointer type
 typedef void (*void_pointer)(void);
 typedef s32 (*result_pointer)(void);
@@ -208,17 +213,31 @@ extern s32 sub_80030A8(void *a1, void *a2);
 extern s32 sub_800319C(void *a1, void *a2);
 extern s32 sub_8003250(void *a1, void *a2);
 extern u32 sub_800326C();
+extern u32 sub_800326C_end;
 extern s32 sub_800329C(u32 a1, u16 a2);
+extern u32 sub_800329C_end;
 extern s32 sub_8003310(u16 a1);
+extern u32 sub_8003310_end;
+extern s32 sub_8003374();
 
 extern s32 sub_8003558(void *a1, void *a2);
 extern s32 sub_8003610(void *a1, void *a2);
+extern void sub_800362C();
 extern s32 sub_8003744(void *a1, void *a2);
+extern void sub_8003760();
 extern s32 sub_8003858(void *a1, void *a2);
+extern void sub_8003874();
 extern s32 sub_8003A00(void *a1, void *a2);
 extern s32 sub_8003BA0(void *a1, void *a2);
 extern s32 sub_8003C6C(void *a1, void *a2);
 extern s32 sub_8003C88(u16 *a1, u32 a2);
+extern u32 sub_8003C88_end;
+extern s32 sub_8003CF0(u32 *a1, u32 a2);
+extern u32 sub_8003CF0_end;
+extern s32 sub_8003D38(u16 *a1, u32 a2);
+extern u32 sub_8003D38_end;
+extern s32 sub_8003DAC(u16 *a1, u32 a2);
+extern u32 sub_8003DAC_end;
 extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
 
 extern void sub_8008118();
@@ -299,7 +318,7 @@ extern void UpdateChecksum();
 extern u16 CalculateConfigurationChecksum();
 extern u32 GetSystemRomChecksum();
 
-extern s32 Test_CallFromStack_ASM(u32 a1, u32 a2, u32 a3, u32 a4);
+extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 a4);
 
 //sound.c
 extern void m4aSoundInit();

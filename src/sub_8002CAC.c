@@ -156,7 +156,7 @@ s32 sub_80030E8()
     {
         for ( j = 0; j <= 7; ++j )
         {
-            v2 = Test_CallFromStack_ASM((u32)&sub_800329C, (u32)&sub_8003310, i, j);
+            v2 = Test_CallFromStack_ASM((void_pointer)sub_800329C, (void_pointer)&sub_800329C_end, i, j);
             if ( v2 != v6[i][j] )
                 v4 |= 1 << v3;
             v3 = v3 + 1;

@@ -33,6 +33,8 @@ _08003CB0:
 	.align 2, 0
 _08003CE8: .4byte 0x04000100
 _08003CEC: .4byte 0x04000006
+.global sub_8003C88_end
+sub_8003C88_end:
 
 	ARM_FUNC_START sub_8003CF0
 sub_8003CF0: @ sub_8003CF0
@@ -56,6 +58,8 @@ _08003D0C:
 	bx lr
 	.align 2, 0
 _08003D34: .4byte 0x04000004
+.global sub_8003CF0_end
+sub_8003CF0_end:
 
 	ARM_FUNC_START sub_8003D38
 sub_8003D38: @ sub_8003D38
@@ -90,6 +94,9 @@ _08003D68:
 	.align 2, 0
 _08003DA4: .4byte 0x04000100
 _08003DA8: .4byte 0x04000004
+.global sub_8003D38_end
+sub_8003D38_end:
+
 
 	ARM_FUNC_START sub_8003DAC
 sub_8003DAC: @ sub_8003DAC
@@ -113,3 +120,6 @@ _08003DC8:
 	bx lr
 	.align 2, 0
 _08003DF0: .4byte 0x04000004
+
+.global sub_8003DAC_end
+sub_8003DAC_end:
