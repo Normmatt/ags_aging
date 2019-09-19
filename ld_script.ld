@@ -56,6 +56,7 @@ SECTIONS
         asm/sub_800326C.asm.o(.text);           /* rodata none */
         src/sub_8003374.o(.text);               /* rodata 08019178 */
         asm/sub_8003C88.arm.o(.text);           /* rodata 08019198 */
+        src/sub_8003DF4.o(.text);               /* rodata 080194D8 */
         asm/sub_8003DF4.o(.text);               /* rodata 080194D8 */
         asm/sub_80055D4.o(.text);               /* rodata 080195A0 */
         asm/sub_8006750.o(.text);               /* rodata 0801967C */

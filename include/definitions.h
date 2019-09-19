@@ -10,10 +10,13 @@
 #define asm_unified(x) asm(".syntax unified\n" x "\n.syntax divided")
 #define NAKED __attribute__((naked))
 
+#define SRAM_BASE ((u16 *)0xE000000)
+
 // define a function pointer type
 typedef void (*void_pointer)(void);
 typedef s32 (*result_pointer)(void);
 typedef s32 (*test3_pointer)(void *a1, void *a2);
+typedef void (*display_test_function)(u32 target);
 
 //Structs
 typedef struct sSettings
@@ -133,6 +136,11 @@ typedef struct struct_80011C4
   u32 submenu_indexes[8];
 } struct_80011C4;
 
+typedef struct sDisplayTest
+{
+  const display_test_function handler;
+  u32 num;
+} sDisplayTest;
 
 
 //Functions
@@ -238,7 +246,22 @@ extern s32 sub_8003D38(u16 *a1, u32 a2);
 extern u32 sub_8003D38_end;
 extern s32 sub_8003DAC(u16 *a1, u32 a2);
 extern u32 sub_8003DAC_end;
-extern u32 sub_8003DF4(struct_v5 *a1, u32 *a2);
+
+extern u32 sub_8003DF4(struct_v5 *a1, void *a2);
+extern void sub_8003ED0(u32 *a1);
+extern void sub_8004038();
+extern void sub_800413C(sDisplayTest *a1, s32 a2);
+extern void sub_8004258();
+extern void sub_80043F4();
+extern void sub_80044F8();
+
+extern void sub_8004714(u32 target);
+extern void sub_8004A90(u32 target);
+extern void sub_80055D4(u32 target);
+extern void sub_8006750(u32 target);
+extern void sub_8007704(u32 target);
+extern void sub_8007C34(u32 target);
+extern void sub_8007F0C(u32 target);
 
 extern void sub_8008118();
 
@@ -320,6 +343,10 @@ extern u32 GetSystemRomChecksum();
 
 extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 a4);
 
+//
+extern sDisplayTest gUnknown_08019198[50];
+extern sDisplayTest gUnknown_08019328[24];
+
 //sound.c
 extern void m4aSoundInit();
 extern void m4aSoundMain();
@@ -338,12 +365,18 @@ extern u32 gUnknown_0300045C;
 extern keyStatus gUnknown_03000460;
 extern vu32 gUnknown_03001080;
 extern u32 gUnknown_03001088[6];
+extern s32 gUnknown_030010A0;
+extern u32 gUnknown_03001730;
+extern u32 gUnknown_03001734;
 extern struct_3001B40 gUnknown_03001B40;
 extern sSettings gUnknown_03002BB0;
+extern u8 gUnknown_03003D10[];
+extern u8 gUnknown_03003D50[];
 //extern u16 gUnknown_03007FF8;
 #define gUnknown_03007FF8 *(u16*)0x03007FF8
 
 //Data
 //extern u16 gUnknown_080ECF78[8];
+extern u8 gUnknown_080C4880[];
 
 #endif  // GUARD_AGB_SRAM_H

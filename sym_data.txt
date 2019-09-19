@@ -18,10 +18,10 @@
 . = 0x0000046C; gUnknown_0300046C = .;
 . = 0x0000052C; gUnknown_0300052C = .;
 . = 0x00000530; gUnknown_03000530 = .;
-. = ALIGN(4); tools/agbcc/lib/libc.a:impure.o(.data);
+. = ALIGN(4); *libc.a:impure.o(.data);
 . = 0x00000820; gUnknown_03000820 = .;
-. = ALIGN(4); tools/agbcc/lib/libc.a:locale.o(.data);
+. = ALIGN(4); *libc.a:locale.o(.data);
 . = 0x00000834; gUnknown_03000834 = .;
-. = ALIGN(4); tools/agbcc/lib/libc.a:mallocr.o(.data);
+. = ALIGN(4); *libc.a:mallocr.o(.data);
 . = 0x00000C78; gUnknown_03000C78 = .;
-. = ALIGN(4);
+. = ALIGN(4); 

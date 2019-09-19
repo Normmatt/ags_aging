@@ -45,7 +45,11 @@
 #define REG_OFFSET_WIN0V       0x44
 #define REG_OFFSET_WIN1V       0x46
 #define REG_OFFSET_WININ       0x48
+#define REG_OFFSET_WININ_L     0x48
+#define REG_OFFSET_WININ_H     0x49
 #define REG_OFFSET_WINOUT      0x4a
+#define REG_OFFSET_WINOUT_L    0x4a
+#define REG_OFFSET_WINOUT_H    0x4b
 #define REG_OFFSET_MOSAIC      0x4c
 #define REG_OFFSET_BLDCNT      0x50
 #define REG_OFFSET_BLDALPHA    0x52
@@ -222,7 +226,9 @@
 #define REG_ADDR_WIN0V       (REG_BASE + REG_OFFSET_WIN0V)
 #define REG_ADDR_WIN1V       (REG_BASE + REG_OFFSET_WIN1V)
 #define REG_ADDR_WININ       (REG_BASE + REG_OFFSET_WININ)
+#define REG_ADDR_WININ_H     (REG_BASE + REG_OFFSET_WININ_H)
 #define REG_ADDR_WINOUT      (REG_BASE + REG_OFFSET_WINOUT)
+#define REG_ADDR_WINOUT_H    (REG_BASE + REG_OFFSET_WINOUT_H)
 #define REG_ADDR_MOSAIC      (REG_BASE + REG_OFFSET_MOSAIC)
 #define REG_ADDR_BLDCNT      (REG_BASE + REG_OFFSET_BLDCNT)
 #define REG_ADDR_BLDALPHA    (REG_BASE + REG_OFFSET_BLDALPHA)
@@ -383,7 +389,11 @@
 #define REG_WIN0V       (*(vu16 *)REG_ADDR_WIN0V)
 #define REG_WIN1V       (*(vu16 *)REG_ADDR_WIN1V)
 #define REG_WININ       (*(vu16 *)REG_ADDR_WININ)
+#define REG_WININ_L     (*(vu8 *) REG_ADDR_WININ)
+#define REG_WININ_H     (*(vu8 *) REG_ADDR_WININ_H)
 #define REG_WINOUT      (*(vu16 *)REG_ADDR_WINOUT)
+#define REG_WINOUT_L    (*(vu8 *) REG_ADDR_WINOUT)
+#define REG_WINOUT_H    (*(vu8 *) REG_ADDR_WINOUT_H)
 #define REG_MOSAIC      (*(vu16 *)REG_ADDR_MOSAIC)
 #define REG_BLDCNT      (*(vu16 *)REG_ADDR_BLDCNT)
 #define REG_BLDALPHA    (*(vu16 *)REG_ADDR_BLDALPHA)
