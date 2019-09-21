@@ -12,6 +12,8 @@
 
 #define SRAM_BASE ((u16 *)0xE000000)
 
+typedef struct OamData sOamData;
+
 // define a function pointer type
 typedef void (*void_pointer)(void);
 typedef s32 (*result_pointer)(void);
@@ -258,7 +260,7 @@ extern u32 sub_8003DAC_end;
 extern u32 sub_8003DF4(struct_v5 *a1, void *a2);
 extern void sub_8003ED0(u32 *a1);
 extern void sub_8004038();
-extern void sub_800413C(sDisplayTest *a1, s32 a2);
+extern void sub_800413C(const sDisplayTest *a1, s32 a2);
 extern void sub_8004258();
 extern void sub_80043F4();
 extern void sub_80044F8();
@@ -376,7 +378,7 @@ extern const sDisplayTest gUnknown_08019198[50];
 extern const sDisplayTest gUnknown_08019328[24];
 extern const sDisplayTest gUnknown_080193E8[10];
 extern const sDisplayTest gUnknown_08019438[3];
-extern sDisplayTest2 gUnknown_080194D8[11];
+extern const sDisplayTest2 gUnknown_080194D8[11];
 extern sDisplayTest2 gUnknown_080195A0[8];
 extern sDisplayTest2 gUnknown_0801967C[9];
 extern sDisplayTest2 gUnknown_08019790[7];
@@ -409,7 +411,7 @@ extern u32 gUnknown_03001088[6];
 extern s32 gUnknown_030010A0;
 extern s32 gUnknown_03001730;
 extern s32 gUnknown_03001734;
-extern u8 gUnknown_03001740[];
+extern sOamData gUnknown_03001740[];
 extern struct_3001B40 gUnknown_03001B40;
 extern sSettings gUnknown_03002BB0;
 extern u8 gUnknown_03003D10[];
@@ -419,14 +421,30 @@ extern u8 gUnknown_03003D50[];
 
 //Data
 //extern u16 gUnknown_080ECF78[8];
-extern u32 gUnknown_0807748C[];
+extern sOamData gUnknown_08077464[];
+extern sOamData gUnknown_0807748C[];
 extern u8 gUnknown_08077494[];
+extern u8 gUnknown_080BCF40[];
+extern u8 gUnknown_080BD780[];
+extern u8 gUnknown_080BDF80[];
+extern u8 gUnknown_080BF380[];
 extern u8 gUnknown_080C4880[];
 extern u8 gUnknown_080C4A20[];
+extern u8 gUnknown_080CCE50[];
 extern u8 gUnknown_080EDF0C[];
 extern u8 gUnknown_080EE7DC[];
 extern u8 gUnknown_080EF0AC[];
 extern u8 gUnknown_080EF97C[];
+extern u8 gUnknown_080F024C[];
+extern u8 gUnknown_080F0B1C[];
+extern u8 gUnknown_080F13EC[];
+extern u8 gUnknown_080F1CBC[];
+extern u8 gUnknown_080F2E08[];
+extern u8 gUnknown_080F3F54[];
+extern u8 gUnknown_080F61A0[];
 extern u8 gUnknown_081003F4[];
+extern u8 gUnknown_081005F4[];
+
+
 
 #endif  // GUARD_AGB_SRAM_H

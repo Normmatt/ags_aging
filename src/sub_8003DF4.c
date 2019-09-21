@@ -256,7 +256,7 @@ void sub_8004038()
     SoundVSyncOff_rev01();
 }
 
-void sub_800413C(sDisplayTest *tests, s32 a2)
+void sub_800413C(const sDisplayTest *tests, s32 a2)
 {
     s32 idx;            // [sp+8h]
     s32 update;         // [sp+Ch]
