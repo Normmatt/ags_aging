@@ -17,6 +17,7 @@ typedef void (*void_pointer)(void);
 typedef s32 (*result_pointer)(void);
 typedef s32 (*test3_pointer)(void *a1, void *a2);
 typedef void (*display_test_function)(u32 target);
+typedef void (*display_test_function4)(u32 target, u32 unk1, u32 unk2, u32 unk3);
 
 //Structs
 typedef struct sSettings
@@ -142,6 +143,12 @@ typedef struct sDisplayTest
   u32 num;
 } sDisplayTest;
 
+typedef struct sDisplayTest2
+{
+  const void_pointer handler;
+  s32 num;
+} sDisplayTest2;
+
 
 //Functions
 //main.c
@@ -247,6 +254,7 @@ extern u32 sub_8003D38_end;
 extern s32 sub_8003DAC(u16 *a1, u32 a2);
 extern u32 sub_8003DAC_end;
 
+//sub_8003DF4.c
 extern u32 sub_8003DF4(struct_v5 *a1, void *a2);
 extern void sub_8003ED0(u32 *a1);
 extern void sub_8004038();
@@ -254,9 +262,12 @@ extern void sub_800413C(sDisplayTest *a1, s32 a2);
 extern void sub_8004258();
 extern void sub_80043F4();
 extern void sub_80044F8();
-
+extern void sub_800465C();
 extern void sub_8004714(u32 target);
 extern void sub_8004A90(u32 target);
+extern void sub_8004DF0();
+extern void sub_8005084();
+extern void sub_80053C8();
 extern void sub_80055D4(u32 target);
 extern void sub_8006750(u32 target);
 extern void sub_8007704(u32 target);
@@ -344,8 +355,16 @@ extern u32 GetSystemRomChecksum();
 extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 a4);
 
 //
-extern sDisplayTest gUnknown_08019198[50];
-extern sDisplayTest gUnknown_08019328[24];
+extern const sDisplayTest gUnknown_08019198[50];
+extern const sDisplayTest gUnknown_08019328[24];
+extern const sDisplayTest gUnknown_080193E8[10];
+extern const sDisplayTest gUnknown_08019438[3];
+extern sDisplayTest2 gUnknown_080194D8[11];
+extern sDisplayTest2 gUnknown_080195A0[8];
+extern sDisplayTest2 gUnknown_0801967C[9];
+extern sDisplayTest2 gUnknown_08019790[7];
+extern sDisplayTest2 gUnknown_08019804[2];
+extern sDisplayTest2 gUnknown_08019838[2];
 extern u8 gUnknown_08019864[];
 extern u8 gUnknown_0802C464[];
 extern u8 gUnknown_0803F064[];
