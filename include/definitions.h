@@ -262,9 +262,25 @@ extern void sub_800413C(sDisplayTest *a1, s32 a2);
 extern void sub_8004258();
 extern void sub_80043F4();
 extern void sub_80044F8();
+extern void sub_8004518();
+extern void sub_80045B8(u8 *a1);
+extern void sub_8004630();
 extern void sub_800465C();
 extern void sub_8004714(u32 target);
+
+//sub_8004A90
 extern void sub_8004A90(u32 target);
+extern void sub_8004B40();
+extern void sub_8004B58();
+extern void sub_8004B94();
+extern void sub_8004BD0();
+extern void sub_8004C0C();
+extern void sub_8004C4C();
+extern void sub_8004C8C();
+extern void sub_8004CC8();
+extern void sub_8004D04();
+extern void sub_8004D44();
+extern void sub_8004D9C();
 extern void sub_8004DF0();
 extern void sub_8005084();
 extern void sub_80053C8();
@@ -350,6 +366,7 @@ extern void ResetConfiguration();
 extern s32 LoadConfiguration();
 extern void UpdateChecksum();
 extern u16 CalculateConfigurationChecksum();
+extern void sub_800F35C(void *dst, u32 len, u32 *qword);
 extern u32 GetSystemRomChecksum();
 
 extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 a4);
@@ -392,6 +409,7 @@ extern u32 gUnknown_03001088[6];
 extern s32 gUnknown_030010A0;
 extern s32 gUnknown_03001730;
 extern s32 gUnknown_03001734;
+extern u8 gUnknown_03001740[];
 extern struct_3001B40 gUnknown_03001B40;
 extern sSettings gUnknown_03002BB0;
 extern u8 gUnknown_03003D10[];
@@ -401,6 +419,14 @@ extern u8 gUnknown_03003D50[];
 
 //Data
 //extern u16 gUnknown_080ECF78[8];
+extern u32 gUnknown_0807748C[];
+extern u8 gUnknown_08077494[];
 extern u8 gUnknown_080C4880[];
+extern u8 gUnknown_080C4A20[];
+extern u8 gUnknown_080EDF0C[];
+extern u8 gUnknown_080EE7DC[];
+extern u8 gUnknown_080EF0AC[];
+extern u8 gUnknown_080EF97C[];
+extern u8 gUnknown_081003F4[];
 
 #endif  // GUARD_AGB_SRAM_H
