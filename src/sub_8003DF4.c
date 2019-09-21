@@ -383,5 +383,77 @@ void sub_800465C()
             sub_8004630();
         }
     }
-    REG_DISPCNT |= 0x80u;
+    REG_DISPCNT |= DISPCNT_FORCED_BLANK;
+}
+
+//LCD Unit Checker
+void sub_8004714(u32 target)
+{
+    s32 col;                // [sp+4h]
+    s32 i;                  // [sp+8h]
+    s32 j;                  // [sp+Ch]
+
+    sub_8004518();
+    sub_80045B8((u8*)0x6014000);
+    REG_DISPCNT = DISPCNT_MODE_3 | DISPCNT_BG2_ON;
+
+    switch ( target )
+    {
+        case 0u: //Black to White gradient interlaced
+            DmaCopy32(3,gUnknown_08019864,0x6000000,0x12C00);
+            break;
+        case 1u: //White
+            REG_DISPCNT |= DISPCNT_FORCED_BLANK;
+            DmaCopy32(3,0x8000000,0x6000000,0x12C00);
+            break;
+        case 2u: //Black
+            DmaFill32(3, 0, 0x6000000, 0x12C00);
+            break;
+        case 3u: //Red
+            DmaFill32(3, 0x1F001F, 0x6000000, 0x12C00);
+            break;
+        case 4u: //Green
+            DmaFill32(3, 0x3E003E0, 0x6000000, 0x12C00);
+            break;
+        case 5u: //Blue
+            DmaFill32(3, 0x7C007C00, 0x6000000, 0x12C00);
+            break;
+        case 6u: //White to Black gradient
+            DmaCopy32(3,gUnknown_0802C464,0x6000000,0x12C00);
+            break;
+        case 7u: //Black to White gradient horizontal
+            DmaCopy32(3,gUnknown_0803F064,0x6000000,0x12C00);
+            break;
+        case 8u: //Quadrant indicators
+            DmaCopy32(3,gUnknown_08051C64,0x6000000,0x12C00);
+            break;
+        case 9u: //Fade from Black to White
+        {
+            for(j=0; j<32; j++)
+            {
+                col = RGB(j,j,j);
+                col |= col << 16; //Left over code from debugging?
+                DmaFill32(3, RGB(j,j,j) | (RGB(j,j,j) << 16), 0x6000000, 0x12C00);
+                for (i=0; i<4; i++)
+                {
+                    switch(gUnknown_03001734)
+                    {
+                        case 2:
+                            sub_8008118();
+                        case 1:
+                        case 3:
+                        case 4:
+                        case 5:
+                            m4aSoundMain();
+                    }
+                    WaitForInterrupt(1u);
+                }
+            }
+            break;
+        }
+        case 10u:
+            DmaCopy32(3,gUnknown_08064864,0x6000000,0x12C00);
+            break;
+    }
+    gUnknown_03001730 = -1;
 }

@@ -346,6 +346,11 @@ extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 
 //
 extern sDisplayTest gUnknown_08019198[50];
 extern sDisplayTest gUnknown_08019328[24];
+extern u8 gUnknown_08019864[];
+extern u8 gUnknown_0802C464[];
+extern u8 gUnknown_0803F064[];
+extern u8 gUnknown_08051C64[];
+extern u8 gUnknown_08064864[];
 
 //sound.c
 extern void m4aSoundInit();
@@ -366,8 +371,8 @@ extern keyStatus gUnknown_03000460;
 extern vu32 gUnknown_03001080;
 extern u32 gUnknown_03001088[6];
 extern s32 gUnknown_030010A0;
-extern u32 gUnknown_03001730;
-extern u32 gUnknown_03001734;
+extern s32 gUnknown_03001730;
+extern s32 gUnknown_03001734;
 extern struct_3001B40 gUnknown_03001B40;
 extern sSettings gUnknown_03002BB0;
 extern u8 gUnknown_03003D10[];
