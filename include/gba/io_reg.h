@@ -511,6 +511,7 @@
 #define DISPCNT_MODE_3       0x0003 // Bitmap mode, 240x160, BGR555 color
 #define DISPCNT_MODE_4       0x0004 // Bitmap mode, 240x160, 256 color palette
 #define DISPCNT_MODE_5       0x0005 // Bitmap mode, 160x128, BGR555 color
+#define DISPCNT_OBJ_H_OFF    0x0020
 #define DISPCNT_OBJ_1D_MAP   0x0040
 #define DISPCNT_FORCED_BLANK 0x0080
 #define DISPCNT_BG0_ON       0x0100

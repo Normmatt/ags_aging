@@ -130,7 +130,7 @@ void sub_8004D9C()
 
 void sub_8004DF0()
 {
-    sub_800F35C(gUnknown_03001740, 0x400, gUnknown_0807748C);
+    sub_800F35C(gUnknown_03001740, 0x400, &gUnknown_0807748C);
     DmaCopy32(3,gUnknown_08077494,gUnknown_03001740,0x3F0);
     sub_8004630();
     DmaCopy32(3,gUnknown_081003F4,0x5000000,0x200);
@@ -168,7 +168,7 @@ void sub_8005084()
 {
     u32 val;
     
-    sub_800F35C(gUnknown_03001740, 0x400, gUnknown_08077464);
+    sub_800F35C(gUnknown_03001740, 0x400, &gUnknown_08077464);
     gUnknown_03001740[0].tileNum = 0;
     gUnknown_03001740[0].y = 40;
     gUnknown_03001740[0].x = 68;

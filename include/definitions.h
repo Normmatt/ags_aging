@@ -270,7 +270,7 @@ extern void sub_8004630();
 extern void sub_800465C();
 extern void sub_8004714(u32 target);
 
-//sub_8004A90
+//sub_8004A90.c
 extern void sub_8004A90(u32 target);
 extern void sub_8004B40();
 extern void sub_8004B58();
@@ -286,7 +286,23 @@ extern void sub_8004D9C();
 extern void sub_8004DF0();
 extern void sub_8005084();
 extern void sub_80053C8();
+
+//sub_80055D4.c
 extern void sub_80055D4(u32 target);
+extern void sub_8005698();
+extern void sub_80056C4();
+extern void sub_80056F0();
+extern void sub_800571C();
+extern void sub_800575C();
+extern void sub_800579C();
+extern void sub_8005848();
+extern void sub_80058F4();
+extern void sub_8005998();
+extern void sub_8005D58();
+extern void sub_80064BC();
+extern void sub_800661C();
+
+//sub_8006750.c
 extern void sub_8006750(u32 target);
 extern void sub_8007704(u32 target);
 extern void sub_8007C34(u32 target);
@@ -368,7 +384,7 @@ extern void ResetConfiguration();
 extern s32 LoadConfiguration();
 extern void UpdateChecksum();
 extern u16 CalculateConfigurationChecksum();
-extern void sub_800F35C(void *dst, u32 len, u32 *qword);
+extern void sub_800F35C(void *dst, u32 len, sOamData *qword);
 extern u32 GetSystemRomChecksum();
 
 extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 a4);
@@ -406,6 +422,9 @@ extern u32 gUnknown_03000000;
 extern u32 gUnknown_03000350;
 extern u32 gUnknown_0300045C;
 extern keyStatus gUnknown_03000460;
+extern struct BgAffineSrcData gUnknown_03000354;
+extern struct BgAffineSrcData gUnknown_03000368;
+extern struct BgAffineSrcData gUnknown_0300037C;
 extern vu32 gUnknown_03001080;
 extern u32 gUnknown_03001088[6];
 extern s32 gUnknown_030010A0;
@@ -421,16 +440,30 @@ extern u8 gUnknown_03003D50[];
 
 //Data
 //extern u16 gUnknown_080ECF78[8];
-extern sOamData gUnknown_08077464[];
-extern sOamData gUnknown_0807748C[];
+extern sOamData gUnknown_08077464;
+extern sOamData gUnknown_0807746C;
+extern sOamData gUnknown_08077474;
+extern sOamData gUnknown_0807747C;
+extern sOamData gUnknown_08077484;
+extern sOamData gUnknown_0807748C;
 extern u8 gUnknown_08077494[];
 extern u8 gUnknown_080BCF40[];
 extern u8 gUnknown_080BD780[];
 extern u8 gUnknown_080BDF80[];
+extern u8 gUnknown_080BE180[];
 extern u8 gUnknown_080BF380[];
+extern u8 gUnknown_080C2F00[];
+extern u8 gUnknown_080C3100[];
+extern u8 gUnknown_080C33C0[];
+extern u8 gUnknown_080C3BC0[];
+extern u8 gUnknown_080C3DC0[];
+extern u8 gUnknown_080C4080[];
 extern u8 gUnknown_080C4880[];
 extern u8 gUnknown_080C4A20[];
 extern u8 gUnknown_080CCE50[];
+extern u8 gUnknown_080D527C[];
+extern u8 gUnknown_080DD6AC[];
+extern u8 gUnknown_080E5ADC[];
 extern u8 gUnknown_080EDF0C[];
 extern u8 gUnknown_080EE7DC[];
 extern u8 gUnknown_080EF0AC[];
@@ -442,8 +475,18 @@ extern u8 gUnknown_080F1CBC[];
 extern u8 gUnknown_080F2E08[];
 extern u8 gUnknown_080F3F54[];
 extern u8 gUnknown_080F61A0[];
+extern u8 gUnknown_080F6A6C[];
+extern u8 gUnknown_080F6BD8[];
+extern u8 gUnknown_080F74AC[];
+extern u8 gUnknown_080FDF44[];
+extern u8 gUnknown_080FE814[];
+extern u8 gUnknown_080FF0E4[];
+extern u8 gUnknown_080FF254[];
+extern u8 gUnknown_080FFB24[];
 extern u8 gUnknown_081003F4[];
 extern u8 gUnknown_081005F4[];
+extern u8 gUnknown_081007F4[];
+extern u8 gUnknown_081009F4[];
 
 
 
