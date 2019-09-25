@@ -53,9 +53,9 @@ SECTIONS
         src/sub_8002488.o(.text);               /* rodata 080190D8 */
         src/sub_8002CAC.o(.text);               /* rodata 080190F0 */
         src/sub_80031B8.o(.text);               /* rodata 0801915C */
-        asm/sub_800326C.asm.o(.text);           /* rodata none */
+        src/sub_800326C.asm.o(.text);           /* rodata none */
         src/sub_8003374.o(.text);               /* rodata 08019178 */
-        asm/sub_8003C88.arm.o(.text);           /* rodata 08019198 */
+        src/sub_8003C88.arm.o(.text);           /* rodata 08019198 */
         src/sub_8003DF4.o(.text);               /* rodata 08019198 */
         src/sub_8004A90.o(.text);               /* rodata 080194D8 */
         src/sub_80055D4.o(.text);               /* rodata 080195A0 */
@@ -81,12 +81,12 @@ SECTIONS
         asm/sub_800E710.o(.text);               /* rodata 08101884 */
         asm/sub_800E9C0.o(.text);               /* rodata 08101A60 */
         asm/sub_800EC50.o(.text);               /* rodata 08101C2C */
-        asm/interrupt_handler.arm.o(.text);     /* rodata none */
+        src/interrupt_handler.arm.o(.text);     /* rodata none */
         asm/sub_800F150.o(.text);               /* rodata none? */
         asm/unknown_lib.o(.text);               /* rodata none? */
         asm/m4a.o(.text);                       /* rodata none? */
         asm/unknown_lib_2.o(.text);             /* rodata none? */
-        asm/svc.o(.text);                       /* rodata none? */
+        src/svc.o(.text);                       /* rodata none? */
         asm/AgbEeprom.o(.text);                 /* rodata 08141DFC */
         
         tools/agbcc/lib/libgcc.a:_call_via_rX.o(.text);

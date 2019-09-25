@@ -51,6 +51,9 @@ C_OBJS := $(patsubst $(C_SUBDIR)/%.c,$(C_BUILDDIR)/%.o,$(C_SRCS))
 ASM_SRCS := $(wildcard $(ASM_SUBDIR)/*.s)
 ASM_OBJS := $(patsubst $(ASM_SUBDIR)/%.s,$(ASM_BUILDDIR)/%.o,$(ASM_SRCS))
 
+ASM_SRCS2 := $(wildcard $(C_SUBDIR)/*.s)
+ASM_OBJS2 := $(patsubst $(C_SUBDIR)/%.s,$(C_BUILDDIR)/%.o,$(ASM_SRCS2))
+
 DATA_ASM_SRCS := $(wildcard $(DATA_ASM_SUBDIR)/*.s)
 DATA_ASM_OBJS := $(patsubst $(DATA_ASM_SUBDIR)/%.s,$(DATA_ASM_BUILDDIR)/%.o,$(DATA_ASM_SRCS))
 
@@ -66,7 +69,7 @@ SEQ_ASM_OBJS := $(patsubst $(SEQ_ASM_SUBDIR)/%.s,$(SEQ_ASM_BUILDDIR)/%.o,$(SEQ_A
 WAVE_ASM_SRCS := $(wildcard $(WAVE_ASM_SUBDIR)/*.s)
 WAVE_ASM_OBJS := $(patsubst $(WAVE_ASM_SUBDIR)/%.s,$(WAVE_ASM_BUILDDIR)/%.o,$(WAVE_ASM_SRCS))
 
-OBJS := $(C_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) 
+OBJS := $(C_OBJS) $(ASM_OBJS) $(ASM_OBJS2) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) 
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
 $(C_BUILDDIR)/agb_sram.o: CC1FLAGS := -O1 -mthumb-interwork
@@ -83,7 +86,7 @@ compare: $(ROM)
 	sha1sum -c checksum.sha1
 
 clean: tidy
-	$(RM) $(ROM) $(ELF) $(MAP) $(OBJS) src/*.s
+	$(RM) $(ROM) $(ELF) $(MAP) $(OBJS)
 
 tidy:
 	rm -r build/*
@@ -108,6 +111,9 @@ $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c
 	$(CPP) $(CPPFLAGS) $< | $(CC1) $(CC1FLAGS) -o $(C_BUILDDIR)/$*.s
 	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
+
+$(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
+	$(AS) $(ASFLAGS) -o $@ $<
 
 $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
