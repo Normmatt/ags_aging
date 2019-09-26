@@ -314,8 +314,19 @@ extern void sub_8006D00();
 extern void sub_8006DE0();
 extern void sub_8006EC8();
 
+//sub_8007704.c
 extern void sub_8007704(u32 target);
+extern void sub_8007784();
+extern void sub_80077D0();
+extern void sub_800781C();
+extern void sub_8007868();
+extern void sub_80078B4();
+extern void sub_8007904();
+extern void sub_8007950();
+extern void sub_8007998();
+
 extern void sub_8007C34(u32 target);
+
 extern void sub_8007F0C(u32 target);
 
 extern void sub_8008118();
@@ -440,6 +451,9 @@ extern struct BgAffineSrcData gUnknown_03000390;
 extern struct BgAffineSrcData gUnknown_030003A4;
 extern struct BgAffineSrcData gUnknown_030003B8;
 extern struct BgAffineSrcData gUnknown_030003CC;
+extern struct BgAffineSrcData gUnknown_030003E0;
+extern struct BgAffineSrcData gUnknown_030003F4;
+extern struct BgAffineSrcData gUnknown_03000408;
 extern vu32 gUnknown_03001080;
 extern u32 gUnknown_03001088[6];
 extern s32 gUnknown_030010A0;
@@ -463,6 +477,7 @@ extern sOamData gUnknown_0807747C;
 extern sOamData gUnknown_08077484;
 extern sOamData gUnknown_0807748C;
 extern u8 gUnknown_08077494[];
+extern u8 gUnknown_08083340[];
 extern u8 gUnknown_080BCF40[];
 extern u8 gUnknown_080BCF60[];
 extern u8 gUnknown_080BD780[];
