@@ -337,9 +337,11 @@ extern void sub_8007F8C();
 extern void sub_8007FA4();
 extern void sub_8007FBC();
 
+//sub_8008118.c
 extern void sub_8008118();
 
-extern s32 sub_8008ADC(void *a1, void *a2);
+//sub_8008ADC.c
+extern s32 sub_8008ADC(u32 *a1, void *a2);
 
 extern s32 sub_8009074(void *a1, void *a2);
 extern s32 sub_80090EC(void *a1, void *a2);
