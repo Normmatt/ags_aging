@@ -82,6 +82,23 @@
 #define DmaCopy16(dmaNum, src, dest, size) DMA_COPY(dmaNum, src, dest, size, 16)
 #define DmaCopy32(dmaNum, src, dest, size) DMA_COPY(dmaNum, src, dest, size, 32)
 
+#define DmaSet2(dmaNum, src, dest, control, size)   \
+{                                                   \
+    vu32 *dmaRegs = (vu32 *)REG_ADDR_DMA##dmaNum;   \
+    dmaRegs[0] = (vu32)(src);                       \
+    dmaRegs[1] = (vu32)(dest);                      \
+    dmaRegs[2] = (vu32)(size) | (vu32)(control);    \
+    dmaRegs[2];                                     \
+}
+#define DMA_COPY2(dmaNum, src, dest, size, bit)                                              \
+    DmaSet2(dmaNum,                                                                           \
+           src,                                                                              \
+           dest,                                                                             \
+           (DMA_ENABLE | DMA_START_NOW | DMA_##bit##BIT | DMA_SRC_INC | DMA_DEST_INC) << 16, \
+           size)
+
+#define DmaCopy32_DirectSize(dmaNum, src, dest, size) DMA_COPY2(dmaNum, src, dest, size, 32)
+
 #define DmaStop(dmaNum)                                         \
 {                                                               \
     vu16 *dmaRegs = (vu16 *)REG_ADDR_DMA##dmaNum;               \
