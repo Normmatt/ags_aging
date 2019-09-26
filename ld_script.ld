@@ -53,7 +53,7 @@ SECTIONS
         src/sub_8002488.o(.text);               /* rodata 080190D8 */
         src/sub_8002CAC.o(.text);               /* rodata 080190F0 */
         src/sub_80031B8.o(.text);               /* rodata 0801915C */
-        src/sub_800326C.asm.o(.text);           /* rodata none */
+        src/sub_800326C.arm.o(.text);           /* rodata none */
         src/sub_8003374.o(.text);               /* rodata 08019178 */
         src/sub_8003C88.arm.o(.text);           /* rodata 08019198 */
         src/sub_8003DF4.o(.text);               /* rodata 08019198 */
@@ -68,7 +68,7 @@ SECTIONS
         src/sub_8008118.o(.text);               /* rodata 08077884 */
         src/sub_8008ADC.o(.text);               /* rodata 08077898 */
         asm/sub_8008FB4.o(.text);               /* rodata 080778B0 */
-        asm/sub_8009240.o(.text);               /* rodata none */
+        src/sub_800925C.arm.o(.text);           /* rodata none */
         asm/sub_8009308.o(.text);               /* rodata 080778DC */
         asm/sub_800A9D4.o(.text);               /* rodata 0807A8E0 */
         asm/sub_800B0A0.o(.text);               /* rodata 0807A8EC */

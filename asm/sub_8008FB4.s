@@ -339,3 +339,19 @@ _08009236:
 	bx r1
 	.byte 0x00, 0x00
     
+	THUMB_FUNC_START sub_8009240
+sub_8009240: @ 0x08009240
+	push {r7, lr}
+	sub sp, #8
+	mov r7, sp
+	str r0, [r7]
+	str r1, [r7, #4]
+	bl sub_8009108
+	adds r1, r0, #0
+	adds r0, r1, #0
+	b _08009254
+_08009254:
+	add sp, #8
+	pop {r7}
+	pop {r1}
+	bx r1
