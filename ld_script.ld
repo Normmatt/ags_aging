@@ -63,8 +63,7 @@ SECTIONS
         src/sub_8006FB0.o(.text);               /* rodata 08019738 */
         src/sub_8007704.o(.text);               /* rodata 08019790 */
         src/sub_8007C34.o(.text);               /* rodata 08019804 */
-        asm/sub_8007C34.o(.text);               /* rodata 08019804 */
-        asm/sub_8007F0C.o(.text);               /* rodata 08019838 */
+        src/sub_8007F0C.o(.text);               /* rodata 08019838 */
         asm/sub_8008118.o(.text);               /* rodata 08019864 */
         asm/sub_8008ADC.o(.text);               /* rodata 08077898 */
         asm/sub_8008FB4.o(.text);               /* rodata 080778B0 */
@@ -180,9 +179,10 @@ SECTIONS
         src/sub_8006FB0.o(.rodata);               /* rodata 08019738 */
         src/sub_8007704.o(.rodata);               /* rodata 08019790 */
         src/sub_8007C34.o(.rodata);               /* rodata 08019804 */
+        src/sub_8007F0C.o(.rodata);               /* rodata 08019838 */
     } = 0
     
-    . = 0x08019838;
+    . = 0x08019864;
     RODATA1 :
 	ALIGN(4)
     {

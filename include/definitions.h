@@ -331,7 +331,11 @@ extern void sub_8007CB4();
 extern void sub_8007CCC();
 extern void sub_8007CE4();
 
+//sub_8007F0C.c
 extern void sub_8007F0C(u32 target);
+extern void sub_8007F8C();
+extern void sub_8007FA4();
+extern void sub_8007FBC();
 
 extern void sub_8008118();
 
@@ -485,6 +489,8 @@ extern u8 gUnknown_08083340[];
 extern u8 gUnknown_08095F40[];
 extern u8 gUnknown_08096140[];
 extern u8 gUnknown_0809F940[];
+extern u8 gUnknown_080A8F40[];
+extern u8 gUnknown_080B2F40[];
 extern u8 gUnknown_080BCF40[];
 extern u8 gUnknown_080BCF60[];
 extern u8 gUnknown_080BD780[];
