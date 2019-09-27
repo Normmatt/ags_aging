@@ -13,4 +13,4 @@ It builds the following ROM:
 
 * Then get the build tools from https://github.com/pret/pokeruby-tools. Copy the `tools/` folder into the repository directory.
 
-* You can then build fireemblem8 using `make` in the MSYS environment provided with devkitARM.
+* You can then build aging using `make` in the MSYS environment provided with devkitARM.
