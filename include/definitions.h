@@ -343,6 +343,22 @@ extern void sub_8008118();
 //sub_8008ADC.c
 extern s32 sub_8008ADC(u32 *a1, void *a2);
 
+//sub_8008FB4.c
+extern s32 sub_8008FB4();
+extern s32 sub_8009074();
+extern s32 sub_8009090();
+extern s32 sub_80090EC();
+extern s32 sub_8009108();
+extern s32 sub_8009240();
+
+//sub_800925C.arm.s
+extern u16 sub_800925C(void *a1, u32 a2);
+extern u32 sub_800925C_end;
+extern u16 sub_8009294(u32 a1);
+extern u32 sub_8009294_end;
+extern void sub_80092FC(u32 us); //Delay?
+extern u32 sub_80092FC_end;
+
 extern s32 sub_8009074(void *a1, void *a2);
 extern s32 sub_80090EC(void *a1, void *a2);
 extern s32 sub_8009240(void *a1, void *a2);

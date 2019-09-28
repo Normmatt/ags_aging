@@ -20,6 +20,9 @@ _08009274:
 	ldmib sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 
+.global sub_800925C_end
+sub_800925C_end:
+
 	ARM_FUNC_START sub_8009294
 sub_8009294: @ sub_8009294
 	stmda sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -51,9 +54,14 @@ _080092CC:
 	.align 2, 0
 _080092F8: .4byte 0x04000100
 
+.global sub_8009294_end
+sub_8009294_end:
+
   	ARM_FUNC_START sub_80092FC  
 sub_80092FC:
 	subs r0, r0, #1
 	bne sub_80092FC
 	bx lr
     
+.global sub_80092FC_end
+sub_80092FC_end:
