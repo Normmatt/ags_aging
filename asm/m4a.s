@@ -1604,12 +1604,12 @@ _0801008E:
 _08010094: .4byte SoundMainRAM+1
 _08010098: .4byte gUnknown_03000C80
 _0801009C: .4byte 0x04000100
-_080100A0: .4byte gUnknown_03002BD0
-_080100A4: .4byte gUnknown_03003C10
+_080100A0: .4byte gSoundInfo
+_080100A4: .4byte gCgbChans
 _080100A8: .4byte 0x0097F800
 _080100AC: .4byte 0x00000004
 _080100B0: .4byte gUnknown_08107BF8
-_080100B4: .4byte gUnknown_03003DD0
+_080100B4: .4byte gMPlayMemAccArea
 
 	THUMB_FUNC_START m4aSoundMain
 m4aSoundMain: @ 0x080100B8
@@ -2038,7 +2038,7 @@ _080103C8: .4byte 0x04000080
 _080103CC: .4byte 0x04000063
 _080103D0: .4byte gUnknown_03007FF0
 _080103D4: .4byte 0x68736D53
-_080103D8: .4byte gUnknown_03003B80
+_080103D8: .4byte gMPlayJumpTable
 _080103DC: .4byte ply_memacc+1
 _080103E0: .4byte ply_lfos_rev01+1
 _080103E4: .4byte ply_mod_rev01+1
@@ -2189,7 +2189,7 @@ _08010520: .4byte gUnknown_03007FF0
 _08010524: .4byte 0x050003EC
 _08010528: .4byte ply_note_rev01+1
 _0801052C: .4byte DummyFunc_rev+1
-_08010530: .4byte gUnknown_03003B80
+_08010530: .4byte gMPlayJumpTable
 _08010534: .4byte 0x68736D53
 
 	THUMB_FUNC_START SampFreqSet_rev01
@@ -4260,7 +4260,7 @@ ply_xxx: @ 0x08011430
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08011440: .4byte gUnknown_03003B80
+_08011440: .4byte gMPlayJumpTable
 
 	THUMB_FUNC_START ply_xwave
 ply_xwave: @ 0x08011444

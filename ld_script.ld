@@ -192,6 +192,9 @@ SECTIONS
     {
         /* Read Only Data */
         data/data.o(.rodata);
+
+        /*src/AgbEeprom.o(.rodata); */                /* rodata 08141DFC */
+        data/data3.o(.rodata);
     } = 0
     
     RODATA2 :
@@ -243,7 +246,7 @@ SECTIONS
         /* Data */
         src/aging_main.o(.data);                /* rodata 0801829C */
         src/sub_8000AD4.o(.data);               /* rodata 08018448 */
-        src/sub_8001AFC.o(.text);               /* rodata 08018988 */
+        src/sub_8001AFC.o(.data);               /* rodata 08018988 */
     } = 0
     
     . = 0x081421A0;

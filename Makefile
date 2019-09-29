@@ -72,12 +72,10 @@ WAVE_ASM_OBJS := $(patsubst $(WAVE_ASM_SUBDIR)/%.s,$(WAVE_ASM_BUILDDIR)/%.o,$(WA
 OBJS := $(C_OBJS) $(ASM_OBJS) $(ASM_OBJS2) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) 
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
-$(C_BUILDDIR)/agb_sram.o: CC1FLAGS := -O1 -mthumb-interwork
-$(C_BUILDDIR)/test.o: CC1FLAGS := -O0 -mthumb-interwork
-$(C_BUILDDIR)/sub_801E0EC.o: CC1FLAGS := -O0 -mthumb-interwork -g
+$(C_BUILDDIR)/AgbEeprom.o: CC1FLAGS := -mthumb-interwork -O1
 
-$(C_BUILDDIR)/m4a_2.o: CC1FLAGS := -mthumb-interwork -O1
-$(C_BUILDDIR)/m4a_4.o: CC1FLAGS := -mthumb-interwork -O1
+$(C_BUILDDIR)/m4a.o: CC1FLAGS := -mthumb-interwork -O1
+$(C_BUILDDIR)/m4a.o: CC1FLAGS := -mthumb-interwork -O1
 
 
 #### Main Targets ####

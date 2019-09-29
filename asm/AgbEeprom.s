@@ -15,8 +15,8 @@ IdentifyEeprom: @ 0x08012174
 	str r0, [r1]
 	b _080121AC
 	.align 2, 0
-_08012188: .4byte gUnknown_03003E20
-_0801218C: .4byte gUnknown_08141E08
+_08012188: .4byte eeprom
+_0801218C: .4byte eeprom_list
 _08012190:
 	cmp r0, #0x40
 	bne _080121A4
@@ -25,8 +25,8 @@ _08012190:
 	str r0, [r1]
 	b _080121AC
 	.align 2, 0
-_0801219C: .4byte gUnknown_03003E20
-_080121A0: .4byte gUnknown_08141E14
+_0801219C: .4byte eeprom
+_080121A0: .4byte eeprom_list+0xC
 _080121A4:
 	ldr r1, _080121B0
 	ldr r0, _080121B4
@@ -36,8 +36,8 @@ _080121AC:
 	adds r0, r2, #0
 	bx lr
 	.align 2, 0
-_080121B0: .4byte gUnknown_03003E20
-_080121B4: .4byte gUnknown_08141E08
+_080121B0: .4byte eeprom
+_080121B4: .4byte eeprom_list
 
 	THUMB_FUNC_START EepromTimerIntr
 EepromTimerIntr: @ 0x080121B8
@@ -57,8 +57,8 @@ EepromTimerIntr: @ 0x080121B8
 _080121D2:
 	bx lr
 	.align 2, 0
-_080121D4: .4byte gUnknown_0300164A
-_080121D8: .4byte gUnknown_0300164C
+_080121D4: .4byte timer_Count
+_080121D8: .4byte timeoutFlag
 
 	THUMB_FUNC_START SetEepromTimerIntr
 SetEepromTimerIntr: @ 0x080121DC
@@ -80,8 +80,8 @@ SetEepromTimerIntr: @ 0x080121DC
 	movs r0, #0
 	b _08012212
 	.align 2, 0
-_08012200: .4byte gUnknown_03001648
-_08012204: .4byte gUnknown_03001650
+_08012200: .4byte timer_No
+_08012204: .4byte timerReg
 _08012208: .4byte 0x04000100
 _0801220C: .4byte EepromTimerIntr+1
 _08012210:
@@ -145,13 +145,13 @@ StartEepromTimer: @ 0x08012214
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08012280: .4byte gUnknown_03001654
+_08012280: .4byte shelt_ime
 _08012284: .4byte 0x04000208
-_08012288: .4byte gUnknown_03001650
+_08012288: .4byte timerReg
 _0801228C: .4byte 0x04000202
-_08012290: .4byte gUnknown_03001648
-_08012294: .4byte gUnknown_0300164C
-_08012298: .4byte gUnknown_0300164A
+_08012290: .4byte timer_No
+_08012294: .4byte timeoutFlag
+_08012298: .4byte timer_Count
 
 	THUMB_FUNC_START StopEepromTimer
 StopEepromTimer: @ 0x0801229C
@@ -180,10 +180,10 @@ StopEepromTimer: @ 0x0801229C
 	bx lr
 	.align 2, 0
 _080122CC: .4byte 0x04000208
-_080122D0: .4byte gUnknown_03001650
+_080122D0: .4byte timerReg
 _080122D4: .4byte 0x04000200
-_080122D8: .4byte gUnknown_03001648
-_080122DC: .4byte gUnknown_03001654
+_080122D8: .4byte timer_No
+_080122DC: .4byte shelt_ime
 
 	THUMB_FUNC_START Dma3Transmit
 Dma3Transmit: @ 0x080122E0
@@ -240,7 +240,7 @@ _08012334:
 _08012340: .4byte 0x04000208
 _08012344: .4byte 0x04000204
 _08012348: .4byte 0x0000F8FF
-_0801234C: .4byte gUnknown_03003E20
+_0801234C: .4byte eeprom
 _08012350: .4byte 0x040000D4
 _08012354: .4byte 0x040000D8
 _08012358: .4byte 0x040000DC
@@ -261,7 +261,7 @@ ReadEepromDword: @ 0x08012360
 	ldr r0, _0801237C
 	b _08012402
 	.align 2, 0
-_08012378: .4byte gUnknown_03003E20
+_08012378: .4byte eeprom
 _0801237C: .4byte 0x000080FF
 _08012380:
 	ldr r0, _0801240C
@@ -337,7 +337,7 @@ _08012402:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801240C: .4byte gUnknown_03003E20
+_0801240C: .4byte eeprom
 
 	THUMB_FUNC_START ProgramEepromDword
 ProgramEepromDword: @ 0x08012410
@@ -354,7 +354,7 @@ ProgramEepromDword: @ 0x08012410
 	ldr r0, _0801242C
 	b _080124D4
 	.align 2, 0
-_08012428: .4byte gUnknown_03003E20
+_08012428: .4byte eeprom
 _0801242C: .4byte 0x000080FF
 _08012430:
 	ldr r0, _08012470
@@ -392,7 +392,7 @@ _0801244C:
 	ldr r0, [r0]
 	b _08012482
 	.align 2, 0
-_08012470: .4byte gUnknown_03003E20
+_08012470: .4byte eeprom
 _08012474:
 	strh r4, [r3]
 	subs r3, #2
@@ -448,9 +448,9 @@ _080124D4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080124DC: .4byte gUnknown_03003E20
-_080124E0: .4byte gUnknown_08141E20
-_080124E4: .4byte gUnknown_0300164C
+_080124DC: .4byte eeprom
+_080124E0: .4byte epMaxTime
+_080124E4: .4byte timeoutFlag
 _080124E8: .4byte 0x0000C001
 
 	THUMB_FUNC_START VerifyEepromDword
@@ -469,7 +469,7 @@ VerifyEepromDword: @ 0x080124EC
 	ldr r0, _0801250C
 	b _0801253A
 	.align 2, 0
-_08012508: .4byte gUnknown_03003E20
+_08012508: .4byte eeprom
 _0801250C: .4byte 0x000080FF
 _08012510:
 	adds r0, r1, #0
@@ -502,8 +502,8 @@ _0801253A:
 	bx r1
 	.byte 0x00, 0x00
 
-	THUMB_FUNC_START sub_8012544
-sub_8012544: @ 0x08012544
+	THUMB_FUNC_START ProgramEepromDwordEx
+ProgramEepromDwordEx: @ 0x08012544
 	push {r4, r5, r6, lr}
 	adds r5, r1, #0
 	lsls r0, r0, #0x10
