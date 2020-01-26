@@ -67,7 +67,7 @@ SECTIONS
                                                 /* rodata 08019864 */
         src/sub_8008118.o(.text);               /* rodata 08077884 */
         src/sub_8008ADC.o(.text);               /* rodata 08077898 */
-        asm/sub_8008FB4.o(.text);               /* rodata 080778B0 */
+        src/sub_8008FB4.o(.text);               /* rodata 080778B0 */
         src/sub_800925C.arm.o(.text);           /* rodata none */
         asm/sub_8009308.o(.text);               /* rodata 080778DC */
         asm/sub_800A9D4.o(.text);               /* rodata 0807A8E0 */
@@ -184,22 +184,29 @@ SECTIONS
         data/rodata_08019864.o(.rodata);          /* rodata 08019864 */
         src/sub_8008118.o(.rodata);               /* rodata 08077884 */
         src/sub_8008ADC.o(.rodata);               /* rodata 08077898 */
-    } = 0
-    
-    . = 0x080778B0;
-    RODATA1 :
-	ALIGN(4)
-    {
-        /* Read Only Data */
-        data/data.o(.rodata);
+        src/sub_8008FB4.o(.rodata);               /* rodata 080778B0 */
+        src/sub_800925C.arm.o(.rodata);           /* rodata none */
+        data/sub_8009308.o(.rodata);              /* rodata 080778DC */
+        data/sub_800A9D4.o(.rodata);              /* rodata 0807A8E0 */
+        data/sub_800B0A0.o(.rodata);              /* rodata 0807A8EC */
+        data/sub_800B724.o(.rodata);              /* rodata 0807AA4C */
+        data/sub_800C04C.o(.rodata);              /* rodata 08083088 */
+        data/sub_800C2C8.o(.rodata);              /* rodata 0808317C */
+        data/sub_800C3C8.o(.rodata);              /* rodata 0808322C */
+        data/sub_800CD3C.o(.rodata);              /* rodata 08083340 */
+        data/sub_800DA4C.o(.rodata);              /* rodata 08100C1C */
+        data/sub_800E6E8.o(.rodata);              /* rodata 08100C7C */
+        data/sub_800E710.o(.rodata);              /* rodata 08101884 */
+        data/sub_800E9C0.o(.rodata);              /* rodata 08101A60 */
+        data/sub_800EC50.o(.rodata);              /* rodata 08101C2C */
+        src/interrupt_handler.arm.o(.rodata);     /* rodata none */
+        asm/sub_800F150.o(.rodata);               /* rodata none? */
+        asm/unknown_lib.o(.rodata);               /* rodata none? */
+        asm/m4a.o(.rodata);                       /* rodata none? */
+        asm/unknown_lib_2.o(.rodata);             /* rodata none? */
+        src/svc.o(.rodata);                       /* rodata none? */
+        data/AgbEeprom.o(.rodata);                /* rodata 08141DFC */
 
-        /*src/AgbEeprom.o(.rodata); */                /* rodata 08141DFC */
-        data/data3.o(.rodata);
-    } = 0
-    
-    RODATA2 :
-	ALIGN(4)
-    {
         /* Read Only Data */
         tools/agbcc/lib/libc.a:memcpy.o(.rodata);
         tools/agbcc/lib/libc.a:memset.o(.rodata);

@@ -468,6 +468,7 @@
 #define REG_DMA3CNT_H   (*(vu16 *)REG_ADDR_DMA3CNT_H)
 
 #define REG_TMCNT(n)    (*(vu16 *)(REG_ADDR_TMCNT + ((n) * 4)))
+#define REG_TMCNT32(n)  (*(vu32 *)(REG_ADDR_TMCNT + ((n) * 4)))
 #define REG_TM0CNT      (*(vu32 *)REG_ADDR_TM0CNT)
 #define REG_TM0CNT_L    (*(vu16 *)REG_ADDR_TM0CNT_L)
 #define REG_TM0CNT_H    (*(vu16 *)REG_ADDR_TM0CNT_H)
