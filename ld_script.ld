@@ -81,7 +81,8 @@ SECTIONS
         asm/sub_800E6E8.o(.text);               /* rodata 08100C7C */
         asm/sub_800E710.o(.text);               /* rodata 08101884 */
         asm/sub_800E9C0.o(.text);               /* rodata 08101A60 */
-        asm/sub_800EC50.o(.text);               /* rodata 08101C2C */
+        asm/sub_800EA20.o(.text);               /* rodata 08101C48 */
+        src/sub_800EC50.o(.text);               /* rodata 08101C2C */
         src/interrupt_handler.arm.o(.text);     /* rodata none */
         asm/sub_800F150.o(.text);               /* rodata none? */
         asm/unknown_lib.o(.text);               /* rodata none? */
@@ -198,7 +199,9 @@ SECTIONS
         data/sub_800E6E8.o(.rodata);              /* rodata 08100C7C */
         data/sub_800E710.o(.rodata);              /* rodata 08101884 */
         data/sub_800E9C0.o(.rodata);              /* rodata 08101A60 */
-        data/sub_800EC50.o(.rodata);              /* rodata 08101C2C */
+        src/sub_800EC50.o(.rodata);               /* rodata 08101C2C */
+        data/sub_800EA20.o(.rodata);              /* rodata 08101C48 */
+        data/m4a.o(.rodata);                      /* rodata 08106F88 */
         src/interrupt_handler.arm.o(.rodata);     /* rodata none */
         asm/sub_800F150.o(.rodata);               /* rodata none? */
         asm/unknown_lib.o(.rodata);               /* rodata none? */

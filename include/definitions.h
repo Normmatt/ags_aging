@@ -424,7 +424,7 @@ extern void sub_800EA20();
 extern void sub_800EB08(u32 a1);
 extern void sub_800EC94();
 extern void sub_800ECB4();
-extern u32 sub_800ECD4(u32 *cmd_out, u32 *expected_response);
+extern void sub_800ECD4(u32 *cmd_out, u32 *expected_response);
 extern void sub_800ED48(u32 a1, u32 a2, u32 *a3);
 extern s32 CheckSaveForEepromMagic();
 extern void ResetConfiguration();
@@ -435,6 +435,10 @@ extern void sub_800F35C(void *dst, u32 len, sOamData *qword);
 extern u32 GetSystemRomChecksum();
 
 extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 a4);
+
+// sub_800E9C0.c
+s32 sub_800EB70(u16, char *);
+s32 sub_800EBF0(u16, char *);
 
 //
 extern const sDisplayTest gUnknown_08019198[50];
