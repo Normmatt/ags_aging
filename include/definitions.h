@@ -416,6 +416,7 @@ extern void RestoreInterruptHandlers(sInterruptSetup *a1);
 extern void ReadKeyPlus();
 extern void ReadKey();
 extern void sub_800DA4C();
+extern void sub_800DD50(u32, const void *, u32, u32 (*)(u32 *, u8 *));
 extern void UpdateTilemaps();
 extern void DrawString(s32 x, s32 y, const char *str);
 extern void sub_800E710(u32 a1);

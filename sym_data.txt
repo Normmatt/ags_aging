@@ -15,7 +15,8 @@
 . = 0x00000428; gUnknown_03000428 = .;
 . = 0x0000045C; gUnknown_0300045C = .;
 . = 0x00000460; gUnknown_03000460 = .;
-. = 0x0000046C; gUnknown_0300046C = .;
+. = 0x0000046C;
+. = ALIGN(4); src/sub_800E9C0.o(.data);
 . = 0x0000052C; gUnknown_0300052C = .;
 . = 0x00000530; gUnknown_03000530 = .;
 . = ALIGN(4); *libc.a:impure.o(.data);
