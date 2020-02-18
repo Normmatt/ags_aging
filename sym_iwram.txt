@@ -6,7 +6,7 @@
 . = 0x000010A8; gUnknown_030010A8 = .;
 . = 0x000011B0; gUnknown_030011B0 = .;
 . = 0x000011D8; gUnknown_030011D8 = .;
-. = 0x00001640; gUnknown_03001640 = .;
+. = 0x00001640; src/multiboot.o(.bss);
 . = 0x00001648; timer_No = .;
 . = 0x0000164A; timer_Count = .;
 . = 0x0000164C; timeoutFlag = .;

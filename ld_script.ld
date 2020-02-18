@@ -86,8 +86,8 @@ SECTIONS
         asm/sub_800F150.o(.text);               /* rodata none? */
         asm/unknown_lib.o(.text);               /* rodata none? */
         asm/m4a.o(.text);                       /* rodata none? */
-        asm/unknown_lib_2.o(.text);             /* rodata none? */
-        src/svc.o(.text);                       /* rodata none? */
+        src/multiboot.o(.text);                 /* rodata none */
+        src/svc.o(.text);                       /* rodata none */
         asm/AgbEeprom.o(.text);                 /* rodata 08141DFC */
         
         tools/agbcc/lib/libgcc.a:_call_via_rX.o(.text);
@@ -205,8 +205,6 @@ SECTIONS
         asm/sub_800F150.o(.rodata);               /* rodata none? */
         asm/unknown_lib.o(.rodata);               /* rodata none? */
         asm/m4a.o(.rodata);                       /* rodata none? */
-        asm/unknown_lib_2.o(.rodata);             /* rodata none? */
-        src/svc.o(.rodata);                       /* rodata none? */
         data/AgbEeprom.o(.rodata);                /* rodata 08141DFC */
 
         /* Read Only Data */

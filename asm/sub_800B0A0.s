@@ -208,11 +208,11 @@ sub_800B1F0: @ 0x0800B1F0
 	strb r2, [r0]
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_8011534
+	bl MultiBootInit
 _0800B268:
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_8011F08
+	bl MultiBootCheckComplete
 	cmp r0, #0
 	beq _0800B28C
 	b _0800B2E0
@@ -236,7 +236,7 @@ _0800B29C:
 	bl WaitForInterrupt
 	adds r1, r7, #0
 	adds r0, r1, #0
-	bl sub_80115C0
+	bl MultiBootMain
 	adds r0, r7, #0
 	ldrb r1, [r0, #0x1e]
 	movs r2, #0xe
@@ -257,7 +257,7 @@ _0800B29C:
 	movs r3, #1
 	str r3, [sp]
 	movs r3, #0
-	bl sub_8011DC0
+	bl MultiBootStartMaster
 _0800B2D6:
 	b _0800B268
 	.align 2, 0
