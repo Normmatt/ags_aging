@@ -81,7 +81,6 @@ SECTIONS
         asm/sub_800E6E8.o(.text);               /* rodata 08100C7C */
         asm/sub_800E710.o(.text);               /* rodata 08101884 */
         src/sub_800E9C0.o(.text);               /* rodata 08101A60 */
-        asm/sub_800EA20.o(.text);               /* rodata 08101C48 */
         src/sub_800EC50.o(.text);               /* rodata 08101C2C */
         src/interrupt_handler.arm.o(.text);     /* rodata none */
         asm/sub_800F150.o(.text);               /* rodata none? */

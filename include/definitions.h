@@ -441,6 +441,13 @@ extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 
 s32 sub_800EB70(u16, char *);
 s32 sub_800EBF0(u16, char *);
 
+// AgbEeprom.s
+s32 SetEepromTimerIntr(u8, void_pointer *);
+s32 IdentifyEeprom(u16);
+u16 ProgramEepromDword(u16, u16 *);
+u16 VerifyEepromDword(u16, u16 *);
+u16 ReadEepromDword(u16, u16 *);
+
 //
 extern const sDisplayTest gUnknown_08019198[50];
 extern const sDisplayTest gUnknown_08019328[24];
