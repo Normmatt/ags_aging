@@ -416,6 +416,7 @@ extern void RestoreInterruptHandlers(sInterruptSetup *a1);
 extern void ReadKeyPlus();
 extern void ReadKey();
 extern void sub_800DA4C();
+extern void sub_800DD50(u32, const void *, u32, u32 (*)(u32 *, u8 *));
 extern void UpdateTilemaps();
 extern void DrawString(s32 x, s32 y, const char *str);
 extern void sub_800E710(u32 a1);
@@ -424,7 +425,7 @@ extern void sub_800EA20();
 extern void sub_800EB08(u32 a1);
 extern void sub_800EC94();
 extern void sub_800ECB4();
-extern u32 sub_800ECD4(u32 *cmd_out, u32 *expected_response);
+extern void sub_800ECD4(u32 *cmd_out, u32 *expected_response);
 extern void sub_800ED48(u32 a1, u32 a2, u32 *a3);
 extern s32 CheckSaveForEepromMagic();
 extern void ResetConfiguration();
@@ -435,6 +436,17 @@ extern void sub_800F35C(void *dst, u32 len, sOamData *qword);
 extern u32 GetSystemRomChecksum();
 
 extern s32 Test_CallFromStack_ASM(void_pointer a1, void_pointer a2, u32 a3, u32 a4);
+
+// sub_800E9C0.c
+s32 sub_800EB70(u16, char *);
+s32 sub_800EBF0(u16, char *);
+
+// AgbEeprom.s
+s32 SetEepromTimerIntr(u8, void_pointer *);
+s32 IdentifyEeprom(u16);
+u16 ProgramEepromDword(u16, u16 *);
+u16 VerifyEepromDword(u16, u16 *);
+u16 ReadEepromDword(u16, u16 *);
 
 //
 extern const sDisplayTest gUnknown_08019198[50];

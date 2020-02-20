@@ -1,4 +1,4 @@
-	.section .rodata
+    .section .rodata
 
     .global gUnknown_08101A60
 gUnknown_08101A60:

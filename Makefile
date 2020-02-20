@@ -107,7 +107,7 @@ $(OBJ_DIR)/sym_data.txt: sym_data.txt
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c
 	$(CPP) $(CPPFLAGS) $< | $(CC1) $(CC1FLAGS) -o $(C_BUILDDIR)/$*.s
-	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
+	@echo ".text\\n\\t.align\\t2, 0\\n" >> $(C_BUILDDIR)/$*.s
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
