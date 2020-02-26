@@ -1,4 +1,4 @@
-// Copyright(c) 2016 YamaArashi
+// Copyright(c) 2017 YamaArashi
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -18,47 +18,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef CHARMAP_H
-#define CHARMAP_H
+#ifndef C_FILE_H
+#define C_FILE_H
 
-#include <cstdint>
 #include <string>
-#include <map>
-#include <vector>
+#include <set>
+#include <memory>
+#include "scaninc.h"
 
-class Charmap
+class CFile
 {
 public:
-    Charmap(std::string filename);
+    CFile(std::string path);
+    ~CFile();
+    void FindIncbins();
+    const std::set<std::string>& GetIncbins() { return m_incbins; }
+    const std::set<std::string>& GetIncludes() { return m_includes; }
 
-    std::string Char(std::int32_t code)
-    {
-        auto it = m_chars.find(code);
-
-        if (it == m_chars.end())
-            return std::string();
-
-        return it->second;
-    }
-
-    std::string Escape(unsigned char code)
-    {
-        return m_escapes[code];
-    }
-
-    std::string Constant(std::string identifier)
-    {
-        auto it = m_constants.find(identifier);
-
-        if (it == m_constants.end())
-            return std::string();
-
-        return it->second;
-    }
 private:
-    std::map<std::int32_t, std::string> m_chars;
-    std::string m_escapes[128];
-    std::map<std::string, std::string> m_constants;
+    char *m_buffer;
+    int m_pos;
+    int m_size;
+    int m_lineNum;
+    std::string m_path;
+    std::set<std::string> m_incbins;
+    std::set<std::string> m_includes;
+
+    bool ConsumeHorizontalWhitespace();
+    bool ConsumeNewline();
+    bool ConsumeComment();
+    void SkipWhitespace();
+    bool CheckIdentifier(const std::string& ident);
+    void CheckInclude();
+    void CheckIncbin();
+    std::string ReadPath();
 };
 
-#endif // CHARMAP_H
+#endif // C_FILE_H

@@ -81,16 +81,23 @@ $(C_BUILDDIR)/m4a.o: CC1FLAGS := -mthumb-interwork -O1
 
 #### Main Targets ####
 
+.PHONY: compare clean tidy mb_test
+
+all: mb_test compare
+
+mb_test:
+	@$(MAKE) -C mb_test COMPARE=1
+
 compare: $(ROM)
 	sha1sum -c checksum.sha1
 
 clean: tidy
 	$(RM) $(ROM) $(ELF) $(MAP) $(OBJS)
+	@$(MAKE) -C mb_test clean
 
 tidy:
 	rm -r build/*
 	rm -f $(ROM) $(ELF) $(MAP)
-    
 
 #### Recipes ####
    
