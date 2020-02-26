@@ -26,6 +26,7 @@ ELF      := $(ROM:.gba=.elf)
 MAP      := $(ROM:.gba=.map)
 LDSCRIPT := ld_script.ld
 LDFLAGS = --no-check-section -Map ../../$(MAP)
+LIB := -L ../../tools/agbcc/lib -lgcc -lc -lgcc
 
 C_SUBDIR = src
 ASM_SUBDIR = asm
@@ -133,7 +134,7 @@ $(WAVE_ASM_BUILDDIR)/%.o: $(WAVE_ASM_SUBDIR)/%.s
     
 
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
-	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T $(LDSCRIPT) $(OBJS_REL) ../../tools/agbcc/lib/libc.a ../../tools/agbcc/lib/libgcc.a -o ../../$@
+	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T $(LDSCRIPT) $(OBJS_REL)  -o ../../$@ $(LIB)
 
 %.gba: %.elf
 	$(OBJCOPY) -O binary --pad-to 0x8200000 $< $@
