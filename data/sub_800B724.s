@@ -1,7 +1,7 @@
 	.section .rodata
 
     .global gUnknown_0807AA6C
-gUnknown_0807AA6C: /* multiboot image */
+gUnknown_0807AA6C: /* multiboot program */
     .incbin "mb_test/mb_test.gba"
 
     .global gUnknown_08082FC8

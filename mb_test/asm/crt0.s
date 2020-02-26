@@ -79,7 +79,7 @@ _020001A4:
 	msr cpsr_fc, r0
 	ldr sp, _020001E0 @ =gUnk_03007D00
 	ldr r1, _020001E4 @ =0x03007FFC
-	ldr r0, _020001E8 @ =sub_020011F8
+	ldr r0, _020001E8 @ =IntrMain
 	str r0, [r1]
 	ldr r0, _020001EC @ =gUnk_03000000
 	ldr r2, _020001F0 @ =gUnk_02007DD0
@@ -94,7 +94,7 @@ _020001C8:
 	.align 2, 0
 _020001E0: .4byte gUnk_03007D00
 _020001E4: .4byte 0x03007FFC
-_020001E8: .4byte sub_020011F8
+_020001E8: .4byte IntrMain
 _020001EC: .4byte gUnk_03000000
 _020001F0: .4byte gUnk_02007DD0
 _020001F4: .4byte 0x0000078C
