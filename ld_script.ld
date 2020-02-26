@@ -71,7 +71,8 @@ SECTIONS
         src/sub_800925C.arm.o(.text);           /* rodata none */
         asm/sub_8009308.o(.text);               /* rodata 080778DC */
         asm/sub_800A9D4.o(.text);               /* rodata 0807A8E0 */
-        asm/sub_800B0A0.o(.text);               /* rodata 0807A8EC */
+        src/multiboot_test.o(.text);            /* rodata 0807A8EC */
+        asm/sub_800B2EC.o(.text);               /* rodata none */
         asm/sub_800B724.o(.text);               /* rodata 0807AA4C */
         asm/sub_800C04C.o(.text);               /* rodata 08083088 */
         asm/sub_800C2C8.o(.text);               /* rodata 0808317C */
@@ -188,7 +189,7 @@ SECTIONS
         src/sub_800925C.arm.o(.rodata);           /* rodata none */
         data/sub_8009308.o(.rodata);              /* rodata 080778DC */
         data/sub_800A9D4.o(.rodata);              /* rodata 0807A8E0 */
-        data/sub_800B0A0.o(.rodata);              /* rodata 0807A8EC */
+        src/multiboot_test.o(.rodata);            /* rodata 0807A8EC */
         data/sub_800B724.o(.rodata);              /* rodata 0807AA4C */
         data/sub_800C04C.o(.rodata);              /* rodata 08083088 */
         data/sub_800C2C8.o(.rodata);              /* rodata 0808317C */
