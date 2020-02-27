@@ -64,7 +64,7 @@ _020012BC:
 	ldr r1, [r3]
 	orr r1, r1, r0
 	str r1, [r3]
-	ldr r1, _020012F8 @ =gUnk_03000000
+	ldr r1, _020012F8 @ =gIntrTable
 	add r1, r1, r2
 	ldr r0, [r1]
 	tst r0, r0
@@ -74,4 +74,4 @@ _020012BC:
 _020012EC: .4byte 0x04000200
 _020012F0: .4byte gUnk_03000040
 _020012F4: .4byte 0x03007FF8
-_020012F8: .4byte gUnk_03000000
+_020012F8: .4byte gIntrTable

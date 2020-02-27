@@ -68,7 +68,7 @@ SECTIONS {
     } >ewram
 
     iwram (NOLOAD) : ALIGN(4) {
-        . = 0x00000000; gUnk_03000000 = .;
+        . = 0x00000000; gIntrTable = .;
         . = 0x00000040; gUnk_03000040 = .;
         . = 0x00000044; *libc.a:impure.o(.data);
         . = ALIGN(4); *libc.a:locale.o(.data);

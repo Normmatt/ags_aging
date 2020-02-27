@@ -13,8 +13,15 @@ __start: @ 0x02000000
 
 _020000C0:
 	b sub_020000E0
-_020000C4:
-	.space 28
+	.global BootMode
+BootMode:
+	.byte 0
+
+	.global SlaveIdNumber
+SlaveIdNumber:
+	.byte 0
+
+	.space 26
 
 	arm_func_start sub_020000E0
 sub_020000E0: @ 0x020000E0
@@ -81,7 +88,7 @@ _020001A4:
 	ldr r1, _020001E4 @ =0x03007FFC
 	ldr r0, _020001E8 @ =IntrMain
 	str r0, [r1]
-	ldr r0, _020001EC @ =gUnk_03000000
+	ldr r0, _020001EC @ =gIntrTable
 	ldr r2, _020001F0 @ =gUnk_02007DD0
 	ldr r3, _020001F4 @ =0x0000078C
 _020001C8:
@@ -95,7 +102,7 @@ _020001C8:
 _020001E0: .4byte gUnk_03007D00
 _020001E4: .4byte 0x03007FFC
 _020001E8: .4byte IntrMain
-_020001EC: .4byte gUnk_03000000
+_020001EC: .4byte gIntrTable
 _020001F0: .4byte gUnk_02007DD0
 _020001F4: .4byte 0x0000078C
 _020001F8: .4byte sub_020001FC
