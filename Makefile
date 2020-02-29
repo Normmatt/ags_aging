@@ -15,6 +15,8 @@ PREPROC := tools/preproc/preproc
 RAMSCRGEN := tools/ramscrgen/ramscrgen
 FIX := tools/gbafix/gbafix
 
+.SECONDEXPANSION:
+
 CC1FLAGS := -mthumb-interwork -Wimplicit -Wparentheses -O0 -fhex-asm -g
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef
 ASFLAGS  := -mcpu=arm7tdmi -mthumb-interwork -I asminclude -I include
@@ -76,8 +78,6 @@ OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 $(C_BUILDDIR)/AgbEeprom.o: CC1FLAGS := -mthumb-interwork -O1
 
 $(C_BUILDDIR)/m4a.o: CC1FLAGS := -mthumb-interwork -O1
-$(C_BUILDDIR)/m4a.o: CC1FLAGS := -mthumb-interwork -O1
-
 
 #### Main Targets ####
 
@@ -113,18 +113,42 @@ $(OBJ_DIR)/sym_iwram.txt: sym_iwram.txt
 $(OBJ_DIR)/sym_data.txt: sym_data.txt
 	sed "s#tools/#../../tools/#g" sym_data.txt > $@
 
-$(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c
+ifeq ($(NODEP),1)
+$(C_BUILDDIR)/%.o: c_dep :=
+else
+$(C_BUILDDIR)/%.o: c_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c)
+endif
+
+$(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	$(CPP) $(CPPFLAGS) $< | $(CC1) $(CC1FLAGS) -o $(C_BUILDDIR)/$*.s
 	@echo ".text\\n\\t.align\\t2, 0\\n" >> $(C_BUILDDIR)/$*.s
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
-$(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
+ifeq ($(NODEP),1)
+$(C_BUILDDIR)/%.o: asm_src_dep :=
+else
+$(C_BUILDDIR)/%.o: asm_src_dep = $(shell $(SCANINC) -I . $(C_SUBDIR)/$*.s)
+endif
+
+$(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s $$(asm_src_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
 
-$(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s
+ifeq ($(NODEP),1)
+$(ASM_BUILDDIR)/%.o: asm_dep :=
+else
+$(ASM_BUILDDIR)/%.o: asm_dep = $(shell $(SCANINC) -I . $(ASM_SUBDIR)/$*.s)
+endif
+
+$(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
-    
-$(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
+
+ifeq ($(NODEP),1)
+$(DATA_ASM_BUILDDIR)/%.o: data_dep :=
+else
+$(DATA_ASM_BUILDDIR)/%.o: data_dep = $(shell $(SCANINC) -I . $(DATA_ASM_SUBDIR)/$*.s)
+endif
+
+$(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
     
 $(SOUND_ASM_BUILDDIR)/%.o: $(SOUND_ASM_SUBDIR)/%.s

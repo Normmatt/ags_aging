@@ -473,7 +473,6 @@ extern void m4aSongNumStart(int a1);
 extern void m4aMPlayAllStop();
 extern void SoundVSync_rev01();
 extern void SoundVSyncOff_rev01();
-void m4aMPlayFadeOut(struct MusicPlayerInfo *mplayInfo, u16 speed);
 
 //EWRAM
 extern u16 gUnknown_02000000;
