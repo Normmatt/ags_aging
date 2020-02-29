@@ -9,7 +9,6 @@ SECTIONS {
     ewram : ALIGN(4) {
         asm/crt0.o(.text);
         src/main.o(.text);
-        asm/code.o(.text);
         asm/intr_main.o(.text);
         *libgcc.a:_call_via_rX.o(.text);
         *libc.a:sprintf.o(.text);

@@ -151,8 +151,8 @@ void sub_02000534(void)
     REG_BLDY = 0;
     gUnk_03000970.x = 0;
     gUnk_03000970.y = 0;
-    DmaFill32(3, 0, gUnk_03000970.BG0_Tilemap, 0x800);
-    DmaFill32(3, 0, gUnk_03000970.BG1_Tilemap, 0x800);
+    DmaFill32(3, 0, gUnk_03000970.BG0_Tilemap[0], 0x800);
+    DmaFill32(3, 0, gUnk_03000970.BG1_Tilemap[0], 0x800);
     gUnk_03000970.bg1_tile_number = 0;
     gUnk_03000970.windowinfo = gUnk_02006E48;
     gUnk_03000970.number_of_tiles = 0;
@@ -209,6 +209,184 @@ void sub_02000920(s32 whichPal, u16 color)
 
 void UpdateTilemaps(void)
 {
-    DmaCopy32(3, gUnk_03000970.BG0_Tilemap, BG_SCREEN_ADDR(28), 0x800);
-    DmaCopy32(3, gUnk_03000970.BG1_Tilemap, BG_SCREEN_ADDR(29), 0x800);
+    DmaCopy32(3, gUnk_03000970.BG0_Tilemap[0], BG_SCREEN_ADDR(28), 0x800);
+    DmaCopy32(3, gUnk_03000970.BG1_Tilemap[0], BG_SCREEN_ADDR(29), 0x800);
+}
+
+void DrawString(s32 x, s32 y, char *str)
+{
+    s32 i;
+    u16 var;
+
+    for (i = 0; str[i] != '\0'; )
+    {
+        if (str[i][gUnk_02007AB1] & 0x20)
+        {
+            switch (str[i])
+            {
+            case '\n':
+                DrawString_NewLine();
+                ++i;
+                break;
+            case '\f':
+                DrawString_ClearText();
+                ++i;
+                break;
+            case '\e':
+                i += sub_020010D8(&x, &y, str + i + 1);
+                ++i;
+                break;
+            default:
+                ++i;
+            }
+        }
+        else if (((s8 *)str)[i] >= 0)
+        {
+            DrawString_CheckAndWrap();
+            var = gUnk_03000970.special_handlers[x].callback(&i, &str[i]);
+            if (var == 0xFFFF)
+                var = 0;
+            else
+            {
+                var += gUnk_03000970.special_handlers[x].tile_number;
+                var |= y << 12;
+            }
+            gUnk_03000970.BG0_Tilemap[gUnk_03000970.windowinfo.y_offset + gUnk_03000970.y][gUnk_03000970.windowinfo.x_offset + gUnk_03000970.x] = var;
+            
+            gUnk_03000970.BG1_Tilemap[gUnk_03000970.windowinfo.y_offset + gUnk_03000970.y][gUnk_03000970.windowinfo.x_offset + gUnk_03000970.x] = gUnk_03000970.bg1_tile_number;
+            ++gUnk_03000970.x;
+        }
+        else
+            ++i;
+    }
+}
+
+u16 sub_02000D0C(s32 *i_p, char *str)
+{
+    ++*i_p;
+    return (*str - 0x20);
+}
+
+void DrawString_CheckAndWrap(void)
+{
+    s32 i;
+
+    if (gUnk_03000970.x >= gUnk_03000970.windowinfo.max_width)
+        DrawString_NewLine();
+    if (gUnk_03000970.y >= gUnk_03000970.windowinfo.max_height)
+    {
+        gUnk_03000970.y = gUnk_03000970.windowinfo.max_height - 1;
+        if (gUnk_03000970.windowinfo.wrap_text == TRUE)
+        {
+            for (i = 0; i < gUnk_03000970.windowinfo.max_height - 1; ++i)
+            {
+                DmaCopy16(
+                    3,
+                    &gUnk_03000970.BG0_Tilemap[gUnk_03000970.windowinfo.y_offset + i + 1][gUnk_03000970.windowinfo.x_offset],
+                    &gUnk_03000970.BG0_Tilemap[gUnk_03000970.windowinfo.y_offset + i][gUnk_03000970.windowinfo.x_offset],
+                    gUnk_03000970.windowinfo.max_width * 2
+                );
+                DmaCopy16(
+                    3,
+                    &gUnk_03000970.BG1_Tilemap[gUnk_03000970.windowinfo.y_offset + i + 1][gUnk_03000970.windowinfo.x_offset],
+                    &gUnk_03000970.BG1_Tilemap[gUnk_03000970.windowinfo.y_offset + i][gUnk_03000970.windowinfo.x_offset],
+                    gUnk_03000970.windowinfo.max_width * 2
+                );
+            }
+            DmaFill16(
+                3,
+                0,
+                &gUnk_03000970.BG0_Tilemap[gUnk_03000970.windowinfo.y_offset + gUnk_03000970.windowinfo.max_height - 1][gUnk_03000970.windowinfo.x_offset],
+                gUnk_03000970.windowinfo.max_width * 2
+            );
+            DmaFill16(
+                3,
+                0,
+                &gUnk_03000970.BG1_Tilemap[gUnk_03000970.windowinfo.y_offset + gUnk_03000970.windowinfo.max_height - 1][gUnk_03000970.windowinfo.x_offset],
+                gUnk_03000970.windowinfo.max_width * 2
+            );
+        }
+    }
+}
+
+void DrawString_NewLine(void)
+{
+    gUnk_03000970.x = 0;
+    ++gUnk_03000970.y;
+}
+
+void DrawString_ClearText(void)
+{
+    s32 i, j;
+
+    for (i = gUnk_03000970.windowinfo.y_offset;
+         i < gUnk_03000970.windowinfo.y_offset + gUnk_03000970.windowinfo.max_height;
+         ++i)
+    {
+        for (j = gUnk_03000970.windowinfo.x_offset;
+             j < gUnk_03000970.windowinfo.x_offset + gUnk_03000970.windowinfo.max_width;
+             ++j)
+        {
+            gUnk_03000970.BG0_Tilemap[i][j] = 0;
+            gUnk_03000970.BG1_Tilemap[i][j] = 0;
+        }
+    }
+    gUnk_03000970.x = 0;
+    gUnk_03000970.y = 0;
+}
+
+s32 sub_020010D8(s32 *x_p, s32 *y_p, char *str)
+{
+    if (*str++ != '[')
+        return 0;
+    switch (*str++)
+    {
+    case 'F':
+        return sub_0200113C(x_p, *str);
+    case 'P':
+        return sub_02001178(y_p, *str);
+    default:
+        return 0;
+    }
+}
+
+// FIXME: rename the macros
+#define ASCII_TO_DEC(c) (c - 0x30)
+#define ASCII_TO_HEX_LETTER(c) (c - 0x37)
+
+s32 sub_0200113C(s32 *a1, char a2)
+{
+    s32 v3 = ASCII_TO_DEC(a2);
+
+    if (v3 >= 0 && v3 <= 7)
+    {
+        *a1 = v3;
+        return 3;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+s32 sub_02001178(s32 *a1, char a2)
+{
+    s32 v3 = ASCII_TO_DEC(a2);
+
+    if (a2 >= 'A' && a2 <= 'F')
+        v3 = ASCII_TO_HEX_LETTER(a2);
+    if (v3 >= 0 && v3 <= 0xF)
+    {
+        *a1 = v3;
+        return 3;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+void sub_020011D0(s32 a1)
+{
+    sub_02000838(a1, gUnk_02006EA8, 0xC00, sub_02000D0C);
 }
