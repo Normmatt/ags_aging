@@ -15,6 +15,8 @@ PREPROC := tools/preproc/preproc
 RAMSCRGEN := tools/ramscrgen/ramscrgen
 FIX := tools/gbafix/gbafix
 
+.SECONDEXPANSION:
+
 CC1FLAGS := -mthumb-interwork -Wimplicit -Wparentheses -O0 -fhex-asm -g
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef
 ASFLAGS  := -mcpu=arm7tdmi -mthumb-interwork -I asminclude -I include
@@ -26,6 +28,7 @@ ELF      := $(ROM:.gba=.elf)
 MAP      := $(ROM:.gba=.map)
 LDSCRIPT := ld_script.ld
 LDFLAGS = --no-check-section -Map ../../$(MAP)
+LIB := -L ../../tools/agbcc/lib -lgcc -lc -lgcc
 
 C_SUBDIR = src
 ASM_SUBDIR = asm
@@ -75,48 +78,77 @@ OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 $(C_BUILDDIR)/AgbEeprom.o: CC1FLAGS := -mthumb-interwork -O1
 
 $(C_BUILDDIR)/m4a.o: CC1FLAGS := -mthumb-interwork -O1
-$(C_BUILDDIR)/m4a.o: CC1FLAGS := -mthumb-interwork -O1
-
 
 #### Main Targets ####
 
+.PHONY: compare clean tidy mb_test
+
+all: mb_test compare
+
+mb_test:
+	@$(MAKE) --no-print-directory -C mb_test COMPARE=1
+
 compare: $(ROM)
-	sha1sum -c checksum.sha1
+	@sha1sum -c checksum.sha1
 
 clean: tidy
 	$(RM) $(ROM) $(ELF) $(MAP) $(OBJS)
+	@$(MAKE) --no-print-directory -C mb_test clean
 
 tidy:
 	rm -r build/*
 	rm -f $(ROM) $(ELF) $(MAP)
-    
 
 #### Recipes ####
    
 $(OBJ_DIR)/ld_script.ld: $(LDSCRIPT) $(OBJ_DIR)/sym_ewram.txt $(OBJ_DIR)/sym_iwram.txt $(OBJ_DIR)/sym_data.txt
 	cd $(OBJ_DIR) && sed "s#tools/#../../tools/#g" ../../$(LDSCRIPT) > $(LDSCRIPT)
-    
+
 $(OBJ_DIR)/sym_ewram.txt: sym_ewram.txt
 	sed "s#tools/#../../tools/#g" sym_ewram.txt > $@
-    
+
 $(OBJ_DIR)/sym_iwram.txt: sym_iwram.txt
 	sed "s#tools/#../../tools/#g" sym_iwram.txt > $@
 
 $(OBJ_DIR)/sym_data.txt: sym_data.txt
 	sed "s#tools/#../../tools/#g" sym_data.txt > $@
 
-$(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c
+ifeq ($(NODEP),1)
+$(C_BUILDDIR)/%.o: c_dep :=
+else
+$(C_BUILDDIR)/%.o: c_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c)
+endif
+
+$(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	$(CPP) $(CPPFLAGS) $< | $(CC1) $(CC1FLAGS) -o $(C_BUILDDIR)/$*.s
 	@echo ".text\\n\\t.align\\t2, 0\\n" >> $(C_BUILDDIR)/$*.s
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
-$(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
+ifeq ($(NODEP),1)
+$(C_BUILDDIR)/%.o: asm_src_dep :=
+else
+$(C_BUILDDIR)/%.o: asm_src_dep = $(shell $(SCANINC) -I . $(C_SUBDIR)/$*.s)
+endif
+
+$(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s $$(asm_src_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
 
-$(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s
+ifeq ($(NODEP),1)
+$(ASM_BUILDDIR)/%.o: asm_dep :=
+else
+$(ASM_BUILDDIR)/%.o: asm_dep = $(shell $(SCANINC) -I . $(ASM_SUBDIR)/$*.s)
+endif
+
+$(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
-    
-$(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
+
+ifeq ($(NODEP),1)
+$(DATA_ASM_BUILDDIR)/%.o: data_dep :=
+else
+$(DATA_ASM_BUILDDIR)/%.o: data_dep = $(shell $(SCANINC) -I . $(DATA_ASM_SUBDIR)/$*.s)
+endif
+
+$(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
     
 $(SOUND_ASM_BUILDDIR)/%.o: $(SOUND_ASM_SUBDIR)/%.s
@@ -133,7 +165,7 @@ $(WAVE_ASM_BUILDDIR)/%.o: $(WAVE_ASM_SUBDIR)/%.s
     
 
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
-	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T $(LDSCRIPT) $(OBJS_REL) ../../tools/agbcc/lib/libc.a ../../tools/agbcc/lib/libgcc.a -o ../../$@
+	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T $(LDSCRIPT) $(OBJS_REL)  -o ../../$@ $(LIB)
 
 %.gba: %.elf
 	$(OBJCOPY) -O binary --pad-to 0x8200000 $< $@
